@@ -3,221 +3,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>KidGaming</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-
-body{
-    background:#0f1326;
-    color:white;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-nav{
+body{
+    background:#0b0f19;
+    color:white;
+    min-height:100vh;
+}
+
+button,input,textarea,select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.navbar{
+    height:70px;
+    background:#111827;
+    border-bottom:1px solid #263044;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    padding:0 25px;
     position:sticky;
     top:0;
     z-index:100;
-    height:70px;
-    padding:0 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:#171c35;
-    border-bottom:2px solid #292f50;
 }
 
 .logo{
-    font-size:28px;
+    font-size:25px;
     font-weight:900;
-    color:#7c5cff;
+    color:#60a5fa;
     cursor:pointer;
 }
-.logo span{color:#ffcc4d}
+
+.logo span{
+    color:#a78bfa;
+}
 
 .navlinks{
     display:flex;
-    gap:5px;
+    gap:8px;
 }
 
-.navlinks button{
-    background:none;
+.navlinks button,
+.login-btn{
     border:0;
-    color:white;
+    background:transparent;
+    color:#cbd5e1;
     padding:10px 14px;
     border-radius:10px;
-    cursor:pointer;
-    font-weight:bold;
 }
 
-.navlinks button:hover{
-    background:#292f50;
-}
-
-.user-button{
-    background:#292f50;
+.navlinks button:hover,
+.login-btn:hover{
+    background:#1e293b;
     color:white;
-    border:0;
-    padding:11px 16px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.hero{
-    text-align:center;
-    padding:90px 20px;
-    background:
-    radial-gradient(circle at 20% 20%,#6d4aff55,transparent 30%),
-    radial-gradient(circle at 80% 20%,#ff4f9a44,transparent 30%),
-    linear-gradient(135deg,#171c35,#0f1326);
-}
-
-.hero h1{
-    font-size:60px;
-    margin-bottom:15px;
-}
-
-.hero h1 span{color:#7c5cff}
-
-.hero p{
-    color:#b8bfdc;
-    font-size:19px;
-    max-width:650px;
-    margin:auto;
-    line-height:1.5;
-}
-
-.buttons{
-    margin-top:30px;
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    border:0;
-    padding:14px 22px;
-    border-radius:13px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.primary{
-    background:#7c5cff;
-    color:white;
-}
-
-.secondary{
-    background:#292f50;
-    color:white;
-}
-
-section{
-    padding:60px 7%;
-}
-
-.section-title{
-    font-size:35px;
-    margin-bottom:25px;
 }
 
 .search{
-    width:100%;
-    max-width:600px;
-    padding:15px;
-    border-radius:13px;
-    border:2px solid #30385f;
-    background:#171c35;
+    margin-left:auto;
+    width:min(350px,30vw);
+    background:#0f172a;
+    border:1px solid #334155;
     color:white;
+    padding:11px 15px;
+    border-radius:12px;
     outline:none;
-    margin-bottom:25px;
 }
 
-.posts{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-    gap:20px;
+.container{
+    width:min(1250px,94%);
+    margin:auto;
 }
 
-.post-card{
-    background:#191f3a;
-    border:2px solid #2c3458;
-    border-radius:18px;
+.page{
+    padding:30px 0 60px;
+}
+
+.hero{
+    background:linear-gradient(135deg,#172554,#312e81,#581c87);
+    border-radius:25px;
+    padding:55px;
+    margin-bottom:35px;
     overflow:hidden;
 }
 
-.post-video{
-    width:100%;
-    max-height:300px;
-    display:block;
-    background:#000;
+.hero h1{
+    font-size:48px;
+    margin-bottom:12px;
 }
 
-.post-content{
-    padding:20px;
-}
-
-.post-content h3{
-    margin-bottom:8px;
-}
-
-.meta{
-    color:#aeb5d1;
-    font-size:14px;
+.hero p{
+    color:#dbeafe;
+    max-width:650px;
+    font-size:18px;
     line-height:1.6;
 }
 
-.description{
-    color:#c1c7df;
-    margin:15px 0;
-    line-height:1.4;
+.hero-actions{
+    display:flex;
+    gap:12px;
+    margin-top:25px;
 }
 
-.post-actions{
+.primary{
+    background:#6366f1;
+    color:white;
+    border:0;
+    padding:13px 20px;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.primary:hover{
+    background:#818cf8;
+}
+
+.secondary{
+    background:#1e293b;
+    color:white;
+    border:1px solid #475569;
+    padding:13px 20px;
+    border-radius:12px;
+}
+
+.section{
+    margin-top:35px;
+}
+
+.section-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    margin-bottom:18px;
 }
 
-.like-btn{
-    background:#292f50;
-    color:white;
-    border:0;
-    border-radius:10px;
-    padding:9px 13px;
-    cursor:pointer;
+.section-header h2{
+    font-size:27px;
 }
 
-.channel{
-    background:#151a31;
-}
-
-.channel-header{
-    background:#191f3a;
-    border:2px solid #2c3458;
-    border-radius:20px;
-    padding:30px;
-    display:flex;
-    align-items:center;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
     gap:20px;
 }
 
-.avatar{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#7c5cff,#ff4f9a);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:40px;
+.card{
+    background:#111827;
+    border:1px solid #263044;
+    border-radius:16px;
+    overflow:hidden;
+    transition:.2s;
 }
 
-.modal-bg{
+.card:hover{
+    transform:translateY(-3px);
+    border-color:#6366f1;
+}
+
+.thumbnail{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#1e293b;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-title{
+    font-weight:bold;
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.card-meta{
+    color:#94a3b8;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.author{
+    color:#60a5fa;
+    cursor:pointer;
+}
+
+.author:hover{
+    text-decoration:underline;
+}
+
+.card-actions{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.small-btn{
+    background:#1e293b;
+    color:#e2e8f0;
+    border:0;
+    border-radius:9px;
+    padding:8px 11px;
+}
+
+.small-btn:hover{
+    background:#334155;
+}
+
+.video-player{
+    width:100%;
+    max-height:550px;
+    background:#000;
+    border-radius:15px;
+}
+
+.empty{
+    text-align:center;
+    padding:50px;
+    color:#94a3b8;
+    background:#111827;
+    border:1px dashed #334155;
+    border-radius:16px;
+}
+
+.modal{
     position:fixed;
     inset:0;
-    background:#000b;
+    background:rgba(0,0,0,.75);
     display:none;
     align-items:center;
     justify-content:center;
@@ -225,93 +250,287 @@ section{
     padding:20px;
 }
 
-.modal{
-    background:#191f3a;
-    width:100%;
-    max-width:520px;
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(500px,100%);
+    background:#111827;
+    border:1px solid #334155;
+    border-radius:20px;
+    padding:25px;
     max-height:90vh;
     overflow:auto;
-    border:2px solid #3a4270;
-    border-radius:20px;
-    padding:28px;
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    color:#cbd5e1;
+    margin-bottom:7px;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    background:#0f172a;
+    color:white;
+    border:1px solid #334155;
+    padding:11px;
+    border-radius:10px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
 }
 
 .close{
     float:right;
-    cursor:pointer;
-    font-size:22px;
-    color:#aaa;
-}
-
-.input{
-    width:100%;
-    padding:13px;
-    border-radius:10px;
-    border:2px solid #30385f;
-    background:#0f1326;
+    background:#1e293b;
     color:white;
-    outline:none;
-    margin:7px 0;
+    border:0;
+    border-radius:8px;
+    padding:6px 10px;
 }
 
-textarea.input{
-    min-height:120px;
-    resize:vertical;
+.type-selector{
+    display:flex;
+    gap:10px;
 }
 
-label{
-    display:block;
-    color:#c0c6dd;
-    font-size:14px;
-    margin-top:10px;
-}
-
-.file-input{
-    width:100%;
+.type-option{
+    flex:1;
+    background:#0f172a;
+    border:1px solid #334155;
     padding:12px;
-    background:#0f1326;
-    border:2px dashed #4a5279;
     border-radius:10px;
-    color:#cbd1e5;
-    margin-top:7px;
-}
-
-.preview{
-    width:100%;
-    max-height:220px;
-    object-fit:cover;
-    border-radius:12px;
-    margin-top:12px;
-    display:none;
-}
-
-.empty{
     text-align:center;
-    padding:45px;
-    background:#191f3a;
-    border-radius:18px;
-    border:2px dashed #30385f;
-    color:#929aba;
+    cursor:pointer;
 }
 
-.toast{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    background:#7c5cff;
-    padding:15px 20px;
-    border-radius:13px;
+.type-option.active{
+    border-color:#6366f1;
+    background:#312e81;
+}
+
+.channel-banner{
+    height:240px;
+    border-radius:22px 22px 0 0;
+    background:linear-gradient(135deg,#2563eb,#7c3aed,#db2777);
+    position:relative;
+}
+
+.channel{
+    background:#111827;
+    border:1px solid #263044;
+    border-radius:22px;
+    overflow:hidden;
+}
+
+.channel-info{
+    padding:20px 25px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    position:relative;
+}
+
+.avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#6366f1;
+    border:5px solid #111827;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
     font-weight:bold;
-    display:none;
-    z-index:1000;
+    margin-top:-65px;
+}
+
+.channel-name{
+    font-size:27px;
+    font-weight:bold;
+}
+
+.channel-handle{
+    color:#94a3b8;
+    margin-top:5px;
+}
+
+.channel-bio{
+    color:#cbd5e1;
+    margin-top:8px;
+}
+
+.channel-buttons{
+    margin-left:auto;
+}
+
+.channel-tabs{
+    display:flex;
+    gap:4px;
+    border-top:1px solid #263044;
+    padding:8px 15px;
+}
+
+.channel-tabs button{
+    background:transparent;
+    border:0;
+    color:#94a3b8;
+    padding:12px 18px;
+    border-radius:9px;
+}
+
+.channel-tabs button:hover,
+.channel-tabs button.active{
+    background:#1e293b;
+    color:white;
+}
+
+.studio{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:20px;
+}
+
+.studio-sidebar{
+    background:#111827;
+    border:1px solid #263044;
+    border-radius:16px;
+    padding:12px;
+    height:max-content;
+}
+
+.studio-sidebar button{
+    width:100%;
+    text-align:left;
+    background:transparent;
+    color:#cbd5e1;
+    border:0;
+    padding:13px;
+    border-radius:9px;
+    margin-bottom:4px;
+}
+
+.studio-sidebar button:hover,
+.studio-sidebar button.active{
+    background:#312e81;
+    color:white;
+}
+
+.studio-main{
+    min-width:0;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:#111827;
+    border:1px solid #263044;
+    padding:22px;
+    border-radius:15px;
+}
+
+.stat-number{
+    font-size:30px;
+    font-weight:bold;
+    color:#818cf8;
+}
+
+.stat-label{
+    color:#94a3b8;
+    margin-top:5px;
+}
+
+.studio-panel{
+    background:#111827;
+    border:1px solid #263044;
+    border-radius:16px;
+    padding:25px;
+}
+
+.studio-panel h2{
+    margin-bottom:20px;
+}
+
+.notice{
+    background:#172554;
+    border:1px solid #3730a3;
+    color:#dbeafe;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    padding:30px;
+}
+
+.hidden{
+    display:none!important;
 }
 
 @media(max-width:800px){
-    .navlinks{display:none}
-    .hero h1{font-size:42px}
-    .channel-header{
+    .navbar{
+        flex-wrap:wrap;
+        height:auto;
+        padding:12px;
+    }
+
+    .search{
+        width:100%;
+        order:5;
+    }
+
+    .navlinks{
+        overflow:auto;
+    }
+
+    .hero{
+        padding:30px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .studio{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .channel-info{
         flex-direction:column;
-        text-align:center;
+        align-items:flex-start;
+    }
+
+    .channel-buttons{
+        margin-left:0;
     }
 }
 </style>
@@ -319,887 +538,1702 @@ label{
 
 <body>
 
-<nav>
+<nav class="navbar">
 
-<div class="logo" onclick="home()">
-Kid<span>Gaming</span> 🎮
-</div>
+    <div class="logo" onclick="showHome()">
+        Kid<span>Gaming</span>
+    </div>
 
-<div class="navlinks">
-<button onclick="home()">Home</button>
-<button onclick="latest()">Latest</button>
-<button onclick="myChannel()">My Channel</button>
-<button onclick="openPost()">+ Create</button>
-</div>
+    <div class="navlinks">
+        <button onclick="showHome()">🏠 Home</button>
+        <button onclick="showTrailers()">🎬 Trailers</button>
+        <button onclick="showGameplay()">🎮 Gameplay</button>
+        <button onclick="showMyChannel()">📺 My Channel</button>
+    </div>
 
-<button id="loginBtn" class="user-button" onclick="openLogin()">
-Login
-</button>
+    <input
+        id="searchInput"
+        class="search"
+        placeholder="🔎 Search games, videos, creators..."
+        oninput="doSearch()"
+    >
+
+    <button class="login-btn" id="loginButton" onclick="openLogin()">
+        Login
+    </button>
 
 </nav>
 
 
-<header class="hero" id="home">
+<main class="container page">
 
-<h1>
-Welcome to <span>KidGaming</span> 🎮
-</h1>
+    <!-- HOME -->
 
-<p>
-Watch gameplay, create your own channel and share your gaming moments.
-</p>
+    <section id="homePage">
 
-<div class="buttons">
+        <div class="hero">
 
-<button class="btn primary" onclick="openPost()">
-🎥 Upload Gameplay
-</button>
+            <h1>🎮 Welcome to KidGaming</h1>
 
-<button class="btn secondary" onclick="latest()">
-🔥 Explore Gameplay
-</button>
+            <p>
+                Your gaming place for gameplay, trailers, creators and awesome channels.
+                Create your own channel and start uploading.
+            </p>
 
-</div>
+            <div class="hero-actions">
+                <button class="primary" onclick="showTrailers()">
+                    🎬 Watch Trailers
+                </button>
 
-</header>
+                <button class="secondary" onclick="showMyChannel()">
+                    📺 My Channel
+                </button>
+            </div>
 
-
-<section id="latest">
-
-<h2 class="section-title">
-🔥 Latest Gameplay
-</h2>
-
-<input
-id="search"
-class="search"
-placeholder="Search game, category, title or user..."
-oninput="searchPosts()"
->
-
-<div id="posts" class="posts"></div>
-
-</section>
+        </div>
 
 
-<section class="channel" id="channel">
+        <div class="section">
 
-<h2 class="section-title">
-📺 My Channel
-</h2>
+            <div class="section-header">
+                <h2>🔥 Featured Trailers</h2>
+                <button class="secondary" onclick="showTrailers()">
+                    See all
+                </button>
+            </div>
 
-<div class="channel-header">
+            <div id="homeTrailers" class="grid"></div>
 
-<div class="avatar">🎮</div>
-
-<div>
-<h2 id="channelName">Guest Channel</h2>
-<p id="channelDescription" style="color:#aeb5d1;margin-top:8px">
-Login to create your channel.
-</p>
-</div>
-
-</div>
-
-<br>
-
-<div id="channelPosts" class="posts"></div>
-
-</section>
+        </div>
 
 
-<footer style="text-align:center;padding:40px;color:#858eaf">
-🎮 KidGaming
-<br><br>
-Create • Play • Share
+        <div class="section">
+
+            <div class="section-header">
+                <h2>🎮 Latest Gameplay</h2>
+                <button class="secondary" onclick="showGameplay()">
+                    See all
+                </button>
+            </div>
+
+            <div id="homeGameplay" class="grid"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRAILERS -->
+
+    <section id="trailersPage" class="hidden">
+
+        <div class="section-header">
+            <h1>🎬 Trailers</h1>
+
+            <button class="primary" onclick="openUpload('trailer')">
+                + Upload Trailer
+            </button>
+        </div>
+
+        <div id="trailersGrid" class="grid"></div>
+
+    </section>
+
+
+    <!-- GAMEPLAY -->
+
+    <section id="gameplayPage" class="hidden">
+
+        <div class="section-header">
+            <h1>🎮 Gameplay</h1>
+
+            <button class="primary" onclick="openUpload('video')">
+                + Upload Gameplay
+            </button>
+        </div>
+
+        <div id="gameplayGrid" class="grid"></div>
+
+    </section>
+
+
+    <!-- CHANNEL -->
+
+    <section id="channelPage" class="hidden">
+
+        <button class="secondary" onclick="showHome()" style="margin-bottom:18px">
+            ← Back
+        </button>
+
+        <div class="channel">
+
+            <div id="channelBanner" class="channel-banner"></div>
+
+            <div class="channel-info">
+
+                <div id="channelAvatar" class="avatar">
+                    K
+                </div>
+
+                <div>
+                    <div id="channelName" class="channel-name">
+                        Channel
+                    </div>
+
+                    <div id="channelHandle" class="channel-handle">
+                        @channel
+                    </div>
+
+                    <div id="channelBio" class="channel-bio">
+                    </div>
+                </div>
+
+                <div class="channel-buttons" id="channelButtons"></div>
+
+            </div>
+
+            <div class="channel-tabs">
+
+                <button
+                    id="tabHome"
+                    onclick="channelTab('home')"
+                    class="active"
+                >
+                    Home
+                </button>
+
+                <button
+                    id="tabVideos"
+                    onclick="channelTab('videos')"
+                >
+                    Videos
+                </button>
+
+                <button
+                    id="tabTrailers"
+                    onclick="channelTab('trailers')"
+                >
+                    Trailers
+                </button>
+
+                <button
+                    id="tabAbout"
+                    onclick="channelTab('about')"
+                >
+                    About
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="channelContent" class="section"></div>
+
+    </section>
+
+
+    <!-- CREATOR STUDIO -->
+
+    <section id="studioPage" class="hidden">
+
+        <button class="secondary" onclick="showMyChannel()" style="margin-bottom:18px">
+            ← Back to Channel
+        </button>
+
+        <h1 style="margin-bottom:20px">
+            🛠️ Creator Studio
+        </h1>
+
+        <div class="studio">
+
+            <aside class="studio-sidebar">
+
+                <button
+                    class="active"
+                    onclick="studioTab('dashboard',this)"
+                >
+                    📊 Dashboard
+                </button>
+
+                <button onclick="studioTab('videos',this)">
+                    🎮 Videos
+                </button>
+
+                <button onclick="studioTab('trailers',this)">
+                    🎬 Trailers
+                </button>
+
+                <button onclick="studioTab('upload',this)">
+                    ⬆️ Upload
+                </button>
+
+                <button onclick="studioTab('channel',this)">
+                    📺 Customize Channel
+                </button>
+
+            </aside>
+
+            <div id="studioMain" class="studio-main"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+    🎮 KidGaming • Made for gamers
 </footer>
 
 
-<!-- LOGIN -->
+<!-- LOGIN MODAL -->
 
-<div id="loginModal" class="modal-bg">
+<div id="loginModal" class="modal">
 
-<div class="modal">
+    <div class="modal-box">
 
-<span class="close" onclick="closeModal('loginModal')">✕</span>
+        <button class="close" onclick="closeModal('loginModal')">
+            ✕
+        </button>
 
-<h2>👤 Login / Create Account</h2>
+        <h2>👤 Login / Create Account</h2>
 
-<label>Username</label>
+        <div class="notice">
+            Demo version: your account is saved only in this browser.
+        </div>
 
-<input
-id="username"
-class="input"
-placeholder="Your username"
-maxlength="20"
->
+        <div class="form-group">
+            <label>Username</label>
+            <input id="loginUsername" placeholder="Ex: Micah">
+        </div>
 
-<label>Password</label>
+        <div class="form-group">
+            <label>Password</label>
+            <input id="loginPassword" type="password" placeholder="Password">
+        </div>
 
-<input
-id="password"
-class="input"
-type="password"
-placeholder="Your password"
->
+        <button class="primary" style="width:100%" onclick="login()">
+            Login / Create
+        </button>
 
-<button
-class="btn primary"
-style="width:100%;margin-top:12px"
-onclick="login()">
-Login
-</button>
-
-<button
-class="btn secondary"
-style="width:100%;margin-top:10px"
-onclick="createAccount()">
-Create Account
-</button>
-
-</div>
+    </div>
 
 </div>
 
 
-<!-- CREATE GAMEPLAY -->
+<!-- UPLOAD MODAL -->
 
-<div id="postModal" class="modal-bg">
+<div id="uploadModal" class="modal">
 
-<div class="modal">
+    <div class="modal-box">
 
-<span class="close" onclick="closeModal('postModal')">✕</span>
+        <button class="close" onclick="closeModal('uploadModal')">
+            ✕
+        </button>
 
-<h2>🎥 Upload Gameplay</h2>
+        <h2>⬆️ Upload</h2>
 
-<label>Title</label>
+        <div class="form-group">
 
-<input
-id="title"
-class="input"
-placeholder="My awesome gameplay"
-maxlength="80"
->
+            <label>Type</label>
 
-<label>Game</label>
+            <div class="type-selector">
 
-<input
-id="game"
-class="input"
-placeholder="Write the game name"
-maxlength="40"
->
+                <div
+                    id="videoType"
+                    class="type-option active"
+                    onclick="selectType('video')"
+                >
+                    🎮 Gameplay
+                </div>
 
-<label>Category</label>
+                <div
+                    id="trailerType"
+                    class="type-option"
+                    onclick="selectType('trailer')"
+                >
+                    🎬 Trailer
+                </div>
 
-<input
-id="category"
-class="input"
-placeholder="Battle Royale, Racing, Survival..."
-maxlength="40"
->
+            </div>
 
-<label>Description</label>
+        </div>
 
-<textarea
-id="description"
-class="input"
-placeholder="Tell people about your gameplay..."
-maxlength="300"
-></textarea>
+        <div class="form-group">
+            <label>Title</label>
+            <input id="uploadTitle" placeholder="Ex: My Fortnite Victory">
+        </div>
 
-<label>🎥 Video</label>
+        <div class="form-group">
+            <label>Game</label>
+            <input id="uploadGame" placeholder="Write your game">
+        </div>
 
-<input
-id="video"
-class="file-input"
-type="file"
-accept="video/*"
-onchange="previewVideo()"
->
+        <div class="form-group">
+            <label>Category</label>
+            <input id="uploadCategory" placeholder="Ex: Battle Royale">
+        </div>
 
-<video
-id="videoPreview"
-class="preview"
-controls>
-</video>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea id="uploadDescription" placeholder="Tell people about your video..."></textarea>
+        </div>
 
-<label>🖼️ Thumbnail</label>
+        <div class="form-group">
+            <label>Video</label>
+            <input id="uploadVideo" type="file" accept="video/*">
+        </div>
 
-<input
-id="thumbnail"
-class="file-input"
-type="file"
-accept="image/*"
-onchange="previewThumbnail()"
->
+        <div class="form-group">
+            <label>Thumbnail</label>
+            <input id="uploadThumbnail" type="file" accept="image/*">
+        </div>
 
-<img
-id="thumbnailPreview"
-class="preview"
->
+        <button class="primary" style="width:100%" onclick="publishVideo()">
+            🚀 Publish
+        </button>
 
-<button
-class="btn primary"
-style="width:100%;margin-top:18px"
-onclick="createGameplay()">
-🚀 POST GAMEPLAY
-</button>
-
-</div>
+    </div>
 
 </div>
 
 
-<div id="toast" class="toast"></div>
+<!-- EDIT CHANNEL MODAL -->
+
+<div id="channelEditModal" class="modal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeModal('channelEditModal')">
+            ✕
+        </button>
+
+        <h2>🎨 Customize Channel</h2>
+
+        <div class="form-group">
+            <label>Channel Name</label>
+            <input id="editChannelName">
+        </div>
+
+        <div class="form-group">
+            <label>Bio</label>
+            <textarea id="editChannelBio"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Avatar Letter / Emoji</label>
+            <input id="editAvatar" maxlength="3">
+        </div>
+
+        <div class="form-group">
+            <label>Banner</label>
+            <select id="editBanner">
+                <option value="blue">Blue / Purple</option>
+                <option value="green">Green / Blue</option>
+                <option value="red">Red / Purple</option>
+                <option value="orange">Orange / Pink</option>
+            </select>
+        </div>
+
+        <button class="primary" style="width:100%" onclick="saveChannel()">
+            💾 Save Channel
+        </button>
+
+    </div>
+
+</div>
 
 
 <script>
 
-let currentUser =
-localStorage.getItem("kidgamingUser");
+let currentUser = localStorage.getItem("kg_currentUser");
+
+let accounts =
+    JSON.parse(localStorage.getItem("kg_accounts") || "{}");
 
 let posts =
-JSON.parse(
-localStorage.getItem("kidgamingPosts") || "[]"
-);
+    JSON.parse(localStorage.getItem("kg_posts") || "[]");
+
+let channels =
+    JSON.parse(localStorage.getItem("kg_channels") || "{}");
+
+let selectedChannel = null;
+
+let selectedChannelTab = "home";
+
+let uploadType = "video";
 
 
-/* USER */
+function saveData(){
 
-function updateUser(){
+    localStorage.setItem(
+        "kg_accounts",
+        JSON.stringify(accounts)
+    );
 
-const btn =
-document.getElementById("loginBtn");
+    localStorage.setItem(
+        "kg_posts",
+        JSON.stringify(posts)
+    );
 
-if(currentUser){
-
-btn.innerText="👤 "+currentUser;
-
-btn.onclick=()=>{
-
-myChannel();
-
-};
-
-document.getElementById("channelName")
-.innerText=currentUser+"'s Channel";
-
-document.getElementById("channelDescription")
-.innerText=
-"Gaming channel by "+currentUser;
-
-}else{
-
-btn.innerText="Login";
-btn.onclick=openLogin;
+    localStorage.setItem(
+        "kg_channels",
+        JSON.stringify(channels)
+    );
 
 }
 
+
+function escapeHTML(text){
+
+    if(!text) return "";
+
+    return String(text)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 }
 
-updateUser();
-renderPosts();
+
+function hidePages(){
+
+    document
+        .querySelectorAll("main > section")
+        .forEach(x=>x.classList.add("hidden"));
+
+}
 
 
-/* LOGIN */
+function showHome(){
+
+    hidePages();
+
+    document
+        .getElementById("homePage")
+        .classList.remove("hidden");
+
+    renderHome();
+
+}
+
+
+function showTrailers(){
+
+    hidePages();
+
+    document
+        .getElementById("trailersPage")
+        .classList.remove("hidden");
+
+    renderTrailers();
+
+}
+
+
+function showGameplay(){
+
+    hidePages();
+
+    document
+        .getElementById("gameplayPage")
+        .classList.remove("hidden");
+
+    renderGameplay();
+
+}
+
+
+function showMyChannel(){
+
+    if(!currentUser){
+
+        openLogin();
+
+        return;
+
+    }
+
+    openChannel(currentUser);
+
+}
+
 
 function openLogin(){
 
-document.getElementById("loginModal")
-.style.display="flex";
+    document
+        .getElementById("loginModal")
+        .classList.add("active");
 
 }
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("active");
+
+}
+
 
 function login(){
 
-let username=
-document.getElementById("username").value.trim();
+    let username =
+        document.getElementById("loginUsername").value.trim();
 
-let password=
-document.getElementById("password").value;
+    let password =
+        document.getElementById("loginPassword").value;
 
-if(!username||!password){
+    if(!username || !password){
 
-toast("Enter username and password!");
+        alert("Completează username și parola.");
 
-return;
+        return;
 
-}
+    }
 
-let account=
-localStorage.getItem("account_"+username);
+    let key = username.toLowerCase();
 
-if(!account){
+    if(!accounts[key]){
 
-toast("Account not found!");
+        accounts[key] = {
+            username:username,
+            password:password
+        };
 
-return;
+        channels[key] = {
+            username:username,
+            name:username,
+            bio:"🎮 Gaming creator",
+            avatar:username.charAt(0).toUpperCase(),
+            banner:"blue"
+        };
 
-}
+    }else{
 
-account=JSON.parse(account);
+        if(accounts[key].password !== password){
 
-if(account.password!==password){
+            alert("Parola nu este corectă.");
 
-toast("Wrong password!");
+            return;
 
-return;
+        }
 
-}
+    }
 
-currentUser=username;
+    currentUser = accounts[key].username;
 
-localStorage.setItem(
-"kidgamingUser",
-username
-);
+    localStorage.setItem(
+        "kg_currentUser",
+        currentUser
+    );
 
-closeModal("loginModal");
+    saveData();
 
-updateUser();
+    closeModal("loginModal");
 
-toast("Welcome "+username+"! 🎮");
+    updateLoginButton();
 
-}
-
-
-function createAccount(){
-
-let username=
-document.getElementById("username").value.trim();
-
-let password=
-document.getElementById("password").value;
-
-if(username.length<3||!password){
-
-toast("Choose a username and password!");
-
-return;
-
-}
-
-if(localStorage.getItem("account_"+username)){
-
-toast("Username already exists!");
-
-return;
-
-}
-
-localStorage.setItem(
-"account_"+username,
-JSON.stringify({
-username:username,
-password:password
-})
-);
-
-currentUser=username;
-
-localStorage.setItem(
-"kidgamingUser",
-username
-);
-
-closeModal("loginModal");
-
-updateUser();
-
-toast("Account created! 🎉");
+    showMyChannel();
 
 }
 
 
-/* UPLOAD */
+function updateLoginButton(){
 
-function openPost(){
+    let btn =
+        document.getElementById("loginButton");
 
-if(!currentUser){
+    if(currentUser){
 
-toast("Login first!");
+        btn.textContent =
+            "👤 " + currentUser;
 
-openLogin();
+    }else{
 
-return;
+        btn.textContent = "Login";
 
-}
-
-document.getElementById("postModal")
-.style.display="flex";
-
-}
-
-
-/* VIDEO PREVIEW */
-
-function previewVideo(){
-
-const file=
-document.getElementById("video").files[0];
-
-if(!file)return;
-
-const preview=
-document.getElementById("videoPreview");
-
-preview.src=
-URL.createObjectURL(file);
-
-preview.style.display="block";
+    }
 
 }
 
 
-/* THUMBNAIL PREVIEW */
+function openUpload(type="video"){
 
-function previewThumbnail(){
+    if(!currentUser){
 
-const file=
-document.getElementById("thumbnail").files[0];
+        openLogin();
 
-if(!file)return;
+        return;
 
-const preview=
-document.getElementById("thumbnailPreview");
+    }
 
-preview.src=
-URL.createObjectURL(file);
+    uploadType = type;
 
-preview.style.display="block";
+    selectType(type);
 
-}
-
-
-/* CREATE POST */
-
-function createGameplay(){
-
-const title=
-document.getElementById("title").value.trim();
-
-const game=
-document.getElementById("game").value.trim();
-
-const category=
-document.getElementById("category").value.trim();
-
-const description=
-document.getElementById("description").value.trim();
-
-const videoFile=
-document.getElementById("video").files[0];
-
-const thumbnailFile=
-document.getElementById("thumbnail").files[0];
-
-
-if(!title||!game||!category||!description){
-
-toast("Fill in all fields!");
-
-return;
-
-}
-
-if(!videoFile){
-
-toast("Choose a video!");
-
-return;
+    document
+        .getElementById("uploadModal")
+        .classList.add("active");
 
 }
 
 
-/*
-IMPORTANT:
-The video is stored as a temporary browser URL.
-*/
+function selectType(type){
 
-const videoURL=
-URL.createObjectURL(videoFile);
+    uploadType = type;
 
-let thumbnailURL="";
+    document
+        .getElementById("videoType")
+        .classList.toggle(
+            "active",
+            type === "video"
+        );
 
-if(thumbnailFile){
-
-thumbnailURL=
-URL.createObjectURL(thumbnailFile);
-
-}
-
-
-const post={
-
-id:Date.now(),
-
-author:currentUser,
-
-title:title,
-
-game:game,
-
-category:category,
-
-description:description,
-
-video:videoURL,
-
-thumbnail:thumbnailURL,
-
-likes:0,
-
-date:new Date().toLocaleDateString()
-
-};
-
-
-posts.unshift(post);
-
-try{
-
-localStorage.setItem(
-"kidgamingPosts",
-JSON.stringify(posts)
-);
-
-}catch(e){
-
-toast("Video is too large for browser storage!");
-
-return;
-
-}
-
-renderPosts();
-
-renderChannel();
-
-closeModal("postModal");
-
-clearForm();
-
-toast("Gameplay posted! 🎥🔥");
+    document
+        .getElementById("trailerType")
+        .classList.toggle(
+            "active",
+            type === "trailer"
+        );
 
 }
 
 
-/* POSTS */
+function publishVideo(){
 
-function renderPosts(){
+    if(!currentUser){
 
-const container=
-document.getElementById("posts");
+        alert("Trebuie să fii logat.");
 
-if(posts.length===0){
+        return;
 
-container.innerHTML=`
+    }
 
-<div class="empty">
+    let title =
+        document.getElementById("uploadTitle").value.trim();
 
-<h2>No gameplay yet 🎮</h2>
+    let game =
+        document.getElementById("uploadGame").value.trim();
 
-<p style="margin-top:10px">
-Be the first to upload a gameplay!
-</p>
+    let category =
+        document.getElementById("uploadCategory").value.trim();
 
-</div>
+    let description =
+        document.getElementById("uploadDescription").value.trim();
 
-`;
+    let videoFile =
+        document.getElementById("uploadVideo").files[0];
 
-return;
+    let thumbnailFile =
+        document.getElementById("uploadThumbnail").files[0];
+
+
+    if(!title || !game || !videoFile){
+
+        alert("Ai nevoie cel puțin de titlu, joc și video.");
+
+        return;
+
+    }
+
+
+    /*
+        Demo browser-only:
+
+        Object URLs work during this browser session.
+        They are NOT permanent public video hosting.
+    */
+
+    let videoURL =
+        URL.createObjectURL(videoFile);
+
+    let thumbnailURL =
+        thumbnailFile
+            ? URL.createObjectURL(thumbnailFile)
+            : "";
+
+
+    posts.unshift({
+
+        id:Date.now(),
+
+        author:currentUser,
+
+        type:uploadType,
+
+        title:title,
+
+        game:game,
+
+        category:category,
+
+        description:description,
+
+        video:videoURL,
+
+        thumbnail:thumbnailURL,
+
+        likes:0,
+
+        views:0,
+
+        date:new Date().toISOString()
+
+    });
+
+
+    /*
+        We save metadata, but the local file itself
+        cannot be permanently stored in localStorage.
+    */
+
+    saveData();
+
+    closeModal("uploadModal");
+
+    document
+        .getElementById("uploadTitle")
+        .value="";
+
+    document
+        .getElementById("uploadGame")
+        .value="";
+
+    document
+        .getElementById("uploadCategory")
+        .value="";
+
+    document
+        .getElementById("uploadDescription")
+        .value="";
+
+    document
+        .getElementById("uploadVideo")
+        .value="";
+
+    document
+        .getElementById("uploadThumbnail")
+        .value="";
+
+    alert("🚀 Publicat în această sesiune!");
+
+    showMyChannel();
 
 }
 
-container.innerHTML=
-posts.map(postHTML).join("");
+
+function postCard(post){
+
+    let channel =
+        getChannel(post.author);
+
+    return `
+
+        <article class="card">
+
+            ${
+                post.thumbnail
+
+                ?
+
+                `<img
+                    class="thumbnail"
+                    src="${post.thumbnail}"
+                    alt="thumbnail"
+                >`
+
+                :
+
+                `<div
+                    class="thumbnail"
+                    style="
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        font-size:45px;
+                    "
+                >
+                    ${post.type === "trailer" ? "🎬" : "🎮"}
+                </div>`
+            }
+
+            <div class="card-content">
+
+                <div class="card-title">
+                    ${escapeHTML(post.title)}
+                </div>
+
+                <div class="card-meta">
+                    ${escapeHTML(post.game)}
+                    •
+                    ${escapeHTML(post.category)}
+                </div>
+
+                <div class="card-meta">
+                    by
+                    <span
+                        class="author"
+                        onclick="openChannel('${encodeURIComponent(post.author)}')"
+                    >
+                        ${escapeHTML(channel.name)}
+                    </span>
+                </div>
+
+                <div class="card-meta">
+                    ${post.views} views • ${post.likes} likes
+                </div>
+
+                <div class="card-actions">
+
+                    <button
+                        class="small-btn"
+                        onclick="watchPost(${post.id})"
+                    >
+                        ▶ Watch
+                    </button>
+
+                    <button
+                        class="small-btn"
+                        onclick="likePost(${post.id})"
+                    >
+                        ❤️ ${post.likes}
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
 
 }
 
 
-function postHTML(post){
+function getChannel(username){
 
-return `
+    let key =
+        username.toLowerCase();
 
-<div class="post-card">
+    return channels[key] || {
 
-${
-post.thumbnail
-?
-`<video
-class="post-video"
-controls
-poster="${post.thumbnail}"
-src="${post.video}">
-</video>`
-:
-`<video
-class="post-video"
-controls
-src="${post.video}">
-</video>`
+        username:username,
+
+        name:username,
+
+        bio:"🎮 Gaming creator",
+
+        avatar:username.charAt(0).toUpperCase(),
+
+        banner:"blue"
+
+    };
+
 }
 
-<div class="post-content">
 
-<h3>
-${escapeHTML(post.title)}
-</h3>
+function renderHome(){
 
-<div class="meta">
+    let trailers =
+        posts
+        .filter(x=>x.type==="trailer")
+        .slice(0,4);
 
-🎮 ${escapeHTML(post.game)}
-<br>
+    let gameplay =
+        posts
+        .filter(x=>x.type==="video")
+        .slice(0,8);
 
-🏷️ ${escapeHTML(post.category)}
-<br>
 
-👤 ${escapeHTML(post.author)}
-<br>
+    document.getElementById("homeTrailers").innerHTML =
+        trailers.length
+        ? trailers.map(postCard).join("")
+        : emptyMessage("No trailers yet. Be the first creator! 🎬");
 
-📅 ${escapeHTML(post.date)}
 
-</div>
+    document.getElementById("homeGameplay").innerHTML =
+        gameplay.length
+        ? gameplay.map(postCard).join("")
+        : emptyMessage("No gameplay yet. Upload your first video! 🎮");
 
-<p class="description">
-${escapeHTML(post.description)}
-</p>
+}
 
-<div class="post-actions">
 
-<button
-class="like-btn"
-onclick="likePost(${post.id})">
-❤️ ${post.likes}
-</button>
+function renderTrailers(){
 
-<span style="color:#858eaf">
-Gameplay
-</span>
+    let list =
+        posts.filter(x=>x.type==="trailer");
 
-</div>
+    document.getElementById("trailersGrid").innerHTML =
+        list.length
+        ? list.map(postCard).join("")
+        : emptyMessage("No trailers yet. 🎬");
 
-</div>
+}
 
-</div>
 
-`;
+function renderGameplay(){
+
+    let list =
+        posts.filter(x=>x.type==="video");
+
+    document.getElementById("gameplayGrid").innerHTML =
+        list.length
+        ? list.map(postCard).join("")
+        : emptyMessage("No gameplay yet. 🎮");
+
+}
+
+
+function emptyMessage(text){
+
+    return `
+        <div class="empty" style="grid-column:1/-1">
+            ${text}
+        </div>
+    `;
 
 }
 
 
 function likePost(id){
 
-let post=
-posts.find(p=>p.id===id);
+    let post =
+        posts.find(x=>x.id===id);
 
-if(!post)return;
+    if(!post) return;
 
-post.likes++;
+    post.likes++;
 
-savePosts();
+    saveData();
 
-renderPosts();
-
-renderChannel();
+    refreshCurrentPage();
 
 }
 
 
-/* SEARCH */
+function watchPost(id){
 
-function searchPosts(){
+    let post =
+        posts.find(x=>x.id===id);
 
-let q=
-document.getElementById("search")
-.value
-.toLowerCase();
+    if(!post) return;
 
-let filtered=
-posts.filter(post=>
+    post.views++;
 
-post.title.toLowerCase().includes(q)||
-post.game.toLowerCase().includes(q)||
-post.category.toLowerCase().includes(q)||
-post.author.toLowerCase().includes(q)
+    saveData();
 
-);
+    let channel =
+        getChannel(post.author);
 
-document.getElementById("posts")
-.innerHTML=
-filtered.length
-?
-filtered.map(postHTML).join("")
-:
-`<div class="empty">
-<h2>No results 🔎</h2>
-</div>`;
+    let thumbnail =
+        post.thumbnail
+        ? `<img src="${post.thumbnail}" style="width:100%;border-radius:12px;margin-bottom:15px">`
+        : "";
+
+    let video =
+        post.video
+        ? `
+            <video
+                controls
+                class="video-player"
+                ${post.thumbnail ? `poster="${post.thumbnail}"` : ""}
+            >
+                <source src="${post.video}">
+            </video>
+        `
+        : `
+            <div class="empty">
+                Video preview unavailable.
+            </div>
+        `;
+
+
+    document.getElementById("channelContent").innerHTML = `
+
+        <button
+            class="secondary"
+            onclick="channelTab('home')"
+            style="margin-bottom:15px"
+        >
+            ← Back to channel
+        </button>
+
+        <div class="studio-panel">
+
+            ${thumbnail}
+
+            ${video}
+
+            <h1 style="margin-top:20px">
+                ${escapeHTML(post.title)}
+            </h1>
+
+            <p class="card-meta" style="margin-top:10px">
+                ${escapeHTML(post.game)}
+                •
+                ${escapeHTML(post.category)}
+            </p>
+
+            <p style="margin-top:15px;color:#cbd5e1">
+                ${escapeHTML(post.description)}
+            </p>
+
+            <p style="margin-top:15px">
+                Creator:
+                <span
+                    class="author"
+                    onclick="openChannel('${encodeURIComponent(post.author)}')"
+                >
+                    ${escapeHTML(channel.name)}
+                </span>
+            </p>
+
+        </div>
+    `;
+
+    hidePages();
+
+    document
+        .getElementById("channelPage")
+        .classList.remove("hidden");
 
 }
 
 
-/* CHANNEL */
+function openChannel(encodedUsername){
 
-function myChannel(){
+    let username =
+        decodeURIComponent(encodedUsername);
 
-document.getElementById("channel")
-.scrollIntoView({
-behavior:"smooth"
-});
+    selectedChannel = username;
 
-renderChannel();
+    selectedChannelTab = "home";
+
+    hidePages();
+
+    document
+        .getElementById("channelPage")
+        .classList.remove("hidden");
+
+    renderChannel();
 
 }
 
 
 function renderChannel(){
 
-const container=
-document.getElementById("channelPosts");
-
-if(!currentUser){
-
-container.innerHTML=`
-
-<div class="empty">
-
-<h2>Login to see your channel 👤</h2>
-
-</div>
-
-`;
-
-return;
-
-}
-
-let mine=
-posts.filter(
-p=>p.author===currentUser
-);
-
-if(mine.length===0){
-
-container.innerHTML=`
-
-<div class="empty">
-
-<h2>Your channel is empty 🎮</h2>
-
-<p style="margin-top:10px">
-Upload your first gameplay!
-</p>
-
-</div>
-
-`;
-
-return;
-
-}
-
-container.innerHTML=
-mine.map(postHTML).join("");
-
-}
+    let channel =
+        getChannel(selectedChannel);
 
 
-/* NAVIGATION */
+    document.getElementById("channelName").textContent =
+        channel.name;
 
-function home(){
+    document.getElementById("channelHandle").textContent =
+        "@" + channel.username;
 
-document.getElementById("home")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-function latest(){
-
-document.getElementById("latest")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
+    document.getElementById("channelBio").textContent =
+        channel.bio;
 
 
-/* SAVE */
+    document.getElementById("channelAvatar").textContent =
+        channel.avatar;
 
-function savePosts(){
 
-try{
+    let banner =
+        document.getElementById("channelBanner");
 
-localStorage.setItem(
-"kidgamingPosts",
-JSON.stringify(posts)
-);
+    let gradients = {
 
-}catch(e){}
+        blue:"linear-gradient(135deg,#2563eb,#7c3aed,#db2777)",
+
+        green:"linear-gradient(135deg,#059669,#2563eb,#4f46e5)",
+
+        red:"linear-gradient(135deg,#dc2626,#7c3aed,#ec4899)",
+
+        orange:"linear-gradient(135deg,#ea580c,#db2777,#7c3aed)"
+
+    };
+
+    banner.style.background =
+        gradients[channel.banner] ||
+        gradients.blue;
+
+
+    let buttons =
+        document.getElementById("channelButtons");
+
+
+    if(
+        currentUser &&
+        currentUser.toLowerCase() ===
+        selectedChannel.toLowerCase()
+    ){
+
+        buttons.innerHTML = `
+
+            <button
+                class="primary"
+                onclick="openStudio()"
+            >
+                🛠️ Creator Studio
+            </button>
+
+        `;
+
+    }else{
+
+        buttons.innerHTML = "";
+
+    }
+
+
+    channelTab(selectedChannelTab);
 
 }
 
 
-/* CLEAR */
+function channelTab(tab){
 
-function clearForm(){
+    selectedChannelTab = tab;
 
-document.getElementById("title").value="";
-document.getElementById("game").value="";
-document.getElementById("category").value="";
-document.getElementById("description").value="";
-document.getElementById("video").value="";
-document.getElementById("thumbnail").value="";
+    document
+        .querySelectorAll(".channel-tabs button")
+        .forEach(x=>x.classList.remove("active"));
 
-document.getElementById("videoPreview").style.display="none";
-document.getElementById("thumbnailPreview").style.display="none";
+    let button =
+        document.getElementById(
+            "tab" +
+            tab.charAt(0).toUpperCase() +
+            tab.slice(1)
+        );
+
+    if(button)
+        button.classList.add("active");
+
+
+    let content =
+        document.getElementById("channelContent");
+
+
+    let userPosts =
+        posts.filter(
+            x =>
+            x.author.toLowerCase() ===
+            selectedChannel.toLowerCase()
+        );
+
+
+    if(tab==="home"){
+
+        let latest =
+            userPosts.slice(0,8);
+
+        content.innerHTML = `
+
+            <div class="section-header">
+                <h2>Latest uploads</h2>
+            </div>
+
+            ${
+                latest.length
+                ? `<div class="grid">${latest.map(postCard).join("")}</div>`
+                : emptyMessage("This channel hasn't uploaded anything yet.")
+            }
+
+        `;
+
+    }
+
+
+    if(tab==="videos"){
+
+        let videos =
+            userPosts.filter(x=>x.type==="video");
+
+        content.innerHTML = `
+
+            <h2 style="margin-bottom:18px">
+                🎮 Videos
+            </h2>
+
+            ${
+                videos.length
+                ? `<div class="grid">${videos.map(postCard).join("")}</div>`
+                : emptyMessage("No gameplay videos yet.")
+            }
+
+        `;
+
+    }
+
+
+    if(tab==="trailers"){
+
+        let trailers =
+            userPosts.filter(x=>x.type==="trailer");
+
+        content.innerHTML = `
+
+            <h2 style="margin-bottom:18px">
+                🎬 Trailers
+            </h2>
+
+            ${
+                trailers.length
+                ? `<div class="grid">${trailers.map(postCard).join("")}</div>`
+                : emptyMessage("No trailers yet.")
+            }
+
+        `;
+
+    }
+
+
+    if(tab==="about"){
+
+        let totalViews =
+            userPosts.reduce(
+                (sum,x)=>sum + x.views,
+                0
+            );
+
+
+        content.innerHTML = `
+
+            <div class="studio-panel">
+
+                <h2>About this channel</h2>
+
+                <p style="color:#cbd5e1;line-height:1.7">
+                    ${escapeHTML(getChannel(selectedChannel).bio)}
+                </p>
+
+                <br>
+
+                <p>
+                    🎮 Videos:
+                    <b>${userPosts.filter(x=>x.type==="video").length}</b>
+                </p>
+
+                <p style="margin-top:8px">
+                    🎬 Trailers:
+                    <b>${userPosts.filter(x=>x.type==="trailer").length}</b>
+                </p>
+
+                <p style="margin-top:8px">
+                    👁️ Views:
+                    <b>${totalViews}</b>
+                </p>
+
+            </div>
+
+        `;
+
+    }
 
 }
 
 
-/* MODAL */
+function openStudio(){
 
-function closeModal(id){
+    if(!currentUser){
 
-document.getElementById(id)
-.style.display="none";
+        openLogin();
 
-}
+        return;
 
+    }
 
-/* TOAST */
+    hidePages();
 
-function toast(text){
+    document
+        .getElementById("studioPage")
+        .classList.remove("hidden");
 
-const t=
-document.getElementById("toast");
-
-t.innerText=text;
-t.style.display="block";
-
-setTimeout(()=>{
-
-t.style.display="none";
-
-},2500);
+    studioTab("dashboard");
 
 }
 
 
-/* ESCAPE HTML */
+function studioTab(tab,button){
 
-function escapeHTML(text){
+    document
+        .querySelectorAll(".studio-sidebar button")
+        .forEach(x=>x.classList.remove("active"));
 
-const div=
-document.createElement("div");
+    if(button)
+        button.classList.add("active");
 
-div.textContent=text;
 
-return div.innerHTML;
+    let main =
+        document.getElementById("studioMain");
+
+
+    let myPosts =
+        posts.filter(
+            x =>
+            x.author.toLowerCase() ===
+            currentUser.toLowerCase()
+        );
+
+
+    if(tab==="dashboard"){
+
+        let videos =
+            myPosts.filter(x=>x.type==="video").length;
+
+        let trailers =
+            myPosts.filter(x=>x.type==="trailer").length;
+
+        let views =
+            myPosts.reduce(
+                (sum,x)=>sum+x.views,
+                0
+            );
+
+        let likes =
+            myPosts.reduce(
+                (sum,x)=>sum+x.likes,
+                0
+            );
+
+
+        main.innerHTML = `
+
+            <div class="stats">
+
+                <div class="stat">
+                    <div class="stat-number">${views}</div>
+                    <div class="stat-label">Total Views</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">${likes}</div>
+                    <div class="stat-label">Likes</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">${videos}</div>
+                    <div class="stat-label">Videos</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-number">${trailers}</div>
+                    <div class="stat-label">Trailers</div>
+                </div>
+
+            </div>
+
+            <div class="studio-panel">
+
+                <h2>Welcome to Creator Studio 👋</h2>
+
+                <div class="notice">
+                    From here you can upload videos, create trailers
+                    and customize your gaming channel.
+                </div>
+
+                <button
+                    class="primary"
+                    onclick="studioTab('upload')"
+                >
+                    ⬆️ Upload a video
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    if(tab==="videos"){
+
+        let videos =
+            myPosts.filter(x=>x.type==="video");
+
+        main.innerHTML = `
+
+            <div class="studio-panel">
+
+                <h2>🎮 Your Videos</h2>
+
+                ${
+                    videos.length
+                    ? `<div class="grid">${videos.map(postCard).join("")}</div>`
+                    : emptyMessage("You don't have gameplay videos yet.")
+                }
+
+            </div>
+
+        `;
+
+    }
+
+
+    if(tab==="trailers"){
+
+        let trailers =
+            myPosts.filter(x=>x.type==="trailer");
+
+        main.innerHTML = `
+
+            <div class="studio-panel">
+
+                <h2>🎬 Your Trailers</h2>
+
+                ${
+                    trailers.length
+                    ? `<div class="grid">${trailers.map(postCard).join("")}</div>`
+                    : emptyMessage("You don't have trailers yet.")
+                }
+
+            </div>
+
+        `;
+
+    }
+
+
+    if(tab==="upload"){
+
+        main.innerHTML = `
+
+            <div class="studio-panel">
+
+                <h2>⬆️ Upload</h2>
+
+                <div class="notice">
+                    Choose whether you're uploading Gameplay or a Trailer.
+                </div>
+
+                <button
+                    class="primary"
+                    onclick="openUpload('video')"
+                >
+                    🎮 Upload Gameplay
+                </button>
+
+                <button
+                    class="secondary"
+                    onclick="openUpload('trailer')"
+                    style="margin-left:8px"
+                >
+                    🎬 Upload Trailer
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    if(tab==="channel"){
+
+        let channel =
+            getChannel(currentUser);
+
+        main.innerHTML = `
+
+            <div class="studio-panel">
+
+                <h2>🎨 Customize your channel</h2>
+
+                <p style="color:#94a3b8;margin-bottom:20px">
+                    Change your channel name, bio, avatar and banner.
+                </p>
+
+                <button
+                    class="primary"
+                    onclick="openChannelEditor()"
+                >
+                    ✏️ Edit Channel
+                </button>
+
+            </div>
+
+        `;
+
+    }
 
 }
+
+
+function openChannelEditor(){
+
+    let channel =
+        getChannel(currentUser);
+
+    document.getElementById("editChannelName").value =
+        channel.name;
+
+    document.getElementById("editChannelBio").value =
+        channel.bio;
+
+    document.getElementById("editAvatar").value =
+        channel.avatar;
+
+    document.getElementById("editBanner").value =
+        channel.banner;
+
+
+    document
+        .getElementById("channelEditModal")
+        .classList.add("active");
+
+}
+
+
+function saveChannel(){
+
+    let key =
+        currentUser.toLowerCase();
+
+    channels[key] = {
+
+        username:currentUser,
+
+        name:
+            document.getElementById("editChannelName")
+            .value.trim()
+            || currentUser,
+
+        bio:
+            document.getElementById("editChannelBio")
+            .value.trim()
+            || "🎮 Gaming creator",
+
+        avatar:
+            document.getElementById("editAvatar")
+            .value.trim()
+            || currentUser.charAt(0).toUpperCase(),
+
+        banner:
+            document.getElementById("editBanner").value
+
+    };
+
+
+    saveData();
+
+    closeModal("channelEditModal");
+
+    renderChannel();
+
+    alert("✅ Channel updated!");
+
+}
+
+
+function doSearch(){
+
+    let q =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    if(!q){
+
+        showHome();
+
+        return;
+
+    }
+
+
+    hidePages();
+
+
+    let results =
+        posts.filter(post=>{
+
+            let channel =
+                getChannel(post.author);
+
+            return (
+
+                post.title.toLowerCase().includes(q)
+
+                ||
+
+                post.game.toLowerCase().includes(q)
+
+                ||
+
+                post.category.toLowerCase().includes(q)
+
+                ||
+
+                post.author.toLowerCase().includes(q)
+
+                ||
+
+                channel.name.toLowerCase().includes(q)
+
+            );
+
+        });
+
+
+    document.getElementById("homePage")
+        .classList.remove("hidden");
+
+
+    document.getElementById("homeTrailers")
+        .innerHTML = "";
+
+    document.getElementById("homeGameplay")
+        .innerHTML = `
+
+            <div style="grid-column:1/-1">
+
+                <h2 style="margin-bottom:18px">
+                    🔎 Search results
+                </h2>
+
+                ${
+                    results.length
+                    ? `<div class="grid">${results.map(postCard).join("")}</div>`
+                    : emptyMessage("Nothing found 😢")
+                }
+
+            </div>
+
+        `;
+
+}
+
+
+function refreshCurrentPage(){
+
+    if(!document.getElementById("homePage").classList.contains("hidden"))
+        renderHome();
+
+    if(!document.getElementById("trailersPage").classList.contains("hidden"))
+        renderTrailers();
+
+    if(!document.getElementById("gameplayPage").classList.contains("hidden"))
+        renderGameplay();
+
+    if(!document.getElementById("channelPage").classList.contains("hidden"))
+        renderChannel();
+
+}
+
+
+updateLoginButton();
+
+showHome();
 
 </script>
 
