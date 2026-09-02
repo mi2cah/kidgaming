@@ -7,488 +7,350 @@
 <title>KidGaming</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
-html {
-    scroll-behavior: smooth;
+body{
+    background:#101426;
+    color:white;
+    min-height:100vh;
 }
 
-body {
-    font-family: "Baloo 2", Arial, sans-serif;
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#171c35;
+    border-bottom:2px solid #30385f;
+    padding:15px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    color:#7c5cff;
+    cursor:pointer;
+}
+
+.logo span{
+    color:#ffcc4d;
+}
+
+.navlinks{
+    display:flex;
+    gap:10px;
+}
+
+.navlinks button{
+    background:none;
+    border:0;
+    color:white;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.navlinks button:hover{
+    background:#292f50;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
     background:
-        radial-gradient(circle at 10% 10%, #ffe66d 0, transparent 18%),
-        radial-gradient(circle at 90% 15%, #ff7eb6 0, transparent 20%),
-        radial-gradient(circle at 20% 90%, #69e7ff 0, transparent 20%),
-        #15152b;
-    color: white;
-    min-height: 100vh;
+    radial-gradient(circle at 20% 20%,#5533ff55,transparent 30%),
+    radial-gradient(circle at 80% 30%,#ff4f9a44,transparent 30%),
+    linear-gradient(135deg,#171c35,#101426);
 }
 
-/* NAVBAR */
-
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    padding: 0 35px;
-    background: rgba(21, 21, 43, 0.9);
-    backdrop-filter: blur(15px);
-    border-bottom: 2px solid rgba(255,255,255,0.08);
+.hero h1{
+    font-size:64px;
+    margin-bottom:15px;
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: 800;
-    color: white;
-    text-decoration: none;
-    margin-right: auto;
+.hero h1 span{
+    color:#7c5cff;
 }
 
-.logo span {
-    color: #ffda44;
+.hero p{
+    font-size:20px;
+    color:#b8bfdc;
+    max-width:650px;
+    margin:auto;
+    line-height:1.5;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.hero-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    transition: 0.2s;
+.btn{
+    border:none;
+    padding:14px 24px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:.2s;
 }
 
-.nav-links a:hover {
-    color: #ffda44;
-    transform: translateY(-2px);
+.btn:hover{
+    transform:translateY(-3px);
 }
 
-.nav-button {
-    background: linear-gradient(135deg, #ff5c8a, #ff8a5c);
-    padding: 11px 18px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(255, 92, 138, 0.3);
+.primary{
+    background:#7c5cff;
+    color:white;
 }
 
-/* HERO */
-
-.hero {
-    min-height: 650px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 80px 20px;
-    position: relative;
-    overflow: hidden;
+.secondary{
+    background:#292f50;
+    color:white;
 }
 
-.hero-content {
-    max-width: 900px;
-    z-index: 2;
+section{
+    padding:60px 7%;
 }
 
-.hero h1 {
-    font-size: clamp(55px, 9vw, 100px);
-    line-height: 0.9;
-    margin-bottom: 25px;
-    font-weight: 800;
+.section-title{
+    font-size:34px;
+    margin-bottom:25px;
 }
 
-.hero h1 .yellow {
-    color: #ffda44;
+.searchbox{
+    width:100%;
+    max-width:500px;
+    padding:15px 18px;
+    border-radius:14px;
+    border:2px solid #30385f;
+    background:#171c35;
+    color:white;
+    outline:none;
+    font-size:16px;
+    margin-bottom:30px;
 }
 
-.hero h1 .pink {
-    color: #ff6fae;
+.searchbox:focus{
+    border-color:#7c5cff;
 }
 
-.hero p {
-    color: #d7d7e8;
-    font-size: 24px;
-    margin-bottom: 35px;
+.games{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
 
-.hero-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+.game{
+    background:#191f3a;
+    border:2px solid #2b3358;
+    border-radius:20px;
+    overflow:hidden;
+    transition:.25s;
 }
 
-.big-button {
-    border: none;
-    color: white;
-    text-decoration: none;
-    padding: 16px 28px;
-    border-radius: 18px;
-    font-size: 19px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.2s;
+.game:hover{
+    transform:translateY(-7px);
+    border-color:#7c5cff;
 }
 
-.big-button:hover {
-    transform: translateY(-5px) scale(1.03);
+.game-img{
+    height:130px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
 }
 
-.play-button {
-    background: linear-gradient(135deg, #7c5cff, #4db8ff);
-    box-shadow: 0 10px 30px rgba(92, 124, 255, 0.35);
+.fortnite{
+    background:linear-gradient(135deg,#6c5cff,#2d7fff);
 }
 
-.community-button {
-    background: linear-gradient(135deg, #ff5c8a, #ff9a5c);
-    box-shadow: 0 10px 30px rgba(255, 92, 138, 0.3);
+.roblox{
+    background:linear-gradient(135deg,#ff4444,#ff8a3d);
 }
 
-/* FLOATING EMOJIS */
-
-.floating {
-    position: absolute;
-    font-size: 55px;
-    animation: float 4s ease-in-out infinite;
-    opacity: 0.9;
+.minecraft{
+    background:linear-gradient(135deg,#39b54a,#187a32);
 }
 
-.f1 { left: 8%; top: 25%; }
-.f2 { right: 10%; top: 20%; animation-delay: 1s; }
-.f3 { left: 15%; bottom: 15%; animation-delay: 2s; }
-.f4 { right: 15%; bottom: 12%; animation-delay: 0.5s; }
-
-@keyframes float {
-    0%,100% {
-        transform: translateY(0) rotate(-5deg);
-    }
-    50% {
-        transform: translateY(-20px) rotate(8deg);
-    }
+.beamng{
+    background:linear-gradient(135deg,#ff9d00,#ff4c4c);
 }
 
-/* SECTIONS */
-
-section {
-    padding: 80px 25px;
+.rocket{
+    background:linear-gradient(135deg,#2525a8,#673cff);
 }
 
-.section-title {
-    text-align: center;
-    font-size: 48px;
-    margin-bottom: 45px;
+.crown{
+    background:linear-gradient(135deg,#eaa31a,#773fce);
 }
 
-.section-title span {
-    color: #ffda44;
+.game-content{
+    padding:18px;
 }
 
-/* GAMES */
-
-.games-section {
-    background: rgba(255,255,255,0.025);
+.game-content h3{
+    margin-bottom:7px;
 }
 
-.search-box {
-    max-width: 600px;
-    margin: 0 auto 40px;
+.game-content p{
+    color:#aeb5d1;
+    font-size:14px;
+    margin-bottom:15px;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 17px 22px;
-    border: none;
-    outline: none;
-    border-radius: 18px;
-    background: #242441;
-    color: white;
-    font-size: 17px;
-    font-family: inherit;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+.actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.search-box input::placeholder {
-    color: #9999b2;
+.like{
+    background:#292f50;
+    color:white;
+    border:0;
+    border-radius:10px;
+    padding:9px 12px;
+    cursor:pointer;
 }
 
-.games-grid {
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;
+.like:hover{
+    background:#393f68;
 }
 
-.game-card {
-    background: #22223d;
-    border: 2px solid rgba(255,255,255,0.06);
-    border-radius: 25px;
-    padding: 25px;
-    transition: 0.25s;
-    position: relative;
-    overflow: hidden;
+.community{
+    background:#151a31;
 }
 
-.game-card:hover {
-    transform: translateY(-8px);
-    border-color: #7567ff;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+.community-box{
+    background:#191f3a;
+    border:2px solid #2b3358;
+    border-radius:20px;
+    padding:25px;
+    max-width:800px;
 }
 
-.game-icon {
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 75px;
-    background: linear-gradient(135deg, #30305a, #242441);
-    border-radius: 20px;
-    margin-bottom: 18px;
+.post{
+    padding:18px;
+    background:#222947;
+    border-radius:15px;
+    margin-top:15px;
 }
 
-.game-card h3 {
-    font-size: 25px;
+.post small{
+    color:#9da6c5;
 }
 
-.game-card p {
-    color: #aaaac1;
-    margin: 5px 0 18px;
+.profile{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#191f3a;
+    padding:25px;
+    border-radius:20px;
+    border:2px solid #2b3358;
 }
 
-.card-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#7c5cff,#ff4f9a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
 }
 
-.play-small {
-    border: none;
-    background: #7567ff;
-    color: white;
-    padding: 9px 15px;
-    border-radius: 10px;
-    font-family: inherit;
-    font-weight: 700;
-    cursor: pointer;
+footer{
+    text-align:center;
+    padding:40px;
+    color:#858eaf;
+    border-top:2px solid #252c4d;
 }
 
-.like {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
+.modal-bg{
+    position:fixed;
+    inset:0;
+    background:#0009;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:200;
 }
 
-/* COMMUNITY */
-
-.community-section {
-    text-align: center;
+.modal{
+    width:90%;
+    max-width:450px;
+    background:#191f3a;
+    border:2px solid #363e69;
+    border-radius:20px;
+    padding:30px;
 }
 
-.community-box {
-    max-width: 900px;
-    margin: auto;
-    padding: 45px;
-    border-radius: 30px;
-    background: linear-gradient(
-        135deg,
-        rgba(124,92,255,0.25),
-        rgba(255,92,138,0.2)
-    );
-    border: 2px solid rgba(255,255,255,0.08);
+.modal h2{
+    margin-bottom:15px;
 }
 
-.community-box p {
-    color: #d0d0df;
-    font-size: 20px;
-    margin-bottom: 25px;
+.modal input,
+.modal textarea{
+    width:100%;
+    padding:13px;
+    margin:8px 0;
+    border-radius:10px;
+    border:2px solid #30385f;
+    background:#101426;
+    color:white;
+    outline:none;
 }
 
-/* STATS */
-
-.stats {
-    max-width: 1000px;
-    margin: 50px auto 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+.modal textarea{
+    height:120px;
+    resize:none;
 }
 
-.stat {
-    background: #22223d;
-    padding: 25px;
-    border-radius: 20px;
+.close{
+    float:right;
+    cursor:pointer;
+    font-size:22px;
+    color:#aaa;
 }
 
-.stat-number {
-    font-size: 40px;
-    font-weight: 800;
-    color: #ffda44;
+.message{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#7c5cff;
+    padding:15px 20px;
+    border-radius:13px;
+    display:none;
+    z-index:300;
+    font-weight:bold;
 }
 
-/* MODAL */
-
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(5,5,15,0.75);
-    backdrop-filter: blur(8px);
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.hidden{
+    display:none!important;
 }
 
-.modal.active {
-    display: flex;
-}
-
-.modal-box {
-    width: 420px;
-    max-width: 100%;
-    background: #20203a;
-    padding: 35px;
-    border-radius: 25px;
-    position: relative;
-    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
-}
-
-.modal-box h2 {
-    font-size: 35px;
-    margin-bottom: 20px;
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-.modal-box input {
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0;
-    border: none;
-    outline: none;
-    border-radius: 12px;
-    background: #303052;
-    color: white;
-    font-family: inherit;
-}
-
-.modal-box button.submit {
-    width: 100%;
-    margin-top: 12px;
-    padding: 14px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #7567ff, #ff6fae);
-    color: white;
-    font-family: inherit;
-    font-size: 17px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-/* PROFILE PREVIEW */
-
-.profile {
-    max-width: 850px;
-    margin: auto;
-    background: #22223d;
-    border-radius: 30px;
-    padding: 40px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #7567ff, #ff6fae);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-}
-
-.profile h3 {
-    font-size: 30px;
-}
-
-.badges {
-    margin-top: 10px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.badge {
-    background: #303052;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-    padding: 35px;
-    color: #8989a4;
-    background: #101022;
-}
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-    .navbar {
-        padding: 0 15px;
+@media(max-width:700px){
+    .hero h1{
+        font-size:42px;
     }
 
-    .nav-links a:not(.nav-button) {
-        display: none;
-    }
-
-    .hero {
-        min-height: 600px;
-    }
-
-    .hero p {
-        font-size: 19px;
-    }
-
-    .section-title {
-        font-size: 38px;
-    }
-
-    .profile {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .floating {
-        font-size: 35px;
+    .navlinks{
+        display:none;
     }
 }
 </style>
@@ -496,567 +358,465 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
+<nav>
 
-<nav class="navbar">
+<div class="logo" onclick="home()">Kid<span>Gaming</span> 🎮</div>
 
-    <a href="#" class="logo">
-        🎮 <span>Kid</span>Gaming
-    </a>
+<div class="navlinks">
+<button onclick="home()">Home</button>
+<button onclick="gamesSection()">Games</button>
+<button onclick="communitySection()">Community</button>
+<button onclick="profileSection()">Profile</button>
+</div>
 
-    <div class="nav-links">
-        <a href="#games">Games</a>
-        <a href="#community">Community</a>
-        <a href="#profile">Profile</a>
-
-        <a href="#" onclick="openModal('loginModal')">
-            Login
-        </a>
-
-        <a href="#" class="nav-button"
-           onclick="openModal('registerModal')">
-            Create Account
-        </a>
-    </div>
+<button class="btn secondary" onclick="openLogin()">Login</button>
 
 </nav>
 
 
-<!-- HERO -->
+<header class="hero" id="home">
 
-<header class="hero">
+<h1>Welcome to <span>KidGaming</span> 🎮</h1>
 
-    <div class="floating f1">🎮</div>
-    <div class="floating f2">🚀</div>
-    <div class="floating f3">🏆</div>
-    <div class="floating f4">⭐</div>
+<p>
+A fun gaming community where players can discover games,
+share ideas and have fun.
+</p>
 
-    <div class="hero-content">
-
-        <h1>
-            Welcome to
-            <span class="yellow">Kid</span><span class="pink">Gaming!</span>
-        </h1>
-
-        <p>
-            A fun place for gamers to play, discover and connect.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#games"
-               class="big-button play-button">
-                🎮 Explore Games
-            </a>
-
-            <button
-                class="big-button community-button"
-                onclick="openModal('communityModal')">
-                💬 Join Community
-            </button>
-
-        </div>
-
-    </div>
+<div class="hero-buttons">
+<button class="btn primary" onclick="gamesSection()">Explore Games 🚀</button>
+<button class="btn secondary" onclick="communitySection()">Community 💬</button>
+</div>
 
 </header>
 
 
-<!-- GAMES -->
-
-<section id="games" class="games-section">
-
-    <h2 class="section-title">
-        🎮 Featured <span>Games</span>
-    </h2>
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            id="search"
-            placeholder="🔎 Search games..."
-            oninput="searchGames()"
-        >
-
-    </div>
-
-    <div class="games-grid" id="gamesGrid">
-
-        <div class="game-card" data-name="Fortnite">
-
-            <div class="game-icon">🔫</div>
-
-            <h3>Fortnite</h3>
-
-            <p>
-                Battle, build and survive.
-            </p>
-
-            <div class="card-bottom">
-
-                <button class="play-small"
-                    onclick="showMessage('Fortnite selected! 🎮')">
-                    Play
-                </button>
-
-                <button class="like"
-                    onclick="likeGame(this)">
-                    ♡
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="game-card" data-name="Roblox">
-
-            <div class="game-icon">🧱</div>
-
-            <h3>Roblox</h3>
-
-            <p>
-                Explore millions of experiences.
-            </p>
-
-            <div class="card-bottom">
-
-                <button class="play-small"
-                    onclick="showMessage('Roblox selected! 🚀')">
-                    Play
-                </button>
-
-                <button class="like"
-                    onclick="likeGame(this)">
-                    ♡
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="game-card" data-name="Minecraft">
-
-            <div class="game-icon">⛏️</div>
-
-            <h3>Minecraft</h3>
-
-            <p>
-                Build your own world.
-            </p>
-
-            <div class="card-bottom">
-
-                <button class="play-small"
-                    onclick="showMessage('Minecraft selected! ⛏️')">
-                    Play
-                </button>
-
-                <button class="like"
-                    onclick="likeGame(this)">
-                    ♡
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="game-card" data-name="Realm Royale">
-
-            <div class="game-icon">⚔️</div>
-
-            <h3>Realm Royale</h3>
-
-            <p>
-                Choose your class and fight.
-            </p>
-
-            <div class="card-bottom">
-
-                <button class="play-small"
-                    onclick="showMessage('Realm Royale selected! ⚔️')">
-                    Play
-                </button>
-
-                <button class="like"
-                    onclick="likeGame(this)">
-                    ♡
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="game-card" data-name="Paladins">
-
-            <div class="game-icon">🏹</div>
-
-            <h3>Paladins</h3>
-
-            <p>
-                Champions. Abilities. Action.
-            </p>
-
-            <div class="card-bottom">
-
-                <button class="play-small"
-                    onclick="showMessage('Paladins selected! 🏹')">
-                    Play
-                </button>
-
-                <button class="like"
-                    onclick="likeGame(this)">
-                    ♡
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="game-card" data-name="Project Crown">
-
-            <div class="game-icon">👑</div>
-
-            <h3>Project Crown</h3>
-
-            <p>
-                Jump into the action.
-            </p>
-
-            <div class="card-bottom">
-
-                <button class="play-small"
-                    onclick="showMessage('Project Crown selected! 👑')">
-                    Play
-                </button>
-
-                <button class="like"
-                    onclick="likeGame(this)">
-                    ♡
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
+<section id="games">
+
+<h2 class="section-title">🔥 Popular Games</h2>
+
+<input
+id="search"
+class="searchbox"
+placeholder="Search games..."
+oninput="searchGames()"
+>
+
+<div class="games">
+
+<div class="game" data-name="fortnite">
+<div class="game-img fortnite">🪂</div>
+<div class="game-content">
+<h3>Fortnite</h3>
+<p>Battle Royale, Creative and more.</p>
+<div class="actions">
+<button class="btn primary" onclick="openGame('Fortnite')">Open</button>
+<button class="like" onclick="like(this)">❤️ <span>0</span></button>
+</div>
+</div>
+</div>
+
+
+<div class="game" data-name="roblox">
+<div class="game-img roblox">⬜</div>
+<div class="game-content">
+<h3>Roblox</h3>
+<p>Millions of experiences made by players.</p>
+<div class="actions">
+<button class="btn primary" onclick="openGame('Roblox')">Open</button>
+<button class="like" onclick="like(this)">❤️ <span>0</span></button>
+</div>
+</div>
+</div>
+
+
+<div class="game" data-name="minecraft">
+<div class="game-img minecraft">🌳</div>
+<div class="game-content">
+<h3>Minecraft</h3>
+<p>Build, explore and survive.</p>
+<div class="actions">
+<button class="btn primary" onclick="openGame('Minecraft')">Open</button>
+<button class="like" onclick="like(this)">❤️ <span>0</span></button>
+</div>
+</div>
+</div>
+
+
+<div class="game" data-name="beamng">
+<div class="game-img beamng">🚗</div>
+<div class="game-content">
+<h3>BeamNG.drive</h3>
+<p>Realistic driving and physics.</p>
+<div class="actions">
+<button class="btn primary" onclick="openGame('BeamNG.drive')">Open</button>
+<button class="like" onclick="like(this)">❤️ <span>0</span></button>
+</div>
+</div>
+</div>
+
+
+<div class="game" data-name="rocket league">
+<div class="game-img rocket">🚀</div>
+<div class="game-content">
+<h3>Rocket League</h3>
+<p>Cars + football = chaos.</p>
+<div class="actions">
+<button class="btn primary" onclick="openGame('Rocket League')">Open</button>
+<button class="like" onclick="like(this)">❤️ <span>0</span></button>
+</div>
+</div>
+</div>
+
+
+<div class="game" data-name="project crown">
+<div class="game-img crown">👑</div>
+<div class="game-content">
+<h3>Project Crown</h3>
+<p>Battle your way to the crown.</p>
+<div class="actions">
+<button class="btn primary" onclick="openGame('Project Crown')">Open</button>
+<button class="like" onclick="like(this)">❤️ <span>0</span></button>
+</div>
+</div>
+</div>
+
+</div>
 </section>
 
 
-<!-- COMMUNITY -->
+<section class="community" id="community">
 
-<section id="community" class="community-section">
+<h2 class="section-title">💬 Community</h2>
 
-    <h2 class="section-title">
-        👥 KidGaming <span>Community</span>
-    </h2>
+<div class="community-box">
 
-    <div class="community-box">
+<p>
+Welcome to the KidGaming community!
+</p>
 
-        <p>
-            Meet gamers, share your favorite games
-            and become part of the KidGaming community!
-        </p>
+<div class="post">
+<strong>🎮 KidGaming Team</strong>
+<br>
+<small>Today</small>
+<p style="margin-top:10px">
+Welcome everyone! More features are coming soon.
+</p>
+</div>
 
-        <button
-            class="big-button community-button"
-            onclick="openModal('registerModal')">
-            ✨ Create Your Account
-        </button>
+<div class="post">
+<strong>🔥 Gaming News</strong>
+<br>
+<small>Today</small>
+<p style="margin-top:10px">
+What game are you playing today?
+</p>
+</div>
 
-    </div>
+<br>
+
+<button class="btn primary" onclick="openPost()">
+Create a Post ✏️
+</button>
+
+</div>
 
 </section>
 
-
-<!-- PROFILE -->
 
 <section id="profile">
 
-    <h2 class="section-title">
-        🏆 Gamer <span>Profile</span>
-    </h2>
+<h2 class="section-title">👤 Your Profile</h2>
 
-    <div class="profile">
+<div class="profile">
 
-        <div class="avatar">
-            😎
-        </div>
+<div class="avatar">🎮</div>
 
-        <div>
+<div>
+<h2>Guest Player</h2>
+<p style="color:#aeb5d1">
+You are currently browsing as a guest.
+</p>
+<br>
+<button class="btn primary" onclick="openLogin()">
+Login / Create Account
+</button>
+</div>
 
-            <h3>Guest Gamer</h3>
-
-            <p>
-                Level 1 • 0 XP
-            </p>
-
-            <div class="badges">
-
-                <span class="badge">
-                    🎮 New Gamer
-                </span>
-
-                <span class="badge">
-                    ⭐ Welcome
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="stats">
-
-        <div class="stat">
-            <div class="stat-number">0</div>
-            Games Played
-        </div>
-
-        <div class="stat">
-            <div class="stat-number">0</div>
-            XP
-        </div>
-
-        <div class="stat">
-            <div class="stat-number">2</div>
-            Badges
-        </div>
-
-        <div class="stat">
-            <div class="stat-number">0</div>
-            Friends
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- REGISTER MODAL -->
-
-<div class="modal" id="registerModal">
-
-    <div class="modal-box">
-
-        <button class="close"
-            onclick="closeModal('registerModal')">
-            ×
-        </button>
-
-        <h2>✨ Create Account</h2>
-
-        <input
-            type="text"
-            placeholder="Username"
-            id="registerUsername"
-        >
-
-        <input
-            type="email"
-            placeholder="Email"
-            id="registerEmail"
-        >
-
-        <input
-            type="password"
-            placeholder="Password"
-            id="registerPassword"
-        >
-
-        <button
-            class="submit"
-            onclick="fakeRegister()">
-            Create Account 🚀
-        </button>
-
-        <p id="registerMessage"
-           style="margin-top:15px;color:#ffda44;">
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-    <div class="modal-box">
-
-        <button class="close"
-            onclick="closeModal('loginModal')">
-            ×
-        </button>
-
-        <h2>🔐 Login</h2>
-
-        <input
-            type="email"
-            placeholder="Email"
-        >
-
-        <input
-            type="password"
-            placeholder="Password"
-        >
-
-        <button
-            class="submit"
-            onclick="showMessage('Login will be connected soon! 🔐')">
-            Login
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- COMMUNITY MODAL -->
-
-<div class="modal" id="communityModal">
-
-    <div class="modal-box">
-
-        <button class="close"
-            onclick="closeModal('communityModal')">
-            ×
-        </button>
-
-        <h2>💬 Community</h2>
-
-        <p style="color:#cfcfe0; margin-bottom:20px;">
-            The KidGaming community is coming soon!
-        </p>
-
-        <button
-            class="submit"
-            onclick="openModal('registerModal'); closeModal('communityModal')">
-            ✨ Create Account
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- FOOTER -->
-
 <footer>
 
-    🎮 KidGaming
-
-    <br>
-
-    Play • Discover • Connect
-
-    <br><br>
-
-    © 2026 KidGaming
+<p>🎮 KidGaming</p>
+<p style="margin-top:8px">Made for gamers • 2026</p>
 
 </footer>
 
 
+<!-- LOGIN MODAL -->
+
+<div class="modal-bg" id="loginModal">
+
+<div class="modal">
+
+<span class="close" onclick="closeModal('loginModal')">✕</span>
+
+<h2>🎮 Welcome Back!</h2>
+
+<input id="username" placeholder="Username">
+
+<input id="password" type="password" placeholder="Password">
+
+<button class="btn primary" style="width:100%;margin-top:10px"
+onclick="login()">
+Login
+</button>
+
+<button class="btn secondary" style="width:100%;margin-top:10px"
+onclick="createAccount()">
+Create Account
+</button>
+
+</div>
+</div>
+
+
+<!-- POST MODAL -->
+
+<div class="modal-bg" id="postModal">
+
+<div class="modal">
+
+<span class="close" onclick="closeModal('postModal')">✕</span>
+
+<h2>✏️ Create Post</h2>
+
+<input id="postName" placeholder="Your name">
+
+<textarea id="postText" placeholder="What do you want to say?"></textarea>
+
+<button class="btn primary"
+onclick="createPost()">
+Post
+</button>
+
+</div>
+</div>
+
+
+<!-- GAME MODAL -->
+
+<div class="modal-bg" id="gameModal">
+
+<div class="modal">
+
+<span class="close" onclick="closeModal('gameModal')">✕</span>
+
+<h2 id="gameTitle"></h2>
+
+<p style="color:#aeb5d1;margin:15px 0">
+This is a KidGaming game page preview.
+</p>
+
+<button class="btn primary" onclick="showMessage('Game page opened! 🎮')">
+Play / Visit Game
+</button>
+
+</div>
+</div>
+
+
+<div class="message" id="message"></div>
+
+
 <script>
 
-function openModal(id) {
-    document.getElementById(id).classList.add("active");
+function home(){
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 }
 
-function closeModal(id) {
-    document.getElementById(id).classList.remove("active");
+function gamesSection(){
+    document.getElementById("games").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
-window.onclick = function(event) {
-
-    if (event.target.classList.contains("modal")) {
-        event.target.classList.remove("active");
-    }
-
-};
-
-
-function showMessage(message) {
-
-    alert(message);
-
+function communitySection(){
+    document.getElementById("community").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
-
-function likeGame(button) {
-
-    if (button.innerHTML === "♡") {
-
-        button.innerHTML = "❤️";
-
-    } else {
-
-        button.innerHTML = "♡";
-
-    }
-
+function profileSection(){
+    document.getElementById("profile").scrollIntoView({
+        behavior:"smooth"
+    });
 }
 
 
-function searchGames() {
+function openLogin(){
+    document.getElementById("loginModal").style.display="flex";
+}
 
-    const search =
-        document.getElementById("search")
+function openPost(){
+    document.getElementById("postModal").style.display="flex";
+}
+
+function openGame(name){
+    document.getElementById("gameTitle").innerText="🎮 "+name;
+    document.getElementById("gameModal").style.display="flex";
+}
+
+function closeModal(id){
+    document.getElementById(id).style.display="none";
+}
+
+
+function like(button){
+
+    let number=button.querySelector("span");
+
+    number.innerText=parseInt(number.innerText)+1;
+
+    showMessage("Liked! ❤️");
+}
+
+
+function searchGames(){
+
+    let query=document
+        .getElementById("search")
         .value
         .toLowerCase();
 
-    const games =
-        document.querySelectorAll(".game-card");
+    let games=document.querySelectorAll(".game");
 
-    games.forEach(game => {
+    games.forEach(game=>{
 
-        const name =
-            game.dataset.name.toLowerCase();
+        let name=game.dataset.name;
 
-        if (name.includes(search)) {
+        if(name.includes(query)){
+            game.classList.remove("hidden");
+        }else{
+            game.classList.add("hidden");
+        }
 
-            game.style.display = "block";
+    });
+}
 
-        } else {
 
-            game.style.display = "none";
+function login(){
 
+    let username=document.getElementById("username").value;
+
+    if(username.trim()===""){
+        showMessage("Enter a username!");
+        return;
+    }
+
+    document.querySelector(".profile h2").innerText=username;
+
+    closeModal("loginModal");
+
+    showMessage("Welcome, "+username+"! 🎮");
+}
+
+
+function createAccount(){
+
+    let username=document.getElementById("username").value;
+
+    if(username.trim()===""){
+        showMessage("Choose a username first!");
+        return;
+    }
+
+    document.querySelector(".profile h2").innerText=username;
+
+    closeModal("loginModal");
+
+    showMessage("Account created! 🎉");
+}
+
+
+function createPost(){
+
+    let name=document.getElementById("postName").value;
+    let text=document.getElementById("postText").value;
+
+    if(name.trim()==="" || text.trim()===""){
+        showMessage("Fill in both fields!");
+        return;
+    }
+
+    let post=document.createElement("div");
+
+    post.className="post";
+
+    post.innerHTML=
+        "<strong>🎮 "+escapeHTML(name)+"</strong>"+
+        "<br><small>Just now</small>"+
+        "<p style='margin-top:10px'>"+
+        escapeHTML(text)+
+        "</p>";
+
+    document
+        .querySelector(".community-box")
+        .insertBefore(
+            post,
+            document.querySelector(".community-box").children[0]
+        );
+
+    document.getElementById("postName").value="";
+    document.getElementById("postText").value="";
+
+    closeModal("postModal");
+
+    showMessage("Post created! 🚀");
+}
+
+
+function escapeHTML(text){
+
+    let div=document.createElement("div");
+
+    div.textContent=text;
+
+    return div.innerHTML;
+}
+
+
+function showMessage(text){
+
+    let box=document.getElementById("message");
+
+    box.innerText=text;
+
+    box.style.display="block";
+
+    setTimeout(()=>{
+        box.style.display="none";
+    },2500);
+}
+
+
+window.onclick=function(event){
+
+    document.querySelectorAll(".modal-bg").forEach(modal=>{
+
+        if(event.target===modal){
+            modal.style.display="none";
         }
 
     });
 
-}
-
-
-function fakeRegister() {
-
-    const username =
-        document.getElementById("registerUsername").value;
-
-    const message =
-        document.getElementById("registerMessage");
-
-    if (!username) {
-
-        message.innerHTML =
-            "Please enter a username! 😅";
-
-        return;
-
-    }
-
-    message.innerHTML =
-        "Account setup ready! 🚀";
-
-}
+};
 
 </script>
 
