@@ -15,9 +15,8 @@
 }
 
 body{
-    background:#0b0f19;
-    color:white;
-    min-height:100vh;
+    background:#0f0f0f;
+    color:#fff;
 }
 
 button,input,textarea,select{
@@ -29,58 +28,65 @@ button{
 }
 
 .navbar{
-    height:70px;
-    background:#111827;
-    border-bottom:1px solid #263044;
+    height:64px;
+    background:#0f0f0f;
+    border-bottom:1px solid #272727;
     display:flex;
     align-items:center;
-    gap:22px;
-    padding:0 25px;
+    gap:18px;
+    padding:0 22px;
     position:sticky;
     top:0;
     z-index:100;
 }
 
 .logo{
-    font-size:25px;
+    font-size:24px;
     font-weight:900;
-    color:#60a5fa;
+    color:#fff;
     cursor:pointer;
+    white-space:nowrap;
 }
 
 .logo span{
-    color:#a78bfa;
+    color:#ff3b81;
 }
 
-.navlinks{
-    display:flex;
-    gap:8px;
-}
-
-.navlinks button,
-.login-btn{
+.nav-btn{
     border:0;
     background:transparent;
-    color:#cbd5e1;
-    padding:10px 14px;
+    color:#ddd;
+    padding:10px 13px;
     border-radius:10px;
 }
 
-.navlinks button:hover,
-.login-btn:hover{
-    background:#1e293b;
+.nav-btn:hover{
+    background:#272727;
     color:white;
 }
 
 .search{
     margin-left:auto;
-    width:min(350px,30vw);
-    background:#0f172a;
-    border:1px solid #334155;
-    color:white;
-    padding:11px 15px;
-    border-radius:12px;
+    width:min(390px,35vw);
+    background:#121212;
+    color:#fff;
+    border:1px solid #3a3a3a;
+    padding:11px 16px;
+    border-radius:25px;
     outline:none;
+}
+
+.search:focus{
+    border-color:#777;
+}
+
+.login-btn{
+    border:0;
+    background:#fff;
+    color:#111;
+    padding:10px 17px;
+    border-radius:22px;
+    font-weight:bold;
 }
 
 .container{
@@ -89,54 +95,75 @@ button{
 }
 
 .page{
-    padding:30px 0 60px;
+    padding:28px 0 60px;
 }
 
 .hero{
-    background:linear-gradient(135deg,#172554,#312e81,#581c87);
-    border-radius:25px;
+    min-height:330px;
+    border-radius:20px;
     padding:55px;
+    display:flex;
+    align-items:center;
+    background:
+        linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.25)),
+        linear-gradient(135deg,#26145c,#7b1fa2,#ff277f);
     margin-bottom:35px;
-    overflow:hidden;
 }
 
 .hero h1{
     font-size:48px;
-    margin-bottom:12px;
+    margin-bottom:15px;
 }
 
 .hero p{
-    color:#dbeafe;
     max-width:650px;
-    font-size:18px;
+    color:#ddd;
     line-height:1.6;
+    font-size:17px;
 }
 
-.hero-actions{
+.hero-buttons{
+    margin-top:25px;
     display:flex;
     gap:12px;
-    margin-top:25px;
 }
 
 .primary{
-    background:#6366f1;
-    color:white;
+    background:#fff;
+    color:#111;
     border:0;
-    padding:13px 20px;
-    border-radius:12px;
+    padding:12px 20px;
+    border-radius:10px;
     font-weight:bold;
 }
 
 .primary:hover{
-    background:#818cf8;
+    background:#ddd;
+}
+
+.pink{
+    background:#ff3b81;
+    color:#fff;
+    border:0;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.pink:hover{
+    background:#ff5c98;
 }
 
 .secondary{
-    background:#1e293b;
-    color:white;
-    border:1px solid #475569;
-    padding:13px 20px;
-    border-radius:12px;
+    background:#272727;
+    color:#fff;
+    border:0;
+    padding:12px 18px;
+    border-radius:10px;
+}
+
+.secondary:hover{
+    background:#3a3a3a;
 }
 
 .section{
@@ -151,98 +178,220 @@ button{
 }
 
 .section-header h2{
-    font-size:27px;
+    font-size:25px;
 }
 
-.grid{
+.video-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:25px 18px;
 }
 
-.card{
-    background:#111827;
-    border:1px solid #263044;
-    border-radius:16px;
+.video-card{
+    min-width:0;
+}
+
+.thumb-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/9;
+    border-radius:12px;
     overflow:hidden;
+    background:#272727;
+    cursor:pointer;
+}
+
+.thumb{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
     transition:.2s;
 }
 
-.card:hover{
-    transform:translateY(-3px);
-    border-color:#6366f1;
+.thumb-wrap:hover .thumb{
+    transform:scale(1.035);
 }
 
-.thumbnail{
-    width:100%;
-    aspect-ratio:16/9;
-    background:#1e293b;
-    object-fit:cover;
+.play-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    background:rgba(0,0,0,.28);
+    transition:.2s;
 }
 
-.card-content{
-    padding:15px;
+.thumb-wrap:hover .play-overlay{
+    opacity:1;
 }
 
-.card-title{
+.play-circle{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:rgba(255,255,255,.95);
+    color:#111;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+    padding-left:4px;
+}
+
+.duration{
+    position:absolute;
+    right:7px;
+    bottom:7px;
+    background:rgba(0,0,0,.85);
+    padding:4px 6px;
+    border-radius:4px;
+    font-size:12px;
+}
+
+.video-info{
+    display:flex;
+    gap:12px;
+    padding-top:11px;
+}
+
+.mini-avatar{
+    width:38px;
+    height:38px;
+    flex:none;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#ff3b81;
     font-weight:bold;
-    font-size:17px;
-    margin-bottom:7px;
 }
 
-.card-meta{
-    color:#94a3b8;
-    font-size:13px;
+.video-text{
+    min-width:0;
+}
+
+.video-title{
+    font-weight:bold;
+    line-height:1.35;
     margin-bottom:6px;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.video-meta{
+    color:#aaa;
+    font-size:13px;
+    line-height:1.6;
 }
 
 .author{
-    color:#60a5fa;
     cursor:pointer;
 }
 
 .author:hover{
-    text-decoration:underline;
-}
-
-.card-actions{
-    display:flex;
-    gap:8px;
-    margin-top:12px;
-}
-
-.small-btn{
-    background:#1e293b;
-    color:#e2e8f0;
-    border:0;
-    border-radius:9px;
-    padding:8px 11px;
-}
-
-.small-btn:hover{
-    background:#334155;
-}
-
-.video-player{
-    width:100%;
-    max-height:550px;
-    background:#000;
-    border-radius:15px;
+    color:#fff;
 }
 
 .empty{
+    grid-column:1/-1;
+    background:#181818;
+    border:1px dashed #444;
+    border-radius:15px;
+    padding:55px 20px;
     text-align:center;
-    padding:50px;
-    color:#94a3b8;
-    background:#111827;
-    border:1px dashed #334155;
-    border-radius:16px;
+    color:#aaa;
+}
+
+.channel{
+    background:#181818;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.banner{
+    height:250px;
+    background:linear-gradient(135deg,#3b82f6,#7c3aed,#ec4899);
+    background-size:cover;
+    background-position:center;
+}
+
+.channel-info{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:20px 25px;
+}
+
+.channel-avatar{
+    width:105px;
+    height:105px;
+    margin-top:-65px;
+    border:5px solid #181818;
+    border-radius:50%;
+    background:#ff3b81;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:43px;
+    font-weight:bold;
+    overflow:hidden;
+    flex:none;
+}
+
+.channel-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.channel-name{
+    font-size:28px;
+    font-weight:bold;
+}
+
+.handle{
+    color:#aaa;
+    margin-top:4px;
+}
+
+.bio{
+    color:#ccc;
+    margin-top:8px;
+}
+
+.channel-action{
+    margin-left:auto;
+}
+
+.tabs{
+    display:flex;
+    gap:3px;
+    padding:0 20px;
+    border-top:1px solid #303030;
+}
+
+.tabs button{
+    border:0;
+    background:transparent;
+    color:#aaa;
+    padding:16px 20px;
+}
+
+.tabs button:hover,
+.tabs button.active{
+    color:#fff;
+    border-bottom:3px solid #fff;
 }
 
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.75);
+    background:rgba(0,0,0,.78);
     display:none;
     align-items:center;
     justify-content:center;
@@ -255,54 +404,55 @@ button{
 }
 
 .modal-box{
-    width:min(500px,100%);
-    background:#111827;
-    border:1px solid #334155;
-    border-radius:20px;
-    padding:25px;
+    width:min(560px,100%);
     max-height:90vh;
     overflow:auto;
+    background:#181818;
+    border:1px solid #333;
+    border-radius:18px;
+    padding:25px;
 }
 
 .modal-box h2{
-    margin-bottom:20px;
+    margin-bottom:22px;
+}
+
+.close{
+    float:right;
+    border:0;
+    background:#292929;
+    color:#fff;
+    border-radius:50%;
+    width:34px;
+    height:34px;
 }
 
 .form-group{
-    margin-bottom:15px;
+    margin-bottom:17px;
 }
 
 .form-group label{
     display:block;
-    color:#cbd5e1;
-    margin-bottom:7px;
+    color:#ddd;
     font-size:14px;
+    margin-bottom:7px;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select{
     width:100%;
-    background:#0f172a;
+    background:#0f0f0f;
     color:white;
-    border:1px solid #334155;
-    padding:11px;
-    border-radius:10px;
+    border:1px solid #3a3a3a;
+    border-radius:9px;
+    padding:12px;
     outline:none;
 }
 
 .form-group textarea{
-    min-height:100px;
+    min-height:110px;
     resize:vertical;
-}
-
-.close{
-    float:right;
-    background:#1e293b;
-    color:white;
-    border:0;
-    border-radius:8px;
-    padding:6px 10px;
 }
 
 .type-selector{
@@ -312,124 +462,122 @@ button{
 
 .type-option{
     flex:1;
-    background:#0f172a;
-    border:1px solid #334155;
-    padding:12px;
-    border-radius:10px;
+    background:#242424;
+    border:1px solid #444;
+    padding:13px;
     text-align:center;
-    cursor:pointer;
-}
-
-.type-option.active{
-    border-color:#6366f1;
-    background:#312e81;
-}
-
-.channel-banner{
-    height:240px;
-    border-radius:22px 22px 0 0;
-    background:linear-gradient(135deg,#2563eb,#7c3aed,#db2777);
-    position:relative;
-}
-
-.channel{
-    background:#111827;
-    border:1px solid #263044;
-    border-radius:22px;
-    overflow:hidden;
-}
-
-.channel-info{
-    padding:20px 25px;
-    display:flex;
-    align-items:center;
-    gap:20px;
-    position:relative;
-}
-
-.avatar{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:#6366f1;
-    border:5px solid #111827;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:42px;
-    font-weight:bold;
-    margin-top:-65px;
-}
-
-.channel-name{
-    font-size:27px;
-    font-weight:bold;
-}
-
-.channel-handle{
-    color:#94a3b8;
-    margin-top:5px;
-}
-
-.channel-bio{
-    color:#cbd5e1;
-    margin-top:8px;
-}
-
-.channel-buttons{
-    margin-left:auto;
-}
-
-.channel-tabs{
-    display:flex;
-    gap:4px;
-    border-top:1px solid #263044;
-    padding:8px 15px;
-}
-
-.channel-tabs button{
-    background:transparent;
-    border:0;
-    color:#94a3b8;
-    padding:12px 18px;
     border-radius:9px;
 }
 
-.channel-tabs button:hover,
-.channel-tabs button.active{
-    background:#1e293b;
-    color:white;
+.type-option.active{
+    border-color:#ff3b81;
+    background:#3a1728;
 }
 
-.studio{
+.choice-grid{
     display:grid;
-    grid-template-columns:220px 1fr;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.choice{
+    aspect-ratio:1;
+    background:#242424;
+    border:2px solid transparent;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.choice:hover{
+    border-color:#777;
+}
+
+.choice.selected{
+    border-color:#ff3b81;
+}
+
+.choice img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.emoji-choice{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+}
+
+.preview-channel{
+    margin:15px 0 20px;
+    border-radius:14px;
+    overflow:hidden;
+    background:#242424;
+}
+
+.preview-banner{
+    height:100px;
+    background:linear-gradient(135deg,#3b82f6,#7c3aed,#ec4899);
+}
+
+.preview-bottom{
+    padding:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.preview-avatar{
+    width:55px;
+    height:55px;
+    margin-top:-30px;
+    border-radius:50%;
+    background:#ff3b81;
+    border:3px solid #242424;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.preview-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.studio-layout{
+    display:grid;
+    grid-template-columns:210px 1fr;
     gap:20px;
 }
 
 .studio-sidebar{
-    background:#111827;
-    border:1px solid #263044;
-    border-radius:16px;
-    padding:12px;
+    background:#181818;
+    border:1px solid #303030;
+    border-radius:15px;
+    padding:10px;
     height:max-content;
 }
 
 .studio-sidebar button{
     width:100%;
-    text-align:left;
-    background:transparent;
-    color:#cbd5e1;
     border:0;
+    background:transparent;
+    color:#bbb;
     padding:13px;
-    border-radius:9px;
-    margin-bottom:4px;
+    border-radius:8px;
+    text-align:left;
 }
 
 .studio-sidebar button:hover,
 .studio-sidebar button.active{
-    background:#312e81;
-    color:white;
+    background:#292929;
+    color:#fff;
 }
 
 .studio-main{
@@ -440,71 +588,99 @@ button{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
-    margin-bottom:25px;
+    margin-bottom:20px;
 }
 
 .stat{
-    background:#111827;
-    border:1px solid #263044;
+    background:#181818;
+    border:1px solid #303030;
     padding:22px;
-    border-radius:15px;
+    border-radius:14px;
 }
 
 .stat-number{
     font-size:30px;
     font-weight:bold;
-    color:#818cf8;
 }
 
 .stat-label{
-    color:#94a3b8;
-    margin-top:5px;
+    color:#aaa;
+    margin-top:6px;
 }
 
-.studio-panel{
-    background:#111827;
-    border:1px solid #263044;
-    border-radius:16px;
-    padding:25px;
+.panel{
+    background:#181818;
+    border:1px solid #303030;
+    border-radius:15px;
+    padding:24px;
 }
 
-.studio-panel h2{
-    margin-bottom:20px;
+.player-modal .modal-box{
+    width:min(1000px,100%);
+    background:#0b0b0b;
 }
 
-.notice{
-    background:#172554;
-    border:1px solid #3730a3;
-    color:#dbeafe;
-    padding:14px;
-    border-radius:12px;
-    margin-bottom:20px;
-    line-height:1.5;
+.big-player{
+    width:100%;
+    max-height:70vh;
+    background:#000;
+    border-radius:10px;
+}
+
+.player-title{
+    font-size:22px;
+    font-weight:bold;
+    margin-top:17px;
+}
+
+.player-meta{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.description{
+    color:#ccc;
+    white-space:pre-wrap;
+    line-height:1.6;
+    margin-top:15px;
 }
 
 .footer{
     text-align:center;
-    color:#64748b;
-    padding:30px;
+    color:#777;
+    padding:40px 20px;
 }
 
 .hidden{
     display:none!important;
 }
 
-@media(max-width:800px){
+.notice{
+    background:#211b31;
+    border:1px solid #49376b;
+    color:#ddd;
+    padding:14px;
+    border-radius:10px;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+@media(max-width:850px){
+
     .navbar{
-        flex-wrap:wrap;
         height:auto;
+        flex-wrap:wrap;
         padding:12px;
     }
 
     .search{
-        width:100%;
         order:5;
+        width:100%;
+        margin:0;
     }
 
     .navlinks{
+        display:flex;
         overflow:auto;
     }
 
@@ -513,10 +689,10 @@ button{
     }
 
     .hero h1{
-        font-size:35px;
+        font-size:36px;
     }
 
-    .studio{
+    .studio-layout{
         grid-template-columns:1fr;
     }
 
@@ -525,13 +701,38 @@ button{
     }
 
     .channel-info{
-        flex-direction:column;
         align-items:flex-start;
+        flex-wrap:wrap;
     }
 
-    .channel-buttons{
+    .channel-action{
         margin-left:0;
+        width:100%;
     }
+
+    .choice-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:550px){
+
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .channel-tabs{
+        overflow:auto;
+    }
+
+    .channel-tabs button{
+        white-space:nowrap;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
 }
 </style>
 </head>
@@ -545,20 +746,37 @@ button{
     </div>
 
     <div class="navlinks">
-        <button onclick="showHome()">🏠 Home</button>
-        <button onclick="showTrailers()">🎬 Trailers</button>
-        <button onclick="showGameplay()">🎮 Gameplay</button>
-        <button onclick="showMyChannel()">📺 My Channel</button>
+
+        <button class="nav-btn" onclick="showHome()">
+            🏠 Home
+        </button>
+
+        <button class="nav-btn" onclick="showTrailers()">
+            🎬 Trailers
+        </button>
+
+        <button class="nav-btn" onclick="showGameplay()">
+            🎮 Gameplay
+        </button>
+
+        <button class="nav-btn" onclick="showMyChannel()">
+            📺 My Channel
+        </button>
+
     </div>
 
     <input
         id="searchInput"
         class="search"
-        placeholder="🔎 Search games, videos, creators..."
-        oninput="doSearch()"
+        placeholder="🔎 Search"
+        oninput="searchVideos()"
     >
 
-    <button class="login-btn" id="loginButton" onclick="openLogin()">
+    <button
+        id="loginButton"
+        class="login-btn"
+        onclick="openLogin()"
+    >
         Login
     </button>
 
@@ -567,254 +785,360 @@ button{
 
 <main class="container page">
 
-    <!-- HOME -->
+<!-- HOME -->
 
-    <section id="homePage">
+<section id="homePage">
 
-        <div class="hero">
+    <div class="hero">
+
+        <div>
 
             <h1>🎮 Welcome to KidGaming</h1>
 
             <p>
-                Your gaming place for gameplay, trailers, creators and awesome channels.
-                Create your own channel and start uploading.
+                Watch gaming videos, discover trailers,
+                find new creators and build your own gaming channel.
             </p>
 
-            <div class="hero-actions">
-                <button class="primary" onclick="showTrailers()">
-                    🎬 Watch Trailers
+            <div class="hero-buttons">
+
+                <button
+                    class="primary"
+                    onclick="showTrailers()"
+                >
+                    ▶ Watch Trailers
                 </button>
 
-                <button class="secondary" onclick="showMyChannel()">
+                <button
+                    class="secondary"
+                    onclick="showMyChannel()"
+                >
                     📺 My Channel
                 </button>
+
             </div>
 
         </div>
 
-
-        <div class="section">
-
-            <div class="section-header">
-                <h2>🔥 Featured Trailers</h2>
-                <button class="secondary" onclick="showTrailers()">
-                    See all
-                </button>
-            </div>
-
-            <div id="homeTrailers" class="grid"></div>
-
-        </div>
+    </div>
 
 
-        <div class="section">
-
-            <div class="section-header">
-                <h2>🎮 Latest Gameplay</h2>
-                <button class="secondary" onclick="showGameplay()">
-                    See all
-                </button>
-            </div>
-
-            <div id="homeGameplay" class="grid"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TRAILERS -->
-
-    <section id="trailersPage" class="hidden">
+    <div class="section">
 
         <div class="section-header">
-            <h1>🎬 Trailers</h1>
 
-            <button class="primary" onclick="openUpload('trailer')">
-                + Upload Trailer
+            <h2>🎬 Featured Trailers</h2>
+
+            <button
+                class="secondary"
+                onclick="showTrailers()"
+            >
+                See all
             </button>
+
         </div>
 
-        <div id="trailersGrid" class="grid"></div>
+        <div
+            id="homeTrailers"
+            class="video-grid"
+        ></div>
 
-    </section>
+    </div>
 
 
-    <!-- GAMEPLAY -->
-
-    <section id="gameplayPage" class="hidden">
+    <div class="section">
 
         <div class="section-header">
-            <h1>🎮 Gameplay</h1>
 
-            <button class="primary" onclick="openUpload('video')">
-                + Upload Gameplay
+            <h2>🎮 Latest Gameplay</h2>
+
+            <button
+                class="secondary"
+                onclick="showGameplay()"
+            >
+                See all
             </button>
+
         </div>
 
-        <div id="gameplayGrid" class="grid"></div>
+        <div
+            id="homeGameplay"
+            class="video-grid"
+        ></div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- CHANNEL -->
+<!-- TRAILERS -->
 
-    <section id="channelPage" class="hidden">
+<section id="trailersPage" class="hidden">
 
-        <button class="secondary" onclick="showHome()" style="margin-bottom:18px">
-            ← Back
+    <div class="section-header">
+
+        <h1>🎬 Trailers</h1>
+
+        <button
+            class="pink"
+            onclick="openUpload('trailer')"
+        >
+            + Upload Trailer
         </button>
 
-        <div class="channel">
+    </div>
 
-            <div id="channelBanner" class="channel-banner"></div>
+    <div
+        id="trailersGrid"
+        class="video-grid"
+    ></div>
 
-            <div class="channel-info">
+</section>
 
-                <div id="channelAvatar" class="avatar">
-                    K
-                </div>
 
-                <div>
-                    <div id="channelName" class="channel-name">
-                        Channel
-                    </div>
+<!-- GAMEPLAY -->
 
-                    <div id="channelHandle" class="channel-handle">
-                        @channel
-                    </div>
+<section id="gameplayPage" class="hidden">
 
-                    <div id="channelBio" class="channel-bio">
-                    </div>
-                </div>
+    <div class="section-header">
 
-                <div class="channel-buttons" id="channelButtons"></div>
+        <h1>🎮 Gameplay</h1>
+
+        <button
+            class="pink"
+            onclick="openUpload('video')"
+        >
+            + Upload Gameplay
+        </button>
+
+    </div>
+
+    <div
+        id="gameplayGrid"
+        class="video-grid"
+    ></div>
+
+</section>
+
+
+<!-- CHANNEL -->
+
+<section id="channelPage" class="hidden">
+
+    <button
+        class="secondary"
+        onclick="showHome()"
+        style="margin-bottom:18px"
+    >
+        ← Back
+    </button>
+
+    <div class="channel">
+
+        <div
+            id="channelBanner"
+            class="banner"
+        ></div>
+
+        <div class="channel-info">
+
+            <div
+                id="channelAvatar"
+                class="channel-avatar"
+            ></div>
+
+            <div>
+
+                <div
+                    id="channelName"
+                    class="channel-name"
+                ></div>
+
+                <div
+                    id="channelHandle"
+                    class="handle"
+                ></div>
+
+                <div
+                    id="channelBio"
+                    class="bio"
+                ></div>
 
             </div>
 
-            <div class="channel-tabs">
-
-                <button
-                    id="tabHome"
-                    onclick="channelTab('home')"
-                    class="active"
-                >
-                    Home
-                </button>
-
-                <button
-                    id="tabVideos"
-                    onclick="channelTab('videos')"
-                >
-                    Videos
-                </button>
-
-                <button
-                    id="tabTrailers"
-                    onclick="channelTab('trailers')"
-                >
-                    Trailers
-                </button>
-
-                <button
-                    id="tabAbout"
-                    onclick="channelTab('about')"
-                >
-                    About
-                </button>
-
-            </div>
+            <div
+                id="channelAction"
+                class="channel-action"
+            ></div>
 
         </div>
 
-        <div id="channelContent" class="section"></div>
 
-    </section>
+        <div class="tabs">
 
+            <button
+                id="tabHome"
+                class="active"
+                onclick="channelTab('home')"
+            >
+                Home
+            </button>
 
-    <!-- CREATOR STUDIO -->
+            <button
+                id="tabVideos"
+                onclick="channelTab('videos')"
+            >
+                Videos
+            </button>
 
-    <section id="studioPage" class="hidden">
+            <button
+                id="tabTrailers"
+                onclick="channelTab('trailers')"
+            >
+                Trailers
+            </button>
 
-        <button class="secondary" onclick="showMyChannel()" style="margin-bottom:18px">
-            ← Back to Channel
-        </button>
-
-        <h1 style="margin-bottom:20px">
-            🛠️ Creator Studio
-        </h1>
-
-        <div class="studio">
-
-            <aside class="studio-sidebar">
-
-                <button
-                    class="active"
-                    onclick="studioTab('dashboard',this)"
-                >
-                    📊 Dashboard
-                </button>
-
-                <button onclick="studioTab('videos',this)">
-                    🎮 Videos
-                </button>
-
-                <button onclick="studioTab('trailers',this)">
-                    🎬 Trailers
-                </button>
-
-                <button onclick="studioTab('upload',this)">
-                    ⬆️ Upload
-                </button>
-
-                <button onclick="studioTab('channel',this)">
-                    📺 Customize Channel
-                </button>
-
-            </aside>
-
-            <div id="studioMain" class="studio-main"></div>
+            <button
+                id="tabAbout"
+                onclick="channelTab('about')"
+            >
+                About
+            </button>
 
         </div>
 
-    </section>
+    </div>
+
+
+    <div
+        id="channelContent"
+        class="section"
+    ></div>
+
+</section>
+
+
+<!-- STUDIO -->
+
+<section id="studioPage" class="hidden">
+
+    <button
+        class="secondary"
+        onclick="openChannel(currentUser)"
+        style="margin-bottom:18px"
+    >
+        ← Back to Channel
+    </button>
+
+    <h1 style="margin-bottom:20px">
+        🛠️ Creator Studio
+    </h1>
+
+    <div class="studio-layout">
+
+        <aside class="studio-sidebar">
+
+            <button
+                class="active"
+                onclick="studioTab('dashboard',this)"
+            >
+                📊 Dashboard
+            </button>
+
+            <button
+                onclick="studioTab('videos',this)"
+            >
+                🎮 Videos
+            </button>
+
+            <button
+                onclick="studioTab('trailers',this)"
+            >
+                🎬 Trailers
+            </button>
+
+            <button
+                onclick="studioTab('upload',this)"
+            >
+                ⬆️ Upload
+            </button>
+
+            <button
+                onclick="studioTab('customize',this)"
+            >
+                🎨 Customize
+            </button>
+
+        </aside>
+
+        <div
+            id="studioMain"
+            class="studio-main"
+        ></div>
+
+    </div>
+
+</section>
 
 </main>
 
 
 <footer class="footer">
-    🎮 KidGaming • Made for gamers
+    🎮 KidGaming • Gaming made fun
 </footer>
 
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 
-<div id="loginModal" class="modal">
+<div
+    id="loginModal"
+    class="modal"
+>
 
     <div class="modal-box">
 
-        <button class="close" onclick="closeModal('loginModal')">
+        <button
+            class="close"
+            onclick="closeModal('loginModal')"
+        >
             ✕
         </button>
 
         <h2>👤 Login / Create Account</h2>
 
         <div class="notice">
-            Demo version: your account is saved only in this browser.
+            Demo version. Your account is stored only in this browser.
         </div>
 
         <div class="form-group">
+
             <label>Username</label>
-            <input id="loginUsername" placeholder="Ex: Micah">
+
+            <input
+                id="loginUsername"
+                placeholder="Your gaming name"
+            >
+
         </div>
 
         <div class="form-group">
+
             <label>Password</label>
-            <input id="loginPassword" type="password" placeholder="Password">
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Password"
+            >
+
         </div>
 
-        <button class="primary" style="width:100%" onclick="login()">
-            Login / Create
+        <button
+            class="pink"
+            style="width:100%"
+            onclick="login()"
+        >
+            Continue
         </button>
 
     </div>
@@ -822,28 +1146,35 @@ button{
 </div>
 
 
-<!-- UPLOAD MODAL -->
+<!-- UPLOAD -->
 
-<div id="uploadModal" class="modal">
+<div
+    id="uploadModal"
+    class="modal"
+>
 
     <div class="modal-box">
 
-        <button class="close" onclick="closeModal('uploadModal')">
+        <button
+            class="close"
+            onclick="closeModal('uploadModal')"
+        >
             ✕
         </button>
 
         <h2>⬆️ Upload</h2>
 
+
         <div class="form-group">
 
-            <label>Type</label>
+            <label>What are you uploading?</label>
 
             <div class="type-selector">
 
                 <div
                     id="videoType"
                     class="type-option active"
-                    onclick="selectType('video')"
+                    onclick="selectUploadType('video')"
                 >
                     🎮 Gameplay
                 </div>
@@ -851,7 +1182,7 @@ button{
                 <div
                     id="trailerType"
                     class="type-option"
-                    onclick="selectType('trailer')"
+                    onclick="selectUploadType('trailer')"
                 >
                     🎬 Trailer
                 </div>
@@ -860,37 +1191,91 @@ button{
 
         </div>
 
+
         <div class="form-group">
+
             <label>Title</label>
-            <input id="uploadTitle" placeholder="Ex: My Fortnite Victory">
+
+            <input
+                id="uploadTitle"
+                placeholder="Video title"
+            >
+
         </div>
 
-        <div class="form-group">
-            <label>Game</label>
-            <input id="uploadGame" placeholder="Write your game">
+
+        <div
+            id="gameFields"
+        >
+
+            <div class="form-group">
+
+                <label>Game</label>
+
+                <input
+                    id="uploadGame"
+                    placeholder="Game name"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Category</label>
+
+                <input
+                    id="uploadCategory"
+                    placeholder="Gaming category"
+                >
+
+            </div>
+
         </div>
 
-        <div class="form-group">
-            <label>Category</label>
-            <input id="uploadCategory" placeholder="Ex: Battle Royale">
-        </div>
 
         <div class="form-group">
+
             <label>Description</label>
-            <textarea id="uploadDescription" placeholder="Tell people about your video..."></textarea>
+
+            <textarea
+                id="uploadDescription"
+                placeholder="Tell viewers about your video..."
+            ></textarea>
+
         </div>
 
+
         <div class="form-group">
+
             <label>Video</label>
-            <input id="uploadVideo" type="file" accept="video/*">
+
+            <input
+                id="uploadVideo"
+                type="file"
+                accept="video/*"
+            >
+
         </div>
+
 
         <div class="form-group">
+
             <label>Thumbnail</label>
-            <input id="uploadThumbnail" type="file" accept="image/*">
+
+            <input
+                id="uploadThumbnail"
+                type="file"
+                accept="image/*"
+            >
+
         </div>
 
-        <button class="primary" style="width:100%" onclick="publishVideo()">
+
+        <button
+            class="pink"
+            style="width:100%"
+            onclick="publishVideo()"
+        >
             🚀 Publish
         </button>
 
@@ -899,44 +1284,144 @@ button{
 </div>
 
 
-<!-- EDIT CHANNEL MODAL -->
+<!-- PLAYER -->
 
-<div id="channelEditModal" class="modal">
+<div
+    id="playerModal"
+    class="modal player-modal"
+>
 
     <div class="modal-box">
 
-        <button class="close" onclick="closeModal('channelEditModal')">
+        <button
+            class="close"
+            onclick="closeModal('playerModal')"
+        >
+            ✕
+        </button>
+
+        <video
+            id="bigPlayer"
+            class="big-player"
+            controls
+            playsinline
+        ></video>
+
+        <div
+            id="playerTitle"
+            class="player-title"
+        ></div>
+
+        <div
+            id="playerMeta"
+            class="player-meta"
+        ></div>
+
+        <div
+            id="playerDescription"
+            class="description"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- CUSTOMIZE -->
+
+<div
+    id="customizeModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <button
+            class="close"
+            onclick="closeModal('customizeModal')"
+        >
             ✕
         </button>
 
         <h2>🎨 Customize Channel</h2>
 
-        <div class="form-group">
-            <label>Channel Name</label>
-            <input id="editChannelName">
-        </div>
 
         <div class="form-group">
-            <label>Bio</label>
-            <textarea id="editChannelBio"></textarea>
+
+            <label>Channel name</label>
+
+            <input id="editName">
+
         </div>
+
 
         <div class="form-group">
-            <label>Avatar Letter / Emoji</label>
-            <input id="editAvatar" maxlength="3">
+
+            <label>Channel description</label>
+
+            <textarea id="editBio"></textarea>
+
         </div>
+
 
         <div class="form-group">
-            <label>Banner</label>
-            <select id="editBanner">
-                <option value="blue">Blue / Purple</option>
-                <option value="green">Green / Blue</option>
-                <option value="red">Red / Purple</option>
-                <option value="orange">Orange / Pink</option>
-            </select>
+
+            <label>Choose Avatar</label>
+
+            <div
+                id="avatarChoices"
+                class="choice-grid"
+            ></div>
+
         </div>
 
-        <button class="primary" style="width:100%" onclick="saveChannel()">
+
+        <div class="form-group">
+
+            <label>Choose Banner</label>
+
+            <div
+                id="bannerChoices"
+                class="choice-grid"
+            ></div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Preview</label>
+
+            <div class="preview-channel">
+
+                <div
+                    id="previewBanner"
+                    class="preview-banner"
+                ></div>
+
+                <div class="preview-bottom">
+
+                    <div
+                        id="previewAvatar"
+                        class="preview-avatar"
+                    ></div>
+
+                    <b id="previewName">
+                        Channel
+                    </b>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="pink"
+            style="width:100%"
+            onclick="saveChannel()"
+        >
             💾 Save Channel
         </button>
 
@@ -947,25 +1432,129 @@ button{
 
 <script>
 
-let currentUser = localStorage.getItem("kg_currentUser");
+let currentUser =
+    localStorage.getItem("kg_currentUser") || null;
 
 let accounts =
-    JSON.parse(localStorage.getItem("kg_accounts") || "{}");
+    JSON.parse(
+        localStorage.getItem("kg_accounts") || "{}"
+    );
 
 let posts =
-    JSON.parse(localStorage.getItem("kg_posts") || "[]");
+    JSON.parse(
+        localStorage.getItem("kg_posts") || "[]"
+    );
 
 let channels =
-    JSON.parse(localStorage.getItem("kg_channels") || "{}");
+    JSON.parse(
+        localStorage.getItem("kg_channels") || "{}"
+    );
 
 let selectedChannel = null;
 
-let selectedChannelTab = "home";
+let selectedTab = "home";
 
 let uploadType = "video";
 
+let selectedAvatar = null;
+
+let selectedBanner = "banner1";
+
+
+/* =========================
+   IMAGE GALLERIES
+========================= */
+
+const avatars = [
+
+    {
+        id:"avatar1",
+        emoji:"🎮"
+    },
+
+    {
+        id:"avatar2",
+        emoji:"😎"
+    },
+
+    {
+        id:"avatar3",
+        emoji:"👾"
+    },
+
+    {
+        id:"avatar4",
+        emoji:"🔥"
+    },
+
+    {
+        id:"avatar5",
+        emoji:"⚡"
+    },
+
+    {
+        id:"avatar6",
+        emoji:"🚀"
+    },
+
+    {
+        id:"avatar7",
+        emoji:"🐱"
+    },
+
+    {
+        id:"avatar8",
+        emoji:"🦊"
+    }
+
+];
+
+
+const banners = [
+
+    {
+        id:"banner1",
+        css:"linear-gradient(135deg,#2563eb,#7c3aed,#ec4899)"
+    },
+
+    {
+        id:"banner2",
+        css:"linear-gradient(135deg,#059669,#2563eb,#06b6d4)"
+    },
+
+    {
+        id:"banner3",
+        css:"linear-gradient(135deg,#dc2626,#7c3aed,#ec4899)"
+    },
+
+    {
+        id:"banner4",
+        css:"linear-gradient(135deg,#ea580c,#db2777,#7c3aed)"
+    },
+
+    {
+        id:"banner5",
+        css:"linear-gradient(135deg,#111827,#374151,#7c3aed)"
+    },
+
+    {
+        id:"banner6",
+        css:"linear-gradient(135deg,#0891b2,#4f46e5,#9333ea)"
+    }
+
+];
+
+
+/* =========================
+   STORAGE
+========================= */
 
 function saveData(){
+
+    localStorage.setItem(
+        "kg_currentUser",
+        currentUser || ""
+    );
 
     localStorage.setItem(
         "kg_accounts",
@@ -985,7 +1574,11 @@ function saveData(){
 }
 
 
-function escapeHTML(text){
+/* =========================
+   SAFE TEXT
+========================= */
+
+function esc(text){
 
     if(!text) return "";
 
@@ -995,14 +1588,21 @@ function escapeHTML(text){
         .replaceAll(">","&gt;")
         .replaceAll('"',"&quot;")
         .replaceAll("'","&#039;");
+
 }
 
+
+/* =========================
+   NAVIGATION
+========================= */
 
 function hidePages(){
 
     document
         .querySelectorAll("main > section")
-        .forEach(x=>x.classList.add("hidden"));
+        .forEach(section =>
+            section.classList.add("hidden")
+        );
 
 }
 
@@ -1046,6 +1646,107 @@ function showGameplay(){
 }
 
 
+/* =========================
+   LOGIN
+========================= */
+
+function openLogin(){
+
+    document
+        .getElementById("loginModal")
+        .classList.add("active");
+
+}
+
+
+function login(){
+
+    let username =
+        document
+        .getElementById("loginUsername")
+        .value.trim();
+
+    let password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+    if(!username || !password){
+
+        alert("Completează username și parola.");
+
+        return;
+
+    }
+
+    let key =
+        username.toLowerCase();
+
+
+    if(!accounts[key]){
+
+        accounts[key] = {
+            username:username,
+            password:password
+        };
+
+        channels[key] = {
+
+            username:username,
+
+            name:username,
+
+            bio:"🎮 Gaming creator",
+
+            avatar:"avatar1",
+
+            banner:"banner1"
+
+        };
+
+    }else{
+
+        if(
+            accounts[key].password !==
+            password
+        ){
+
+            alert("Parola este greșită.");
+
+            return;
+
+        }
+
+    }
+
+
+    currentUser =
+        accounts[key].username;
+
+    saveData();
+
+    closeModal("loginModal");
+
+    updateLoginButton();
+
+    openChannel(currentUser);
+
+}
+
+
+function updateLoginButton(){
+
+    let button =
+        document.getElementById("loginButton");
+
+    button.textContent =
+        currentUser
+        ? "👤 " + currentUser
+        : "Login";
+
+}
+
+
 function showMyChannel(){
 
     if(!currentUser){
@@ -1061,558 +1762,44 @@ function showMyChannel(){
 }
 
 
-function openLogin(){
-
-    document
-        .getElementById("loginModal")
-        .classList.add("active");
-
-}
-
-
-function closeModal(id){
-
-    document
-        .getElementById(id)
-        .classList.remove("active");
-
-}
-
-
-function login(){
-
-    let username =
-        document.getElementById("loginUsername").value.trim();
-
-    let password =
-        document.getElementById("loginPassword").value;
-
-    if(!username || !password){
-
-        alert("Completează username și parola.");
-
-        return;
-
-    }
-
-    let key = username.toLowerCase();
-
-    if(!accounts[key]){
-
-        accounts[key] = {
-            username:username,
-            password:password
-        };
-
-        channels[key] = {
-            username:username,
-            name:username,
-            bio:"🎮 Gaming creator",
-            avatar:username.charAt(0).toUpperCase(),
-            banner:"blue"
-        };
-
-    }else{
-
-        if(accounts[key].password !== password){
-
-            alert("Parola nu este corectă.");
-
-            return;
-
-        }
-
-    }
-
-    currentUser = accounts[key].username;
-
-    localStorage.setItem(
-        "kg_currentUser",
-        currentUser
-    );
-
-    saveData();
-
-    closeModal("loginModal");
-
-    updateLoginButton();
-
-    showMyChannel();
-
-}
-
-
-function updateLoginButton(){
-
-    let btn =
-        document.getElementById("loginButton");
-
-    if(currentUser){
-
-        btn.textContent =
-            "👤 " + currentUser;
-
-    }else{
-
-        btn.textContent = "Login";
-
-    }
-
-}
-
-
-function openUpload(type="video"){
-
-    if(!currentUser){
-
-        openLogin();
-
-        return;
-
-    }
-
-    uploadType = type;
-
-    selectType(type);
-
-    document
-        .getElementById("uploadModal")
-        .classList.add("active");
-
-}
-
-
-function selectType(type){
-
-    uploadType = type;
-
-    document
-        .getElementById("videoType")
-        .classList.toggle(
-            "active",
-            type === "video"
-        );
-
-    document
-        .getElementById("trailerType")
-        .classList.toggle(
-            "active",
-            type === "trailer"
-        );
-
-}
-
-
-function publishVideo(){
-
-    if(!currentUser){
-
-        alert("Trebuie să fii logat.");
-
-        return;
-
-    }
-
-    let title =
-        document.getElementById("uploadTitle").value.trim();
-
-    let game =
-        document.getElementById("uploadGame").value.trim();
-
-    let category =
-        document.getElementById("uploadCategory").value.trim();
-
-    let description =
-        document.getElementById("uploadDescription").value.trim();
-
-    let videoFile =
-        document.getElementById("uploadVideo").files[0];
-
-    let thumbnailFile =
-        document.getElementById("uploadThumbnail").files[0];
-
-
-    if(!title || !game || !videoFile){
-
-        alert("Ai nevoie cel puțin de titlu, joc și video.");
-
-        return;
-
-    }
-
-
-    /*
-        Demo browser-only:
-
-        Object URLs work during this browser session.
-        They are NOT permanent public video hosting.
-    */
-
-    let videoURL =
-        URL.createObjectURL(videoFile);
-
-    let thumbnailURL =
-        thumbnailFile
-            ? URL.createObjectURL(thumbnailFile)
-            : "";
-
-
-    posts.unshift({
-
-        id:Date.now(),
-
-        author:currentUser,
-
-        type:uploadType,
-
-        title:title,
-
-        game:game,
-
-        category:category,
-
-        description:description,
-
-        video:videoURL,
-
-        thumbnail:thumbnailURL,
-
-        likes:0,
-
-        views:0,
-
-        date:new Date().toISOString()
-
-    });
-
-
-    /*
-        We save metadata, but the local file itself
-        cannot be permanently stored in localStorage.
-    */
-
-    saveData();
-
-    closeModal("uploadModal");
-
-    document
-        .getElementById("uploadTitle")
-        .value="";
-
-    document
-        .getElementById("uploadGame")
-        .value="";
-
-    document
-        .getElementById("uploadCategory")
-        .value="";
-
-    document
-        .getElementById("uploadDescription")
-        .value="";
-
-    document
-        .getElementById("uploadVideo")
-        .value="";
-
-    document
-        .getElementById("uploadThumbnail")
-        .value="";
-
-    alert("🚀 Publicat în această sesiune!");
-
-    showMyChannel();
-
-}
-
-
-function postCard(post){
-
-    let channel =
-        getChannel(post.author);
-
-    return `
-
-        <article class="card">
-
-            ${
-                post.thumbnail
-
-                ?
-
-                `<img
-                    class="thumbnail"
-                    src="${post.thumbnail}"
-                    alt="thumbnail"
-                >`
-
-                :
-
-                `<div
-                    class="thumbnail"
-                    style="
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        font-size:45px;
-                    "
-                >
-                    ${post.type === "trailer" ? "🎬" : "🎮"}
-                </div>`
-            }
-
-            <div class="card-content">
-
-                <div class="card-title">
-                    ${escapeHTML(post.title)}
-                </div>
-
-                <div class="card-meta">
-                    ${escapeHTML(post.game)}
-                    •
-                    ${escapeHTML(post.category)}
-                </div>
-
-                <div class="card-meta">
-                    by
-                    <span
-                        class="author"
-                        onclick="openChannel('${encodeURIComponent(post.author)}')"
-                    >
-                        ${escapeHTML(channel.name)}
-                    </span>
-                </div>
-
-                <div class="card-meta">
-                    ${post.views} views • ${post.likes} likes
-                </div>
-
-                <div class="card-actions">
-
-                    <button
-                        class="small-btn"
-                        onclick="watchPost(${post.id})"
-                    >
-                        ▶ Watch
-                    </button>
-
-                    <button
-                        class="small-btn"
-                        onclick="likePost(${post.id})"
-                    >
-                        ❤️ ${post.likes}
-                    </button>
-
-                </div>
-
-            </div>
-
-        </article>
-
-    `;
-
-}
-
+/* =========================
+   CHANNEL
+========================= */
 
 function getChannel(username){
 
     let key =
         username.toLowerCase();
 
-    return channels[key] || {
+    if(!channels[key]){
 
-        username:username,
+        channels[key] = {
 
-        name:username,
+            username:username,
 
-        bio:"🎮 Gaming creator",
+            name:username,
 
-        avatar:username.charAt(0).toUpperCase(),
+            bio:"🎮 Gaming creator",
 
-        banner:"blue"
+            avatar:"avatar1",
 
-    };
+            banner:"banner1"
 
-}
+        };
 
+    }
 
-function renderHome(){
-
-    let trailers =
-        posts
-        .filter(x=>x.type==="trailer")
-        .slice(0,4);
-
-    let gameplay =
-        posts
-        .filter(x=>x.type==="video")
-        .slice(0,8);
-
-
-    document.getElementById("homeTrailers").innerHTML =
-        trailers.length
-        ? trailers.map(postCard).join("")
-        : emptyMessage("No trailers yet. Be the first creator! 🎬");
-
-
-    document.getElementById("homeGameplay").innerHTML =
-        gameplay.length
-        ? gameplay.map(postCard).join("")
-        : emptyMessage("No gameplay yet. Upload your first video! 🎮");
+    return channels[key];
 
 }
 
 
-function renderTrailers(){
+function openChannel(username){
 
-    let list =
-        posts.filter(x=>x.type==="trailer");
+    selectedChannel =
+        decodeURIComponent(username);
 
-    document.getElementById("trailersGrid").innerHTML =
-        list.length
-        ? list.map(postCard).join("")
-        : emptyMessage("No trailers yet. 🎬");
-
-}
-
-
-function renderGameplay(){
-
-    let list =
-        posts.filter(x=>x.type==="video");
-
-    document.getElementById("gameplayGrid").innerHTML =
-        list.length
-        ? list.map(postCard).join("")
-        : emptyMessage("No gameplay yet. 🎮");
-
-}
-
-
-function emptyMessage(text){
-
-    return `
-        <div class="empty" style="grid-column:1/-1">
-            ${text}
-        </div>
-    `;
-
-}
-
-
-function likePost(id){
-
-    let post =
-        posts.find(x=>x.id===id);
-
-    if(!post) return;
-
-    post.likes++;
-
-    saveData();
-
-    refreshCurrentPage();
-
-}
-
-
-function watchPost(id){
-
-    let post =
-        posts.find(x=>x.id===id);
-
-    if(!post) return;
-
-    post.views++;
-
-    saveData();
-
-    let channel =
-        getChannel(post.author);
-
-    let thumbnail =
-        post.thumbnail
-        ? `<img src="${post.thumbnail}" style="width:100%;border-radius:12px;margin-bottom:15px">`
-        : "";
-
-    let video =
-        post.video
-        ? `
-            <video
-                controls
-                class="video-player"
-                ${post.thumbnail ? `poster="${post.thumbnail}"` : ""}
-            >
-                <source src="${post.video}">
-            </video>
-        `
-        : `
-            <div class="empty">
-                Video preview unavailable.
-            </div>
-        `;
-
-
-    document.getElementById("channelContent").innerHTML = `
-
-        <button
-            class="secondary"
-            onclick="channelTab('home')"
-            style="margin-bottom:15px"
-        >
-            ← Back to channel
-        </button>
-
-        <div class="studio-panel">
-
-            ${thumbnail}
-
-            ${video}
-
-            <h1 style="margin-top:20px">
-                ${escapeHTML(post.title)}
-            </h1>
-
-            <p class="card-meta" style="margin-top:10px">
-                ${escapeHTML(post.game)}
-                •
-                ${escapeHTML(post.category)}
-            </p>
-
-            <p style="margin-top:15px;color:#cbd5e1">
-                ${escapeHTML(post.description)}
-            </p>
-
-            <p style="margin-top:15px">
-                Creator:
-                <span
-                    class="author"
-                    onclick="openChannel('${encodeURIComponent(post.author)}')"
-                >
-                    ${escapeHTML(channel.name)}
-                </span>
-            </p>
-
-        </div>
-    `;
-
-    hidePages();
-
-    document
-        .getElementById("channelPage")
-        .classList.remove("hidden");
-
-}
-
-
-function openChannel(encodedUsername){
-
-    let username =
-        decodeURIComponent(encodedUsername);
-
-    selectedChannel = username;
-
-    selectedChannelTab = "home";
+    selectedTab = "home";
 
     hidePages();
 
@@ -1631,42 +1818,36 @@ function renderChannel(){
         getChannel(selectedChannel);
 
 
-    document.getElementById("channelName").textContent =
-        channel.name;
+    document.getElementById("channelName")
+        .textContent = channel.name;
 
-    document.getElementById("channelHandle").textContent =
+
+    document.getElementById("channelHandle")
+        .textContent =
         "@" + channel.username;
 
-    document.getElementById("channelBio").textContent =
+
+    document.getElementById("channelBio")
+        .textContent =
         channel.bio;
 
 
-    document.getElementById("channelAvatar").textContent =
-        channel.avatar;
+    let avatarBox =
+        document.getElementById("channelAvatar");
+
+    avatarBox.innerHTML =
+        avatarHTML(channel.avatar);
 
 
     let banner =
         document.getElementById("channelBanner");
 
-    let gradients = {
-
-        blue:"linear-gradient(135deg,#2563eb,#7c3aed,#db2777)",
-
-        green:"linear-gradient(135deg,#059669,#2563eb,#4f46e5)",
-
-        red:"linear-gradient(135deg,#dc2626,#7c3aed,#ec4899)",
-
-        orange:"linear-gradient(135deg,#ea580c,#db2777,#7c3aed)"
-
-    };
-
     banner.style.background =
-        gradients[channel.banner] ||
-        gradients.blue;
+        getBannerCSS(channel.banner);
 
 
-    let buttons =
-        document.getElementById("channelButtons");
+    let action =
+        document.getElementById("channelAction");
 
 
     if(
@@ -1675,10 +1856,10 @@ function renderChannel(){
         selectedChannel.toLowerCase()
     ){
 
-        buttons.innerHTML = `
+        action.innerHTML = `
 
             <button
-                class="primary"
+                class="pink"
                 onclick="openStudio()"
             >
                 🛠️ Creator Studio
@@ -1688,51 +1869,53 @@ function renderChannel(){
 
     }else{
 
-        buttons.innerHTML = "";
+        action.innerHTML = "";
 
     }
 
 
-    channelTab(selectedChannelTab);
+    channelTab(selectedTab);
 
 }
 
 
 function channelTab(tab){
 
-    selectedChannelTab = tab;
+    selectedTab = tab;
 
     document
-        .querySelectorAll(".channel-tabs button")
-        .forEach(x=>x.classList.remove("active"));
-
-    let button =
-        document.getElementById(
-            "tab" +
-            tab.charAt(0).toUpperCase() +
-            tab.slice(1)
+        .querySelectorAll(".tabs button")
+        .forEach(x =>
+            x.classList.remove("active")
         );
 
-    if(button)
-        button.classList.add("active");
+
+    let id =
+        "tab" +
+        tab.charAt(0).toUpperCase() +
+        tab.slice(1);
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
 
 
     let content =
-        document.getElementById("channelContent");
+        document.getElementById(
+            "channelContent"
+        );
 
 
     let userPosts =
         posts.filter(
-            x =>
-            x.author.toLowerCase() ===
-            selectedChannel.toLowerCase()
+            post =>
+                post.author.toLowerCase() ===
+                selectedChannel.toLowerCase()
         );
 
 
-    if(tab==="home"){
-
-        let latest =
-            userPosts.slice(0,8);
+    if(tab === "home"){
 
         content.innerHTML = `
 
@@ -1740,21 +1923,32 @@ function channelTab(tab){
                 <h2>Latest uploads</h2>
             </div>
 
-            ${
-                latest.length
-                ? `<div class="grid">${latest.map(postCard).join("")}</div>`
-                : emptyMessage("This channel hasn't uploaded anything yet.")
-            }
+            <div class="video-grid">
+
+                ${
+                    userPosts.length
+                    ? userPosts
+                        .slice(0,8)
+                        .map(videoCard)
+                        .join("")
+                    : emptyHTML(
+                        "This channel hasn't uploaded anything yet."
+                    )
+                }
+
+            </div>
 
         `;
 
     }
 
 
-    if(tab==="videos"){
+    if(tab === "videos"){
 
         let videos =
-            userPosts.filter(x=>x.type==="video");
+            userPosts.filter(
+                post => post.type === "video"
+            );
 
         content.innerHTML = `
 
@@ -1762,21 +1956,27 @@ function channelTab(tab){
                 🎮 Videos
             </h2>
 
-            ${
-                videos.length
-                ? `<div class="grid">${videos.map(postCard).join("")}</div>`
-                : emptyMessage("No gameplay videos yet.")
-            }
+            <div class="video-grid">
+
+                ${
+                    videos.length
+                    ? videos.map(videoCard).join("")
+                    : emptyHTML("No gameplay videos yet.")
+                }
+
+            </div>
 
         `;
 
     }
 
 
-    if(tab==="trailers"){
+    if(tab === "trailers"){
 
         let trailers =
-            userPosts.filter(x=>x.type==="trailer");
+            userPosts.filter(
+                post => post.type === "trailer"
+            );
 
         content.innerHTML = `
 
@@ -1784,51 +1984,68 @@ function channelTab(tab){
                 🎬 Trailers
             </h2>
 
-            ${
-                trailers.length
-                ? `<div class="grid">${trailers.map(postCard).join("")}</div>`
-                : emptyMessage("No trailers yet.")
-            }
+            <div class="video-grid">
+
+                ${
+                    trailers.length
+                    ? trailers.map(videoCard).join("")
+                    : emptyHTML("No trailers yet.")
+                }
+
+            </div>
 
         `;
 
     }
 
 
-    if(tab==="about"){
+    if(tab === "about"){
 
-        let totalViews =
+        let views =
             userPosts.reduce(
-                (sum,x)=>sum + x.views,
+                (sum,post) =>
+                    sum + post.views,
                 0
             );
 
 
         content.innerHTML = `
 
-            <div class="studio-panel">
+            <div class="panel">
 
-                <h2>About this channel</h2>
+                <h2>About</h2>
 
-                <p style="color:#cbd5e1;line-height:1.7">
-                    ${escapeHTML(getChannel(selectedChannel).bio)}
+                <p style="color:#ccc;line-height:1.7;margin-top:12px">
+                    ${esc(
+                        getChannel(selectedChannel).bio
+                    )}
                 </p>
 
-                <br>
-
-                <p>
+                <p style="margin-top:18px">
                     🎮 Videos:
-                    <b>${userPosts.filter(x=>x.type==="video").length}</b>
+                    <b>
+                        ${
+                            userPosts.filter(
+                                x=>x.type==="video"
+                            ).length
+                        }
+                    </b>
                 </p>
 
                 <p style="margin-top:8px">
                     🎬 Trailers:
-                    <b>${userPosts.filter(x=>x.type==="trailer").length}</b>
+                    <b>
+                        ${
+                            userPosts.filter(
+                                x=>x.type==="trailer"
+                            ).length
+                        }
+                    </b>
                 </p>
 
                 <p style="margin-top:8px">
                     👁️ Views:
-                    <b>${totalViews}</b>
+                    <b>${views}</b>
                 </p>
 
             </div>
@@ -1839,6 +2056,604 @@ function channelTab(tab){
 
 }
 
+
+/* =========================
+   VIDEO CARDS
+========================= */
+
+function videoCard(post){
+
+    let channel =
+        getChannel(post.author);
+
+
+    let avatar =
+        avatarHTML(channel.avatar);
+
+
+    let thumbnail =
+        post.thumbnail
+
+        ?
+
+        `<img
+            class="thumb"
+            src="${post.thumbnail}"
+            alt="Thumbnail"
+        >`
+
+        :
+
+        `<div
+            class="thumb"
+            style="
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:55px;
+            "
+        >
+            ${post.type === "trailer" ? "🎬" : "🎮"}
+        </div>`;
+
+
+    return `
+
+        <article class="video-card">
+
+            <div
+                class="thumb-wrap"
+                onclick="playVideo(${post.id})"
+            >
+
+                ${thumbnail}
+
+                <div class="play-overlay">
+
+                    <div class="play-circle">
+                        ▶
+                    </div>
+
+                </div>
+
+                <div class="duration">
+                    ▶
+                </div>
+
+            </div>
+
+
+            <div class="video-info">
+
+                <div class="mini-avatar">
+                    ${avatar}
+                </div>
+
+                <div class="video-text">
+
+                    <div class="video-title">
+                        ${esc(post.title)}
+                    </div>
+
+                    <div class="video-meta">
+
+                        <span
+                            class="author"
+                            onclick="
+                                event.stopPropagation();
+                                openChannel('${encodeURIComponent(post.author)}')
+                            "
+                        >
+                            ${esc(channel.name)}
+                        </span>
+
+                        <br>
+
+                        ${post.views} views
+                        •
+                        ${post.likes} likes
+
+                        ${
+                            post.type === "trailer"
+                            ? " • 🎬 Trailer"
+                            : " • 🎮 Gameplay"
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+function avatarHTML(id){
+
+    let avatar =
+        avatars.find(
+            x=>x.id===id
+        );
+
+    if(!avatar)
+        avatar = avatars[0];
+
+
+    return `
+        <div style="
+            width:100%;
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:34px;
+        ">
+            ${avatar.emoji}
+        </div>
+    `;
+
+}
+
+
+function getBannerCSS(id){
+
+    let banner =
+        banners.find(
+            x=>x.id===id
+        );
+
+    return banner
+        ? banner.css
+        : banners[0].css;
+
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function renderHome(){
+
+    let trailers =
+        posts
+        .filter(x=>x.type==="trailer")
+        .slice(0,4);
+
+
+    let gameplay =
+        posts
+        .filter(x=>x.type==="video")
+        .slice(0,8);
+
+
+    document.getElementById("homeTrailers")
+        .innerHTML =
+        trailers.length
+        ? trailers.map(videoCard).join("")
+        : emptyHTML(
+            "No trailers yet. Upload the first one! 🎬"
+        );
+
+
+    document.getElementById("homeGameplay")
+        .innerHTML =
+        gameplay.length
+        ? gameplay.map(videoCard).join("")
+        : emptyHTML(
+            "No gameplay videos yet. 🎮"
+        );
+
+}
+
+
+function renderTrailers(){
+
+    let trailers =
+        posts.filter(
+            x=>x.type==="trailer"
+        );
+
+
+    document.getElementById("trailersGrid")
+        .innerHTML =
+        trailers.length
+        ? trailers.map(videoCard).join("")
+        : emptyHTML(
+            "No trailers yet. 🎬"
+        );
+
+}
+
+
+function renderGameplay(){
+
+    let gameplay =
+        posts.filter(
+            x=>x.type==="video"
+        );
+
+
+    document.getElementById("gameplayGrid")
+        .innerHTML =
+        gameplay.length
+        ? gameplay.map(videoCard).join("")
+        : emptyHTML(
+            "No gameplay videos yet. 🎮"
+        );
+
+}
+
+
+function emptyHTML(text){
+
+    return `
+        <div class="empty">
+            ${text}
+        </div>
+    `;
+
+}
+
+
+/* =========================
+   PLAY VIDEO
+========================= */
+
+function playVideo(id){
+
+    let post =
+        posts.find(
+            x=>x.id===id
+        );
+
+    if(!post) return;
+
+
+    post.views++;
+
+    saveData();
+
+
+    let channel =
+        getChannel(post.author);
+
+
+    let player =
+        document.getElementById(
+            "bigPlayer"
+        );
+
+
+    player.src =
+        post.video;
+
+
+    document.getElementById(
+        "playerTitle"
+    ).textContent =
+        post.title;
+
+
+    document.getElementById(
+        "playerMeta"
+    ).textContent =
+        channel.name +
+        " • " +
+        post.views +
+        " views";
+
+
+    document.getElementById(
+        "playerDescription"
+    ).textContent =
+        post.description || "";
+
+
+    document
+        .getElementById("playerModal")
+        .classList.add("active");
+
+
+    /*
+       Start video automatically.
+    */
+
+    player.currentTime = 0;
+
+    let promise =
+        player.play();
+
+    if(promise){
+
+        promise.catch(()=>{
+            /*
+              Browser may block autoplay with sound.
+              The player will still be ready with
+              the Play button.
+            */
+        });
+
+    }
+
+}
+
+
+function closePlayer(){
+
+    let player =
+        document.getElementById(
+            "bigPlayer"
+        );
+
+    player.pause();
+
+    player.removeAttribute("src");
+
+    player.load();
+
+}
+
+
+/* =========================
+   UPLOAD
+========================= */
+
+function openUpload(type){
+
+    if(!currentUser){
+
+        openLogin();
+
+        return;
+
+    }
+
+
+    selectUploadType(type);
+
+    document
+        .getElementById("uploadModal")
+        .classList.add("active");
+
+}
+
+
+function selectUploadType(type){
+
+    uploadType = type;
+
+
+    document
+        .getElementById("videoType")
+        .classList.toggle(
+            "active",
+            type==="video"
+        );
+
+
+    document
+        .getElementById("trailerType")
+        .classList.toggle(
+            "active",
+            type==="trailer"
+        );
+
+
+    document
+        .getElementById("gameFields")
+        .classList.toggle(
+            "hidden",
+            type==="trailer"
+        );
+
+}
+
+
+function publishVideo(){
+
+    if(!currentUser){
+
+        alert("Trebuie să fii logat.");
+
+        return;
+
+    }
+
+
+    let title =
+        document
+        .getElementById("uploadTitle")
+        .value.trim();
+
+
+    let description =
+        document
+        .getElementById("uploadDescription")
+        .value.trim();
+
+
+    let videoFile =
+        document
+        .getElementById("uploadVideo")
+        .files[0];
+
+
+    let thumbnailFile =
+        document
+        .getElementById("uploadThumbnail")
+        .files[0];
+
+
+    if(!title || !videoFile){
+
+        alert(
+            "Ai nevoie de titlu și video."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       For gameplay only.
+    */
+
+    let game =
+        uploadType === "video"
+        ?
+        document
+        .getElementById("uploadGame")
+        .value.trim()
+        :
+        "";
+
+
+    let category =
+        uploadType === "video"
+        ?
+        document
+        .getElementById("uploadCategory")
+        .value.trim()
+        :
+        "";
+
+
+    if(
+        uploadType==="video" &&
+        (!game || !category)
+    ){
+
+        alert(
+            "Pentru Gameplay completează Game și Category."
+        );
+
+        return;
+
+    }
+
+
+    let videoURL =
+        URL.createObjectURL(
+            videoFile
+        );
+
+
+    let thumbnailURL =
+        thumbnailFile
+        ?
+        URL.createObjectURL(
+            thumbnailFile
+        )
+        :
+        "";
+
+
+    posts.unshift({
+
+        id:Date.now(),
+
+        author:currentUser,
+
+        type:uploadType,
+
+        title:title,
+
+        description:description,
+
+        game:game,
+
+        category:category,
+
+        video:videoURL,
+
+        thumbnail:thumbnailURL,
+
+        likes:0,
+
+        views:0,
+
+        date:new Date().toISOString()
+
+    });
+
+
+    saveData();
+
+
+    closeModal("uploadModal");
+
+
+    document
+        .getElementById("uploadTitle")
+        .value="";
+
+
+    document
+        .getElementById("uploadDescription")
+        .value="";
+
+
+    document
+        .getElementById("uploadGame")
+        .value="";
+
+
+    document
+        .getElementById("uploadCategory")
+        .value="";
+
+
+    document
+        .getElementById("uploadVideo")
+        .value="";
+
+
+    document
+        .getElementById("uploadThumbnail")
+        .value="";
+
+
+    alert(
+        "🚀 Publicat! Thumbnail-ul și player-ul sunt gata."
+    );
+
+
+    showMyChannel();
+
+}
+
+
+/* =========================
+   LIKE
+========================= */
+
+function likePost(id){
+
+    let post =
+        posts.find(
+            x=>x.id===id
+        );
+
+    if(!post) return;
+
+    post.likes++;
+
+    saveData();
+
+    refreshPage();
+
+}
+
+
+/* =========================
+   STUDIO
+========================= */
 
 function openStudio(){
 
@@ -1850,11 +2665,13 @@ function openStudio(){
 
     }
 
+
     hidePages();
 
     document
         .getElementById("studioPage")
         .classList.remove("hidden");
+
 
     studioTab("dashboard");
 
@@ -1863,45 +2680,58 @@ function openStudio(){
 
 function studioTab(tab,button){
 
-    document
-        .querySelectorAll(".studio-sidebar button")
-        .forEach(x=>x.classList.remove("active"));
+    if(button){
 
-    if(button)
+        document
+            .querySelectorAll(
+                ".studio-sidebar button"
+            )
+            .forEach(
+                x=>x.classList.remove("active")
+            );
+
         button.classList.add("active");
+
+    }
 
 
     let main =
-        document.getElementById("studioMain");
+        document.getElementById(
+            "studioMain"
+        );
 
 
-    let myPosts =
+    let mine =
         posts.filter(
             x =>
-            x.author.toLowerCase() ===
-            currentUser.toLowerCase()
+                x.author.toLowerCase() ===
+                currentUser.toLowerCase()
         );
 
 
     if(tab==="dashboard"){
 
-        let videos =
-            myPosts.filter(x=>x.type==="video").length;
-
-        let trailers =
-            myPosts.filter(x=>x.type==="trailer").length;
-
         let views =
-            myPosts.reduce(
+            mine.reduce(
                 (sum,x)=>sum+x.views,
                 0
             );
 
         let likes =
-            myPosts.reduce(
+            mine.reduce(
                 (sum,x)=>sum+x.likes,
                 0
             );
+
+        let videos =
+            mine.filter(
+                x=>x.type==="video"
+            ).length;
+
+        let trailers =
+            mine.filter(
+                x=>x.type==="trailer"
+            ).length;
 
 
         main.innerHTML = `
@@ -1909,41 +2739,65 @@ function studioTab(tab,button){
             <div class="stats">
 
                 <div class="stat">
-                    <div class="stat-number">${views}</div>
-                    <div class="stat-label">Total Views</div>
+                    <div class="stat-number">
+                        ${views}
+                    </div>
+                    <div class="stat-label">
+                        Views
+                    </div>
                 </div>
 
                 <div class="stat">
-                    <div class="stat-number">${likes}</div>
-                    <div class="stat-label">Likes</div>
+                    <div class="stat-number">
+                        ${likes}
+                    </div>
+                    <div class="stat-label">
+                        Likes
+                    </div>
                 </div>
 
                 <div class="stat">
-                    <div class="stat-number">${videos}</div>
-                    <div class="stat-label">Videos</div>
+                    <div class="stat-number">
+                        ${videos}
+                    </div>
+                    <div class="stat-label">
+                        Videos
+                    </div>
                 </div>
 
                 <div class="stat">
-                    <div class="stat-number">${trailers}</div>
-                    <div class="stat-label">Trailers</div>
+                    <div class="stat-number">
+                        ${trailers}
+                    </div>
+                    <div class="stat-label">
+                        Trailers
+                    </div>
                 </div>
 
             </div>
 
-            <div class="studio-panel">
 
-                <h2>Welcome to Creator Studio 👋</h2>
+            <div class="panel">
 
-                <div class="notice">
-                    From here you can upload videos, create trailers
-                    and customize your gaming channel.
-                </div>
+                <h2>
+                    Welcome to Creator Studio 👋
+                </h2>
+
+                <p style="
+                    color:#aaa;
+                    line-height:1.6;
+                    margin:12px 0 20px;
+                ">
+                    Manage your KidGaming channel,
+                    upload gameplay and trailers,
+                    and customize your profile.
+                </p>
 
                 <button
-                    class="primary"
-                    onclick="studioTab('upload')"
+                    class="pink"
+                    onclick="openUpload('video')"
                 >
-                    ⬆️ Upload a video
+                    ⬆️ Upload
                 </button>
 
             </div>
@@ -1956,19 +2810,30 @@ function studioTab(tab,button){
     if(tab==="videos"){
 
         let videos =
-            myPosts.filter(x=>x.type==="video");
+            mine.filter(
+                x=>x.type==="video"
+            );
+
 
         main.innerHTML = `
 
-            <div class="studio-panel">
+            <div class="panel">
 
-                <h2>🎮 Your Videos</h2>
+                <h2 style="margin-bottom:20px">
+                    🎮 Your Videos
+                </h2>
 
-                ${
-                    videos.length
-                    ? `<div class="grid">${videos.map(postCard).join("")}</div>`
-                    : emptyMessage("You don't have gameplay videos yet.")
-                }
+                <div class="video-grid">
+
+                    ${
+                        videos.length
+                        ? videos.map(videoCard).join("")
+                        : emptyHTML(
+                            "You don't have gameplay videos yet."
+                        )
+                    }
+
+                </div>
 
             </div>
 
@@ -1980,19 +2845,30 @@ function studioTab(tab,button){
     if(tab==="trailers"){
 
         let trailers =
-            myPosts.filter(x=>x.type==="trailer");
+            mine.filter(
+                x=>x.type==="trailer"
+            );
+
 
         main.innerHTML = `
 
-            <div class="studio-panel">
+            <div class="panel">
 
-                <h2>🎬 Your Trailers</h2>
+                <h2 style="margin-bottom:20px">
+                    🎬 Your Trailers
+                </h2>
 
-                ${
-                    trailers.length
-                    ? `<div class="grid">${trailers.map(postCard).join("")}</div>`
-                    : emptyMessage("You don't have trailers yet.")
-                }
+                <div class="video-grid">
+
+                    ${
+                        trailers.length
+                        ? trailers.map(videoCard).join("")
+                        : emptyHTML(
+                            "You don't have trailers yet."
+                        )
+                    }
+
+                </div>
 
             </div>
 
@@ -2005,19 +2881,22 @@ function studioTab(tab,button){
 
         main.innerHTML = `
 
-            <div class="studio-panel">
+            <div class="panel">
 
                 <h2>⬆️ Upload</h2>
 
-                <div class="notice">
-                    Choose whether you're uploading Gameplay or a Trailer.
-                </div>
+                <p style="
+                    color:#aaa;
+                    margin:10px 0 20px;
+                ">
+                    Upload gameplay or a trailer.
+                </p>
 
                 <button
-                    class="primary"
+                    class="pink"
                     onclick="openUpload('video')"
                 >
-                    🎮 Upload Gameplay
+                    🎮 Gameplay
                 </button>
 
                 <button
@@ -2025,7 +2904,7 @@ function studioTab(tab,button){
                     onclick="openUpload('trailer')"
                     style="margin-left:8px"
                 >
-                    🎬 Upload Trailer
+                    🎬 Trailer
                 </button>
 
             </div>
@@ -2035,26 +2914,29 @@ function studioTab(tab,button){
     }
 
 
-    if(tab==="channel"){
-
-        let channel =
-            getChannel(currentUser);
+    if(tab==="customize"){
 
         main.innerHTML = `
 
-            <div class="studio-panel">
+            <div class="panel">
 
-                <h2>🎨 Customize your channel</h2>
+                <h2>
+                    🎨 Customize Channel
+                </h2>
 
-                <p style="color:#94a3b8;margin-bottom:20px">
-                    Change your channel name, bio, avatar and banner.
+                <p style="
+                    color:#aaa;
+                    margin:10px 0 20px;
+                ">
+                    Choose your avatar and banner
+                    from the KidGaming gallery.
                 </p>
 
                 <button
-                    class="primary"
-                    onclick="openChannelEditor()"
+                    class="pink"
+                    onclick="openCustomize()"
                 >
-                    ✏️ Edit Channel
+                    ✏️ Customize
                 </button>
 
             </div>
@@ -2066,29 +2948,182 @@ function studioTab(tab,button){
 }
 
 
-function openChannelEditor(){
+/* =========================
+   CUSTOMIZE
+========================= */
+
+function openCustomize(){
 
     let channel =
         getChannel(currentUser);
 
-    document.getElementById("editChannelName").value =
+
+    document.getElementById(
+        "editName"
+    ).value =
         channel.name;
 
-    document.getElementById("editChannelBio").value =
+
+    document.getElementById(
+        "editBio"
+    ).value =
         channel.bio;
 
-    document.getElementById("editAvatar").value =
+
+    selectedAvatar =
         channel.avatar;
 
-    document.getElementById("editBanner").value =
+
+    selectedBanner =
         channel.banner;
 
 
+    renderAvatarChoices();
+
+    renderBannerChoices();
+
+    updatePreview();
+
+
     document
-        .getElementById("channelEditModal")
+        .getElementById("customizeModal")
         .classList.add("active");
 
 }
+
+
+function renderAvatarChoices(){
+
+    document.getElementById(
+        "avatarChoices"
+    ).innerHTML =
+        avatars.map(avatar=>`
+
+            <div
+                class="
+                    choice
+                    ${
+                        avatar.id===selectedAvatar
+                        ? "selected"
+                        : ""
+                    }
+                "
+                onclick="
+                    chooseAvatar('${avatar.id}')
+                "
+            >
+
+                <div class="emoji-choice">
+                    ${avatar.emoji}
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+function chooseAvatar(id){
+
+    selectedAvatar = id;
+
+    renderAvatarChoices();
+
+    updatePreview();
+
+}
+
+
+function renderBannerChoices(){
+
+    document.getElementById(
+        "bannerChoices"
+    ).innerHTML =
+        banners.map(banner=>`
+
+            <div
+                class="
+                    choice
+                    ${
+                        banner.id===selectedBanner
+                        ? "selected"
+                        : ""
+                    }
+                "
+                onclick="
+                    chooseBanner('${banner.id}')
+                "
+            >
+
+                <div
+                    style="
+                        width:100%;
+                        height:100%;
+                        background:${banner.css};
+                    "
+                ></div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+function chooseBanner(id){
+
+    selectedBanner = id;
+
+    renderBannerChoices();
+
+    updatePreview();
+
+}
+
+
+function updatePreview(){
+
+    let name =
+        document.getElementById(
+            "editName"
+        ).value.trim()
+        ||
+        currentUser
+        ||
+        "Channel";
+
+
+    document.getElementById(
+        "previewName"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "previewBanner"
+    ).style.background =
+        getBannerCSS(
+            selectedBanner
+        );
+
+
+    document.getElementById(
+        "previewAvatar"
+    ).innerHTML =
+        avatarHTML(
+            selectedAvatar
+        );
+
+}
+
+
+document
+    .getElementById("editName")
+    .addEventListener(
+        "input",
+        updatePreview
+    );
 
 
 function saveChannel(){
@@ -2096,43 +3131,57 @@ function saveChannel(){
     let key =
         currentUser.toLowerCase();
 
+
     channels[key] = {
 
         username:currentUser,
 
         name:
-            document.getElementById("editChannelName")
+            document
+            .getElementById("editName")
             .value.trim()
-            || currentUser,
+            ||
+            currentUser,
 
         bio:
-            document.getElementById("editChannelBio")
+            document
+            .getElementById("editBio")
             .value.trim()
-            || "🎮 Gaming creator",
+            ||
+            "🎮 Gaming creator",
 
         avatar:
-            document.getElementById("editAvatar")
-            .value.trim()
-            || currentUser.charAt(0).toUpperCase(),
+            selectedAvatar,
 
         banner:
-            document.getElementById("editBanner").value
+            selectedBanner
 
     };
 
 
     saveData();
 
-    closeModal("channelEditModal");
+
+    closeModal(
+        "customizeModal"
+    );
+
 
     renderChannel();
 
-    alert("✅ Channel updated!");
+
+    alert(
+        "🎨 Channel customized!"
+    );
 
 }
 
 
-function doSearch(){
+/* =========================
+   SEARCH
+========================= */
+
+function searchVideos(){
 
     let q =
         document
@@ -2154,82 +3203,158 @@ function doSearch(){
     hidePages();
 
 
+    document
+        .getElementById("homePage")
+        .classList.remove("hidden");
+
+
     let results =
         posts.filter(post=>{
 
             let channel =
-                getChannel(post.author);
+                getChannel(
+                    post.author
+                );
+
 
             return (
 
-                post.title.toLowerCase().includes(q)
+                post.title
+                    .toLowerCase()
+                    .includes(q)
 
                 ||
 
-                post.game.toLowerCase().includes(q)
+                post.description
+                    .toLowerCase()
+                    .includes(q)
 
                 ||
 
-                post.category.toLowerCase().includes(q)
+                post.game
+                    .toLowerCase()
+                    .includes(q)
 
                 ||
 
-                post.author.toLowerCase().includes(q)
+                post.category
+                    .toLowerCase()
+                    .includes(q)
 
                 ||
 
-                channel.name.toLowerCase().includes(q)
+                post.author
+                    .toLowerCase()
+                    .includes(q)
+
+                ||
+
+                channel.name
+                    .toLowerCase()
+                    .includes(q)
 
             );
 
         });
 
 
-    document.getElementById("homePage")
-        .classList.remove("hidden");
+    document.getElementById(
+        "homeTrailers"
+    ).innerHTML = "";
 
 
-    document.getElementById("homeTrailers")
-        .innerHTML = "";
+    document.getElementById(
+        "homeGameplay"
+    ).innerHTML = `
 
-    document.getElementById("homeGameplay")
-        .innerHTML = `
+        <div style="grid-column:1/-1">
 
-            <div style="grid-column:1/-1">
+            <div class="section-header">
+                <h2>🔎 Search results</h2>
+            </div>
 
-                <h2 style="margin-bottom:18px">
-                    🔎 Search results
-                </h2>
+            <div class="video-grid">
 
                 ${
                     results.length
-                    ? `<div class="grid">${results.map(postCard).join("")}</div>`
-                    : emptyMessage("Nothing found 😢")
+                    ? results.map(videoCard).join("")
+                    : emptyHTML(
+                        "Nothing found 😢"
+                    )
                 }
 
             </div>
 
-        `;
+        </div>
+
+    `;
 
 }
 
 
-function refreshCurrentPage(){
+/* =========================
+   MODALS
+========================= */
 
-    if(!document.getElementById("homePage").classList.contains("hidden"))
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("active");
+
+
+    if(id==="playerModal"){
+
+        closePlayer();
+
+    }
+
+}
+
+
+/* =========================
+   REFRESH
+========================= */
+
+function refreshPage(){
+
+    if(
+        !document
+        .getElementById("homePage")
+        .classList.contains("hidden")
+    )
         renderHome();
 
-    if(!document.getElementById("trailersPage").classList.contains("hidden"))
+
+    if(
+        !document
+        .getElementById("trailersPage")
+        .classList.contains("hidden")
+    )
         renderTrailers();
 
-    if(!document.getElementById("gameplayPage").classList.contains("hidden"))
+
+    if(
+        !document
+        .getElementById("gameplayPage")
+        .classList.contains("hidden")
+    )
         renderGameplay();
 
-    if(!document.getElementById("channelPage").classList.contains("hidden"))
+
+    if(
+        !document
+        .getElementById("channelPage")
+        .classList.contains("hidden")
+    )
         renderChannel();
 
 }
 
+
+/* =========================
+   START
+========================= */
 
 updateLoginButton();
 
