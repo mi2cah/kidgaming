@@ -7,6 +7,7 @@
 <title>KidGaming</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -15,18 +16,21 @@
 }
 
 body{
-    background:#101426;
+    background:#0f1326;
     color:white;
     min-height:100vh;
 }
+
+/* NAVBAR */
 
 nav{
     position:sticky;
     top:0;
     z-index:100;
     background:#171c35;
-    border-bottom:2px solid #30385f;
-    padding:15px 7%;
+    border-bottom:2px solid #292f50;
+    height:70px;
+    padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -35,8 +39,8 @@ nav{
 .logo{
     font-size:28px;
     font-weight:900;
-    color:#7c5cff;
     cursor:pointer;
+    color:#7c5cff;
 }
 
 .logo span{
@@ -45,14 +49,14 @@ nav{
 
 .navlinks{
     display:flex;
-    gap:10px;
+    gap:5px;
 }
 
 .navlinks button{
     background:none;
-    border:0;
     color:white;
-    padding:10px 15px;
+    border:0;
+    padding:10px 14px;
     border-radius:10px;
     cursor:pointer;
     font-weight:bold;
@@ -62,13 +66,35 @@ nav{
     background:#292f50;
 }
 
+.user-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.user-button{
+    background:#292f50;
+    border:0;
+    color:white;
+    padding:10px 15px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.user-button:hover{
+    background:#393f68;
+}
+
+/* HERO */
+
 .hero{
     text-align:center;
-    padding:80px 20px;
+    padding:90px 20px;
     background:
-    radial-gradient(circle at 20% 20%,#5533ff55,transparent 30%),
-    radial-gradient(circle at 80% 30%,#ff4f9a44,transparent 30%),
-    linear-gradient(135deg,#171c35,#101426);
+    radial-gradient(circle at 20% 20%,#6d4aff55,transparent 30%),
+    radial-gradient(circle at 80% 20%,#ff4f9a44,transparent 30%),
+    linear-gradient(135deg,#171c35,#0f1326);
 }
 
 .hero h1{
@@ -81,14 +107,14 @@ nav{
 }
 
 .hero p{
-    font-size:20px;
     color:#b8bfdc;
+    font-size:19px;
     max-width:650px;
     margin:auto;
     line-height:1.5;
 }
 
-.hero-buttons{
+.buttons{
     margin-top:30px;
     display:flex;
     justify-content:center;
@@ -97,12 +123,12 @@ nav{
 }
 
 .btn{
-    border:none;
-    padding:14px 24px;
-    border-radius:14px;
-    cursor:pointer;
-    font-size:16px;
+    border:0;
+    padding:14px 22px;
+    border-radius:13px;
     font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
     transition:.2s;
 }
 
@@ -120,205 +146,190 @@ nav{
     color:white;
 }
 
+/* SECTIONS */
+
 section{
     padding:60px 7%;
 }
 
 .section-title{
-    font-size:34px;
+    font-size:35px;
     margin-bottom:25px;
 }
 
-.searchbox{
+/* SEARCH */
+
+.search{
     width:100%;
-    max-width:500px;
-    padding:15px 18px;
-    border-radius:14px;
+    max-width:600px;
+    padding:15px;
+    border-radius:13px;
     border:2px solid #30385f;
     background:#171c35;
     color:white;
     outline:none;
     font-size:16px;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
-.searchbox:focus{
+.search:focus{
     border-color:#7c5cff;
 }
 
-.games{
+/* POSTS */
+
+.posts{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:20px;
 }
 
-.game{
+.post-card{
     background:#191f3a;
-    border:2px solid #2b3358;
-    border-radius:20px;
+    border:2px solid #2c3458;
+    border-radius:18px;
     overflow:hidden;
-    transition:.25s;
+    transition:.2s;
 }
 
-.game:hover{
-    transform:translateY(-7px);
+.post-card:hover{
+    transform:translateY(-5px);
     border-color:#7c5cff;
 }
 
-.game-img{
-    height:130px;
+.thumbnail{
+    height:170px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:55px;
+    font-size:60px;
+    background:linear-gradient(135deg,#7c5cff,#ff4f9a);
 }
 
-.fortnite{
-    background:linear-gradient(135deg,#6c5cff,#2d7fff);
+.post-content{
+    padding:20px;
 }
 
-.roblox{
-    background:linear-gradient(135deg,#ff4444,#ff8a3d);
+.post-content h3{
+    font-size:21px;
+    margin-bottom:8px;
 }
 
-.minecraft{
-    background:linear-gradient(135deg,#39b54a,#187a32);
-}
-
-.beamng{
-    background:linear-gradient(135deg,#ff9d00,#ff4c4c);
-}
-
-.rocket{
-    background:linear-gradient(135deg,#2525a8,#673cff);
-}
-
-.crown{
-    background:linear-gradient(135deg,#eaa31a,#773fce);
-}
-
-.game-content{
-    padding:18px;
-}
-
-.game-content h3{
-    margin-bottom:7px;
-}
-
-.game-content p{
+.meta{
     color:#aeb5d1;
     font-size:14px;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
-.actions{
+.description{
+    color:#c1c7df;
+    line-height:1.4;
+    margin-bottom:18px;
+}
+
+.post-actions{
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
-.like{
+.like-btn{
     background:#292f50;
     color:white;
     border:0;
     border-radius:10px;
-    padding:9px 12px;
+    padding:9px 13px;
     cursor:pointer;
 }
 
-.like:hover{
-    background:#393f68;
+.like-btn:hover{
+    background:#3b426b;
 }
 
-.community{
+.channel-link{
+    color:#9c88ff;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.channel-link:hover{
+    text-decoration:underline;
+}
+
+/* CHANNEL */
+
+.channel{
     background:#151a31;
 }
 
-.community-box{
+.channel-header{
     background:#191f3a;
-    border:2px solid #2b3358;
+    border:2px solid #2c3458;
     border-radius:20px;
-    padding:25px;
-    max-width:800px;
-}
-
-.post{
-    padding:18px;
-    background:#222947;
-    border-radius:15px;
-    margin-top:15px;
-}
-
-.post small{
-    color:#9da6c5;
-}
-
-.profile{
+    padding:30px;
     display:flex;
     align-items:center;
     gap:20px;
-    background:#191f3a;
-    padding:25px;
-    border-radius:20px;
-    border:2px solid #2b3358;
 }
 
 .avatar{
-    width:80px;
-    height:80px;
+    width:90px;
+    height:90px;
     border-radius:50%;
     background:linear-gradient(135deg,#7c5cff,#ff4f9a);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:35px;
+    font-size:40px;
+    flex-shrink:0;
 }
 
-footer{
-    text-align:center;
-    padding:40px;
-    color:#858eaf;
-    border-top:2px solid #252c4d;
+.channel-info h2{
+    font-size:28px;
+    margin-bottom:7px;
 }
+
+.channel-info p{
+    color:#aeb5d1;
+}
+
+/* EMPTY */
+
+.empty{
+    text-align:center;
+    padding:50px;
+    color:#8f97b7;
+    background:#191f3a;
+    border-radius:18px;
+    border:2px dashed #30385f;
+}
+
+/* MODALS */
 
 .modal-bg{
     position:fixed;
     inset:0;
-    background:#0009;
+    background:#000b;
     display:none;
     align-items:center;
     justify-content:center;
-    z-index:200;
+    z-index:500;
+    padding:20px;
 }
 
 .modal{
-    width:90%;
-    max-width:450px;
     background:#191f3a;
-    border:2px solid #363e69;
+    width:100%;
+    max-width:500px;
+    max-height:90vh;
+    overflow-y:auto;
+    border:2px solid #3a4270;
     border-radius:20px;
-    padding:30px;
+    padding:28px;
 }
 
 .modal h2{
-    margin-bottom:15px;
-}
-
-.modal input,
-.modal textarea{
-    width:100%;
-    padding:13px;
-    margin:8px 0;
-    border-radius:10px;
-    border:2px solid #30385f;
-    background:#101426;
-    color:white;
-    outline:none;
-}
-
-.modal textarea{
-    height:120px;
-    resize:none;
+    margin-bottom:20px;
 }
 
 .close{
@@ -328,221 +339,262 @@ footer{
     color:#aaa;
 }
 
-.message{
+.input{
+    width:100%;
+    padding:13px;
+    border-radius:10px;
+    border:2px solid #30385f;
+    background:#0f1326;
+    color:white;
+    outline:none;
+    margin:7px 0;
+}
+
+.input:focus{
+    border-color:#7c5cff;
+}
+
+textarea.input{
+    min-height:120px;
+    resize:vertical;
+}
+
+label{
+    display:block;
+    color:#bfc5dc;
+    font-size:14px;
+    margin-top:10px;
+}
+
+.modal .btn{
+    margin-top:12px;
+}
+
+/* PROFILE MENU */
+
+.profile-menu{
+    position:absolute;
+    top:62px;
+    right:6%;
+    background:#191f3a;
+    border:2px solid #30385f;
+    border-radius:14px;
+    padding:10px;
+    width:180px;
+    display:none;
+}
+
+.profile-menu button{
+    width:100%;
+    background:none;
+    color:white;
+    border:0;
+    padding:12px;
+    text-align:left;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+.profile-menu button:hover{
+    background:#292f50;
+}
+
+/* TOAST */
+
+.toast{
     position:fixed;
-    bottom:25px;
     right:25px;
+    bottom:25px;
     background:#7c5cff;
     padding:15px 20px;
     border-radius:13px;
-    display:none;
-    z-index:300;
     font-weight:bold;
+    display:none;
+    z-index:1000;
 }
 
-.hidden{
-    display:none!important;
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:2px solid #252c4d;
+    color:#858eaf;
 }
 
-@media(max-width:700px){
-    .hero h1{
-        font-size:42px;
-    }
+/* MOBILE */
+
+@media(max-width:800px){
 
     .navlinks{
         display:none;
     }
+
+    .hero h1{
+        font-size:43px;
+    }
+
+    .channel-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
+
+<!-- NAVBAR -->
+
 <nav>
 
-<div class="logo" onclick="home()">Kid<span>Gaming</span> 🎮</div>
-
-<div class="navlinks">
-<button onclick="home()">Home</button>
-<button onclick="gamesSection()">Games</button>
-<button onclick="communitySection()">Community</button>
-<button onclick="profileSection()">Profile</button>
+<div class="logo" onclick="goHome()">
+    Kid<span>Gaming</span> 🎮
 </div>
 
-<button class="btn secondary" onclick="openLogin()">Login</button>
+<div class="navlinks">
+
+<button onclick="goHome()">Home</button>
+
+<button onclick="showLatest()">
+    Latest
+</button>
+
+<button onclick="showChannel()">
+    My Channel
+</button>
+
+<button onclick="openPostModal()">
+    + Create
+</button>
+
+</div>
+
+<div class="user-area">
+
+<button
+id="loginButton"
+class="user-button"
+onclick="openLogin()">
+Login
+</button>
+
+</div>
+
+<div
+id="profileMenu"
+class="profile-menu">
+
+<button onclick="showChannel()">
+📺 My Channel
+</button>
+
+<button onclick="openPostModal()">
+➕ Create Gameplay
+</button>
+
+<button onclick="logout()">
+🚪 Logout
+</button>
+
+</div>
 
 </nav>
 
 
+<!-- HERO -->
+
 <header class="hero" id="home">
 
-<h1>Welcome to <span>KidGaming</span> 🎮</h1>
+<h1>
+Welcome to <span>KidGaming</span> 🎮
+</h1>
 
 <p>
-A fun gaming community where players can discover games,
-share ideas and have fun.
+Discover gameplay, create your own channel,
+share your gaming moments and find other gamers.
 </p>
 
-<div class="hero-buttons">
-<button class="btn primary" onclick="gamesSection()">Explore Games 🚀</button>
-<button class="btn secondary" onclick="communitySection()">Community 💬</button>
+<div class="buttons">
+
+<button
+class="btn primary"
+onclick="openPostModal()">
+Create Gameplay 🚀
+</button>
+
+<button
+class="btn secondary"
+onclick="showLatest()">
+Explore Gameplay 👀
+</button>
+
 </div>
 
 </header>
 
 
-<section id="games">
+<!-- LATEST -->
 
-<h2 class="section-title">🔥 Popular Games</h2>
+<section id="latest">
+
+<h2 class="section-title">
+🔥 Latest Gameplay
+</h2>
 
 <input
-id="search"
-class="searchbox"
-placeholder="Search games..."
-oninput="searchGames()"
+id="searchInput"
+class="search"
+placeholder="Search by game, category or title..."
+oninput="searchPosts()"
 >
 
-<div class="games">
-
-<div class="game" data-name="fortnite">
-<div class="game-img fortnite">🪂</div>
-<div class="game-content">
-<h3>Fortnite</h3>
-<p>Battle Royale, Creative and more.</p>
-<div class="actions">
-<button class="btn primary" onclick="openGame('Fortnite')">Open</button>
-<button class="like" onclick="like(this)">❤️ <span>0</span></button>
-</div>
-</div>
-</div>
-
-
-<div class="game" data-name="roblox">
-<div class="game-img roblox">⬜</div>
-<div class="game-content">
-<h3>Roblox</h3>
-<p>Millions of experiences made by players.</p>
-<div class="actions">
-<button class="btn primary" onclick="openGame('Roblox')">Open</button>
-<button class="like" onclick="like(this)">❤️ <span>0</span></button>
-</div>
-</div>
-</div>
-
-
-<div class="game" data-name="minecraft">
-<div class="game-img minecraft">🌳</div>
-<div class="game-content">
-<h3>Minecraft</h3>
-<p>Build, explore and survive.</p>
-<div class="actions">
-<button class="btn primary" onclick="openGame('Minecraft')">Open</button>
-<button class="like" onclick="like(this)">❤️ <span>0</span></button>
-</div>
-</div>
-</div>
-
-
-<div class="game" data-name="beamng">
-<div class="game-img beamng">🚗</div>
-<div class="game-content">
-<h3>BeamNG.drive</h3>
-<p>Realistic driving and physics.</p>
-<div class="actions">
-<button class="btn primary" onclick="openGame('BeamNG.drive')">Open</button>
-<button class="like" onclick="like(this)">❤️ <span>0</span></button>
-</div>
-</div>
-</div>
-
-
-<div class="game" data-name="rocket league">
-<div class="game-img rocket">🚀</div>
-<div class="game-content">
-<h3>Rocket League</h3>
-<p>Cars + football = chaos.</p>
-<div class="actions">
-<button class="btn primary" onclick="openGame('Rocket League')">Open</button>
-<button class="like" onclick="like(this)">❤️ <span>0</span></button>
-</div>
-</div>
-</div>
-
-
-<div class="game" data-name="project crown">
-<div class="game-img crown">👑</div>
-<div class="game-content">
-<h3>Project Crown</h3>
-<p>Battle your way to the crown.</p>
-<div class="actions">
-<button class="btn primary" onclick="openGame('Project Crown')">Open</button>
-<button class="like" onclick="like(this)">❤️ <span>0</span></button>
-</div>
-</div>
-</div>
-
-</div>
-</section>
-
-
-<section class="community" id="community">
-
-<h2 class="section-title">💬 Community</h2>
-
-<div class="community-box">
-
-<p>
-Welcome to the KidGaming community!
-</p>
-
-<div class="post">
-<strong>🎮 KidGaming Team</strong>
-<br>
-<small>Today</small>
-<p style="margin-top:10px">
-Welcome everyone! More features are coming soon.
-</p>
-</div>
-
-<div class="post">
-<strong>🔥 Gaming News</strong>
-<br>
-<small>Today</small>
-<p style="margin-top:10px">
-What game are you playing today?
-</p>
-</div>
-
-<br>
-
-<button class="btn primary" onclick="openPost()">
-Create a Post ✏️
-</button>
-
+<div
+id="posts"
+class="posts">
 </div>
 
 </section>
 
 
-<section id="profile">
+<!-- CHANNEL -->
 
-<h2 class="section-title">👤 Your Profile</h2>
+<section class="channel" id="channel">
 
-<div class="profile">
+<h2 class="section-title">
+📺 My Channel
+</h2>
 
-<div class="avatar">🎮</div>
+<div
+id="channelHeader"
+class="channel-header">
 
-<div>
-<h2>Guest Player</h2>
-<p style="color:#aeb5d1">
-You are currently browsing as a guest.
-</p>
-<br>
-<button class="btn primary" onclick="openLogin()">
-Login / Create Account
-</button>
+<div class="avatar">
+🎮
 </div>
 
+<div class="channel-info">
+
+<h2 id="channelName">
+Guest Channel
+</h2>
+
+<p id="channelDescription">
+Login to create your own gaming channel.
+</p>
+
+</div>
+
+</div>
+
+<br>
+
+<div
+id="channelPosts"
+class="posts">
 </div>
 
 </section>
@@ -551,272 +603,973 @@ Login / Create Account
 <footer>
 
 <p>🎮 KidGaming</p>
-<p style="margin-top:8px">Made for gamers • 2026</p>
+
+<p style="margin-top:8px">
+Create • Play • Share
+</p>
 
 </footer>
 
 
 <!-- LOGIN MODAL -->
 
-<div class="modal-bg" id="loginModal">
+<div
+id="loginModal"
+class="modal-bg">
 
 <div class="modal">
 
-<span class="close" onclick="closeModal('loginModal')">✕</span>
+<span
+class="close"
+onclick="closeModal('loginModal')">
+✕
+</span>
 
-<h2>🎮 Welcome Back!</h2>
+<h2>
+👤 Login / Create Account
+</h2>
 
-<input id="username" placeholder="Username">
+<label>
+Username
+</label>
 
-<input id="password" type="password" placeholder="Password">
+<input
+id="usernameInput"
+class="input"
+placeholder="Choose a username"
+maxlength="20"
+>
 
-<button class="btn primary" style="width:100%;margin-top:10px"
+<label>
+Password
+</label>
+
+<input
+id="passwordInput"
+class="input"
+type="password"
+placeholder="Choose a password"
+>
+
+<button
+class="btn primary"
+style="width:100%"
 onclick="login()">
 Login
 </button>
 
-<button class="btn secondary" style="width:100%;margin-top:10px"
+<button
+class="btn secondary"
+style="width:100%"
 onclick="createAccount()">
 Create Account
 </button>
 
 </div>
+
 </div>
 
 
-<!-- POST MODAL -->
+<!-- CREATE POST -->
 
-<div class="modal-bg" id="postModal">
+<div
+id="postModal"
+class="modal-bg">
 
 <div class="modal">
 
-<span class="close" onclick="closeModal('postModal')">✕</span>
+<span
+class="close"
+onclick="closeModal('postModal')">
+✕
+</span>
 
-<h2>✏️ Create Post</h2>
+<h2>
+🎮 Create Gameplay
+</h2>
 
-<input id="postName" placeholder="Your name">
+<label>
+Gameplay Title
+</label>
 
-<textarea id="postText" placeholder="What do you want to say?"></textarea>
+<input
+id="postTitle"
+class="input"
+placeholder="Example: My first Fortnite win"
+maxlength="80"
+>
 
-<button class="btn primary"
-onclick="createPost()">
-Post
+<label>
+Game
+</label>
+
+<input
+id="postGame"
+class="input"
+placeholder="Write the game name"
+maxlength="40"
+>
+
+<label>
+Category
+</label>
+
+<input
+id="postCategory"
+class="input"
+placeholder="Example: Battle Royale"
+maxlength="40"
+>
+
+<label>
+Description
+</label>
+
+<textarea
+id="postDescription"
+class="input"
+placeholder="Tell people about your gameplay..."
+maxlength="300"
+></textarea>
+
+<label>
+Thumbnail Emoji
+</label>
+
+<input
+id="postEmoji"
+class="input"
+placeholder="🎮"
+maxlength="3"
+>
+
+<button
+class="btn primary"
+style="width:100%"
+onclick="createGameplay()">
+🚀 POST GAMEPLAY
 </button>
 
 </div>
-</div>
-
-
-<!-- GAME MODAL -->
-
-<div class="modal-bg" id="gameModal">
-
-<div class="modal">
-
-<span class="close" onclick="closeModal('gameModal')">✕</span>
-
-<h2 id="gameTitle"></h2>
-
-<p style="color:#aeb5d1;margin:15px 0">
-This is a KidGaming game page preview.
-</p>
-
-<button class="btn primary" onclick="showMessage('Game page opened! 🎮')">
-Play / Visit Game
-</button>
 
 </div>
+
+
+<!-- TOAST -->
+
+<div
+id="toast"
+class="toast">
 </div>
-
-
-<div class="message" id="message"></div>
 
 
 <script>
 
-function home(){
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+/* =========================
+   DATA
+========================= */
+
+let currentUser =
+    localStorage.getItem("kidgamingUser");
+
+let posts =
+    JSON.parse(
+        localStorage.getItem("kidgamingPosts") || "[]"
+    );
+
+
+/* =========================
+   START
+========================= */
+
+updateUserUI();
+
+renderPosts();
+
+
+/* =========================
+   USER INTERFACE
+========================= */
+
+function updateUserUI(){
+
+    const button =
+        document.getElementById("loginButton");
+
+    if(currentUser){
+
+        button.innerText =
+            "👤 " + currentUser;
+
+        button.onclick =
+            toggleProfileMenu;
+
+        document.getElementById("channelName")
+            .innerText =
+            currentUser + "'s Channel";
+
+        document.getElementById("channelDescription")
+            .innerText =
+            "Welcome to " +
+            currentUser +
+            "'s gaming channel!";
+
+    }else{
+
+        button.innerText="Login";
+
+        button.onclick=openLogin;
+
+        document.getElementById("channelName")
+            .innerText="Guest Channel";
+
+        document.getElementById("channelDescription")
+            .innerText=
+            "Login to create your own gaming channel.";
+
+    }
+
 }
 
-function gamesSection(){
-    document.getElementById("games").scrollIntoView({
-        behavior:"smooth"
-    });
-}
 
-function communitySection(){
-    document.getElementById("community").scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
-function profileSection(){
-    document.getElementById("profile").scrollIntoView({
-        behavior:"smooth"
-    });
-}
-
+/* =========================
+   LOGIN
+========================= */
 
 function openLogin(){
-    document.getElementById("loginModal").style.display="flex";
-}
 
-function openPost(){
-    document.getElementById("postModal").style.display="flex";
-}
+    document
+        .getElementById("loginModal")
+        .style.display="flex";
 
-function openGame(name){
-    document.getElementById("gameTitle").innerText="🎮 "+name;
-    document.getElementById("gameModal").style.display="flex";
-}
-
-function closeModal(id){
-    document.getElementById(id).style.display="none";
-}
-
-
-function like(button){
-
-    let number=button.querySelector("span");
-
-    number.innerText=parseInt(number.innerText)+1;
-
-    showMessage("Liked! ❤️");
-}
-
-
-function searchGames(){
-
-    let query=document
-        .getElementById("search")
-        .value
-        .toLowerCase();
-
-    let games=document.querySelectorAll(".game");
-
-    games.forEach(game=>{
-
-        let name=game.dataset.name;
-
-        if(name.includes(query)){
-            game.classList.remove("hidden");
-        }else{
-            game.classList.add("hidden");
-        }
-
-    });
 }
 
 
 function login(){
 
-    let username=document.getElementById("username").value;
+    const username =
+        document.getElementById("usernameInput")
+        .value
+        .trim();
 
-    if(username.trim()===""){
-        showMessage("Enter a username!");
+    const password =
+        document.getElementById("passwordInput")
+        .value;
+
+    if(!username || !password){
+
+        toast("Enter username and password!");
+
         return;
     }
 
-    document.querySelector(".profile h2").innerText=username;
+    const saved =
+        JSON.parse(
+            localStorage.getItem(
+                "account_"+username
+            )
+        );
+
+    if(!saved){
+
+        toast("Account doesn't exist. Create one!");
+
+        return;
+    }
+
+    if(saved.password !== password){
+
+        toast("Wrong password!");
+
+        return;
+    }
+
+    currentUser=username;
+
+    localStorage.setItem(
+        "kidgamingUser",
+        currentUser
+    );
 
     closeModal("loginModal");
 
-    showMessage("Welcome, "+username+"! 🎮");
+    updateUserUI();
+
+    toast(
+        "Welcome back, " +
+        currentUser +
+        "! 🎮"
+    );
+
 }
 
 
 function createAccount(){
 
-    let username=document.getElementById("username").value;
+    const username =
+        document.getElementById("usernameInput")
+        .value
+        .trim();
 
-    if(username.trim()===""){
-        showMessage("Choose a username first!");
+    const password =
+        document.getElementById("passwordInput")
+        .value;
+
+    if(!username || !password){
+
+        toast("Fill in username and password!");
+
         return;
     }
 
-    document.querySelector(".profile h2").innerText=username;
+    if(username.length < 3){
+
+        toast("Username must be at least 3 characters.");
+
+        return;
+    }
+
+    const key =
+        "account_"+username;
+
+    if(localStorage.getItem(key)){
+
+        toast("That username already exists!");
+
+        return;
+    }
+
+    localStorage.setItem(
+        key,
+        JSON.stringify({
+            username:username,
+            password:password
+        })
+    );
+
+    currentUser=username;
+
+    localStorage.setItem(
+        "kidgamingUser",
+        username
+    );
 
     closeModal("loginModal");
 
-    showMessage("Account created! 🎉");
+    updateUserUI();
+
+    toast(
+        "Account created! 🎉"
+    );
+
 }
 
 
-function createPost(){
+function logout(){
 
-    let name=document.getElementById("postName").value;
-    let text=document.getElementById("postText").value;
+    currentUser=null;
 
-    if(name.trim()==="" || text.trim()===""){
-        showMessage("Fill in both fields!");
+    localStorage.removeItem(
+        "kidgamingUser"
+    );
+
+    document
+        .getElementById("profileMenu")
+        .style.display="none";
+
+    updateUserUI();
+
+    toast("Logged out!");
+
+}
+
+
+/* =========================
+   PROFILE MENU
+========================= */
+
+function toggleProfileMenu(){
+
+    const menu =
+        document.getElementById("profileMenu");
+
+    menu.style.display =
+        menu.style.display==="block"
+        ? "none"
+        : "block";
+
+}
+
+
+/* =========================
+   CREATE GAMEPLAY
+========================= */
+
+function openPostModal(){
+
+    if(!currentUser){
+
+        toast("Login first to create gameplay!");
+
+        openLogin();
+
         return;
     }
 
-    let post=document.createElement("div");
-
-    post.className="post";
-
-    post.innerHTML=
-        "<strong>🎮 "+escapeHTML(name)+"</strong>"+
-        "<br><small>Just now</small>"+
-        "<p style='margin-top:10px'>"+
-        escapeHTML(text)+
-        "</p>";
-
     document
-        .querySelector(".community-box")
-        .insertBefore(
-            post,
-            document.querySelector(".community-box").children[0]
-        );
+        .getElementById("postModal")
+        .style.display="flex";
 
-    document.getElementById("postName").value="";
-    document.getElementById("postText").value="";
+}
+
+
+function createGameplay(){
+
+    if(!currentUser){
+
+        toast("Login first!");
+
+        return;
+    }
+
+    const title =
+        document.getElementById("postTitle")
+        .value
+        .trim();
+
+    const game =
+        document.getElementById("postGame")
+        .value
+        .trim();
+
+    const category =
+        document.getElementById("postCategory")
+        .value
+        .trim();
+
+    const description =
+        document.getElementById("postDescription")
+        .value
+        .trim();
+
+    const emoji =
+        document.getElementById("postEmoji")
+        .value
+        .trim() || "🎮";
+
+
+    if(!title ||
+       !game ||
+       !category ||
+       !description){
+
+        toast("Fill in all fields!");
+
+        return;
+    }
+
+
+    const newPost={
+
+        id:Date.now(),
+
+        author:currentUser,
+
+        title:title,
+
+        game:game,
+
+        category:category,
+
+        description:description,
+
+        emoji:emoji,
+
+        likes:0,
+
+        liked:false,
+
+        date:new Date().toLocaleDateString()
+
+    };
+
+
+    posts.unshift(newPost);
+
+    savePosts();
+
+    renderPosts();
+
+    renderChannel();
 
     closeModal("postModal");
 
-    showMessage("Post created! 🚀");
+    clearPostForm();
+
+    toast(
+        "Gameplay posted! 🚀"
+    );
+
 }
 
 
-function escapeHTML(text){
+function clearPostForm(){
 
-    let div=document.createElement("div");
+    document.getElementById("postTitle").value="";
+    document.getElementById("postGame").value="";
+    document.getElementById("postCategory").value="";
+    document.getElementById("postDescription").value="";
+    document.getElementById("postEmoji").value="";
 
-    div.textContent=text;
-
-    return div.innerHTML;
 }
 
 
-function showMessage(text){
+/* =========================
+   POSTS
+========================= */
 
-    let box=document.getElementById("message");
+function savePosts(){
 
-    box.innerText=text;
+    localStorage.setItem(
+        "kidgamingPosts",
+        JSON.stringify(posts)
+    );
 
-    box.style.display="block";
+}
 
-    setTimeout(()=>{
-        box.style.display="none";
-    },2500);
+
+function renderPosts(){
+
+    const container =
+        document.getElementById("posts");
+
+    if(posts.length===0){
+
+        container.innerHTML=`
+
+        <div class="empty">
+
+            <h2>No gameplay yet 🎮</h2>
+
+            <p style="margin-top:10px">
+            Be the first person to post gameplay!
+            </p>
+
+            <button
+            class="btn primary"
+            style="margin-top:20px"
+            onclick="openPostModal()">
+
+            Create Gameplay
+
+            </button>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        posts.map(post => postHTML(post))
+        .join("");
+
+}
+
+
+function postHTML(post){
+
+    return `
+
+    <div class="post-card">
+
+        <div class="thumbnail">
+            ${escapeHTML(post.emoji)}
+        </div>
+
+        <div class="post-content">
+
+            <h3>
+                ${escapeHTML(post.title)}
+            </h3>
+
+            <div class="meta">
+
+                🎮 ${escapeHTML(post.game)}
+                <br>
+
+                🏷️ ${escapeHTML(post.category)}
+
+                <br>
+
+                👤
+                <span
+                class="channel-link"
+                onclick="openUserChannel('${escapeHTML(post.author)}')">
+
+                ${escapeHTML(post.author)}
+
+                </span>
+
+                • ${escapeHTML(post.date)}
+
+            </div>
+
+            <p class="description">
+                ${escapeHTML(post.description)}
+            </p>
+
+            <div class="post-actions">
+
+                <button
+                class="like-btn"
+                onclick="likePost(${post.id})">
+
+                ❤️ ${post.likes}
+
+                </button>
+
+                <span
+                style="color:#858eaf">
+
+                Gameplay
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================
+   LIKE
+========================= */
+
+function likePost(id){
+
+    const post =
+        posts.find(p=>p.id===id);
+
+    if(!post) return;
+
+    post.likes++;
+
+    savePosts();
+
+    renderPosts();
+
+    renderChannel();
+
+    toast("Liked! ❤️");
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchPosts(){
+
+    const query =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        posts.filter(post =>
+
+            post.title.toLowerCase().includes(query) ||
+
+            post.game.toLowerCase().includes(query) ||
+
+            post.category.toLowerCase().includes(query) ||
+
+            post.author.toLowerCase().includes(query)
+
+        );
+
+
+    const container =
+        document.getElementById("posts");
+
+
+    if(filtered.length===0){
+
+        container.innerHTML=`
+
+        <div class="empty">
+
+            <h2>No results 🔎</h2>
+
+            <p style="margin-top:10px">
+            Try another game, category or username.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        filtered
+        .map(post=>postHTML(post))
+        .join("");
+
+}
+
+
+/* =========================
+   CHANNEL
+========================= */
+
+function showChannel(){
+
+    document
+        .getElementById("channel")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    renderChannel();
+
+}
+
+
+function renderChannel(){
+
+    const container =
+        document.getElementById("channelPosts");
+
+
+    if(!currentUser){
+
+        container.innerHTML=`
+
+        <div class="empty">
+
+            <h2>You're not logged in 👤</h2>
+
+            <p style="margin-top:10px">
+            Login to see your channel.
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    const myPosts =
+        posts.filter(
+            post =>
+            post.author === currentUser
+        );
+
+
+    if(myPosts.length===0){
+
+        container.innerHTML=`
+
+        <div class="empty">
+
+            <h2>Your channel is empty 🎮</h2>
+
+            <p style="margin-top:10px">
+            Create your first gameplay!
+            </p>
+
+            <button
+            class="btn primary"
+            style="margin-top:20px"
+            onclick="openPostModal()">
+
+            + Create Gameplay
+
+            </button>
+
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        myPosts
+        .map(post=>postHTML(post))
+        .join("");
+
+}
+
+
+/* =========================
+   OTHER CHANNEL
+========================= */
+
+function openUserChannel(username){
+
+    document
+        .getElementById("channel")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+
+    const channelPosts =
+        posts.filter(
+            post =>
+            post.author === username
+        );
+
+
+    document.getElementById("channelName")
+        .innerText =
+        username + "'s Channel";
+
+
+    document.getElementById("channelDescription")
+        .innerText =
+        "Gaming channel by " +
+        username;
+
+
+    const container =
+        document.getElementById("channelPosts");
+
+
+    if(channelPosts.length===0){
+
+        container.innerHTML=`
+
+        <div class="empty">
+        This channel has no gameplay yet.
+        </div>
+
+        `;
+
+        return;
+    }
+
+
+    container.innerHTML =
+        channelPosts
+        .map(post=>postHTML(post))
+        .join("");
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function goHome(){
+
+    document
+        .getElementById("home")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+function showLatest(){
+
+    document
+        .getElementById("latest")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================
+   MODALS
+========================= */
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .style.display="none";
+
 }
 
 
 window.onclick=function(event){
 
-    document.querySelectorAll(".modal-bg").forEach(modal=>{
+    document
+    .querySelectorAll(".modal-bg")
+    .forEach(modal=>{
 
         if(event.target===modal){
+
             modal.style.display="none";
+
         }
 
     });
 
 };
+
+
+/* =========================
+   TOAST
+========================= */
+
+function toast(message){
+
+    const box =
+        document.getElementById("toast");
+
+    box.innerText=message;
+
+    box.style.display="block";
+
+
+    setTimeout(()=>{
+
+        box.style.display="none";
+
+    },2500);
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent=text;
+
+    return div.innerHTML;
+
+}
 
 </script>
 
