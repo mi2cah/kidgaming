@@ -3,49 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>KidGaming</title>
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 
 body{
     background:#0f1326;
     color:white;
-    min-height:100vh;
 }
-
-/* NAVBAR */
 
 nav{
     position:sticky;
     top:0;
     z-index:100;
-    background:#171c35;
-    border-bottom:2px solid #292f50;
     height:70px;
     padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    background:#171c35;
+    border-bottom:2px solid #292f50;
 }
 
 .logo{
     font-size:28px;
     font-weight:900;
-    cursor:pointer;
     color:#7c5cff;
+    cursor:pointer;
 }
-
-.logo span{
-    color:#ffcc4d;
-}
+.logo span{color:#ffcc4d}
 
 .navlinks{
     display:flex;
@@ -54,8 +41,8 @@ nav{
 
 .navlinks button{
     background:none;
-    color:white;
     border:0;
+    color:white;
     padding:10px 14px;
     border-radius:10px;
     cursor:pointer;
@@ -66,27 +53,15 @@ nav{
     background:#292f50;
 }
 
-.user-area{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
 .user-button{
     background:#292f50;
-    border:0;
     color:white;
-    padding:10px 15px;
+    border:0;
+    padding:11px 16px;
     border-radius:12px;
     cursor:pointer;
     font-weight:bold;
 }
-
-.user-button:hover{
-    background:#393f68;
-}
-
-/* HERO */
 
 .hero{
     text-align:center;
@@ -98,13 +73,11 @@ nav{
 }
 
 .hero h1{
-    font-size:64px;
+    font-size:60px;
     margin-bottom:15px;
 }
 
-.hero h1 span{
-    color:#7c5cff;
-}
+.hero h1 span{color:#7c5cff}
 
 .hero p{
     color:#b8bfdc;
@@ -127,13 +100,7 @@ nav{
     padding:14px 22px;
     border-radius:13px;
     font-weight:bold;
-    font-size:15px;
     cursor:pointer;
-    transition:.2s;
-}
-
-.btn:hover{
-    transform:translateY(-3px);
 }
 
 .primary{
@@ -146,8 +113,6 @@ nav{
     color:white;
 }
 
-/* SECTIONS */
-
 section{
     padding:60px 7%;
 }
@@ -156,8 +121,6 @@ section{
     font-size:35px;
     margin-bottom:25px;
 }
-
-/* SEARCH */
 
 .search{
     width:100%;
@@ -168,19 +131,12 @@ section{
     background:#171c35;
     color:white;
     outline:none;
-    font-size:16px;
     margin-bottom:25px;
 }
 
-.search:focus{
-    border-color:#7c5cff;
-}
-
-/* POSTS */
-
 .posts{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
     gap:20px;
 }
 
@@ -189,21 +145,13 @@ section{
     border:2px solid #2c3458;
     border-radius:18px;
     overflow:hidden;
-    transition:.2s;
 }
 
-.post-card:hover{
-    transform:translateY(-5px);
-    border-color:#7c5cff;
-}
-
-.thumbnail{
-    height:170px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:60px;
-    background:linear-gradient(135deg,#7c5cff,#ff4f9a);
+.post-video{
+    width:100%;
+    max-height:300px;
+    display:block;
+    background:#000;
 }
 
 .post-content{
@@ -211,20 +159,19 @@ section{
 }
 
 .post-content h3{
-    font-size:21px;
     margin-bottom:8px;
 }
 
 .meta{
     color:#aeb5d1;
     font-size:14px;
-    margin-bottom:12px;
+    line-height:1.6;
 }
 
 .description{
     color:#c1c7df;
+    margin:15px 0;
     line-height:1.4;
-    margin-bottom:18px;
 }
 
 .post-actions{
@@ -241,22 +188,6 @@ section{
     padding:9px 13px;
     cursor:pointer;
 }
-
-.like-btn:hover{
-    background:#3b426b;
-}
-
-.channel-link{
-    color:#9c88ff;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-.channel-link:hover{
-    text-decoration:underline;
-}
-
-/* CHANNEL */
 
 .channel{
     background:#151a31;
@@ -281,30 +212,7 @@ section{
     align-items:center;
     justify-content:center;
     font-size:40px;
-    flex-shrink:0;
 }
-
-.channel-info h2{
-    font-size:28px;
-    margin-bottom:7px;
-}
-
-.channel-info p{
-    color:#aeb5d1;
-}
-
-/* EMPTY */
-
-.empty{
-    text-align:center;
-    padding:50px;
-    color:#8f97b7;
-    background:#191f3a;
-    border-radius:18px;
-    border:2px dashed #30385f;
-}
-
-/* MODALS */
 
 .modal-bg{
     position:fixed;
@@ -320,16 +228,12 @@ section{
 .modal{
     background:#191f3a;
     width:100%;
-    max-width:500px;
+    max-width:520px;
     max-height:90vh;
-    overflow-y:auto;
+    overflow:auto;
     border:2px solid #3a4270;
     border-radius:20px;
     padding:28px;
-}
-
-.modal h2{
-    margin-bottom:20px;
 }
 
 .close{
@@ -350,10 +254,6 @@ section{
     margin:7px 0;
 }
 
-.input:focus{
-    border-color:#7c5cff;
-}
-
 textarea.input{
     min-height:120px;
     resize:vertical;
@@ -361,45 +261,38 @@ textarea.input{
 
 label{
     display:block;
-    color:#bfc5dc;
+    color:#c0c6dd;
     font-size:14px;
     margin-top:10px;
 }
 
-.modal .btn{
-    margin-top:12px;
+.file-input{
+    width:100%;
+    padding:12px;
+    background:#0f1326;
+    border:2px dashed #4a5279;
+    border-radius:10px;
+    color:#cbd1e5;
+    margin-top:7px;
 }
 
-/* PROFILE MENU */
-
-.profile-menu{
-    position:absolute;
-    top:62px;
-    right:6%;
-    background:#191f3a;
-    border:2px solid #30385f;
-    border-radius:14px;
-    padding:10px;
-    width:180px;
+.preview{
+    width:100%;
+    max-height:220px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-top:12px;
     display:none;
 }
 
-.profile-menu button{
-    width:100%;
-    background:none;
-    color:white;
-    border:0;
-    padding:12px;
-    text-align:left;
-    border-radius:9px;
-    cursor:pointer;
+.empty{
+    text-align:center;
+    padding:45px;
+    background:#191f3a;
+    border-radius:18px;
+    border:2px dashed #30385f;
+    color:#929aba;
 }
-
-.profile-menu button:hover{
-    background:#292f50;
-}
-
-/* TOAST */
 
 .toast{
     position:fixed;
@@ -413,99 +306,38 @@ label{
     z-index:1000;
 }
 
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:40px;
-    border-top:2px solid #252c4d;
-    color:#858eaf;
-}
-
-/* MOBILE */
-
 @media(max-width:800px){
-
-    .navlinks{
-        display:none;
-    }
-
-    .hero h1{
-        font-size:43px;
-    }
-
+    .navlinks{display:none}
+    .hero h1{font-size:42px}
     .channel-header{
         flex-direction:column;
         text-align:center;
     }
-
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- NAVBAR -->
-
 <nav>
 
-<div class="logo" onclick="goHome()">
-    Kid<span>Gaming</span> 🎮
+<div class="logo" onclick="home()">
+Kid<span>Gaming</span> 🎮
 </div>
 
 <div class="navlinks">
-
-<button onclick="goHome()">Home</button>
-
-<button onclick="showLatest()">
-    Latest
-</button>
-
-<button onclick="showChannel()">
-    My Channel
-</button>
-
-<button onclick="openPostModal()">
-    + Create
-</button>
-
+<button onclick="home()">Home</button>
+<button onclick="latest()">Latest</button>
+<button onclick="myChannel()">My Channel</button>
+<button onclick="openPost()">+ Create</button>
 </div>
 
-<div class="user-area">
-
-<button
-id="loginButton"
-class="user-button"
-onclick="openLogin()">
+<button id="loginBtn" class="user-button" onclick="openLogin()">
 Login
 </button>
 
-</div>
-
-<div
-id="profileMenu"
-class="profile-menu">
-
-<button onclick="showChannel()">
-📺 My Channel
-</button>
-
-<button onclick="openPostModal()">
-➕ Create Gameplay
-</button>
-
-<button onclick="logout()">
-🚪 Logout
-</button>
-
-</div>
-
 </nav>
 
-
-<!-- HERO -->
 
 <header class="hero" id="home">
 
@@ -514,30 +346,23 @@ Welcome to <span>KidGaming</span> 🎮
 </h1>
 
 <p>
-Discover gameplay, create your own channel,
-share your gaming moments and find other gamers.
+Watch gameplay, create your own channel and share your gaming moments.
 </p>
 
 <div class="buttons">
 
-<button
-class="btn primary"
-onclick="openPostModal()">
-Create Gameplay 🚀
+<button class="btn primary" onclick="openPost()">
+🎥 Upload Gameplay
 </button>
 
-<button
-class="btn secondary"
-onclick="showLatest()">
-Explore Gameplay 👀
+<button class="btn secondary" onclick="latest()">
+🔥 Explore Gameplay
 </button>
 
 </div>
 
 </header>
 
-
-<!-- LATEST -->
 
 <section id="latest">
 
@@ -546,21 +371,16 @@ Explore Gameplay 👀
 </h2>
 
 <input
-id="searchInput"
+id="search"
 class="search"
-placeholder="Search by game, category or title..."
+placeholder="Search game, category, title or user..."
 oninput="searchPosts()"
 >
 
-<div
-id="posts"
-class="posts">
-</div>
+<div id="posts" class="posts"></div>
 
 </section>
 
-
-<!-- CHANNEL -->
 
 <section class="channel" id="channel">
 
@@ -568,99 +388,71 @@ class="posts">
 📺 My Channel
 </h2>
 
-<div
-id="channelHeader"
-class="channel-header">
+<div class="channel-header">
 
-<div class="avatar">
-🎮
-</div>
+<div class="avatar">🎮</div>
 
-<div class="channel-info">
-
-<h2 id="channelName">
-Guest Channel
-</h2>
-
-<p id="channelDescription">
-Login to create your own gaming channel.
+<div>
+<h2 id="channelName">Guest Channel</h2>
+<p id="channelDescription" style="color:#aeb5d1;margin-top:8px">
+Login to create your channel.
 </p>
-
 </div>
 
 </div>
 
 <br>
 
-<div
-id="channelPosts"
-class="posts">
-</div>
+<div id="channelPosts" class="posts"></div>
 
 </section>
 
 
-<footer>
-
-<p>🎮 KidGaming</p>
-
-<p style="margin-top:8px">
+<footer style="text-align:center;padding:40px;color:#858eaf">
+🎮 KidGaming
+<br><br>
 Create • Play • Share
-</p>
-
 </footer>
 
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 
-<div
-id="loginModal"
-class="modal-bg">
+<div id="loginModal" class="modal-bg">
 
 <div class="modal">
 
-<span
-class="close"
-onclick="closeModal('loginModal')">
-✕
-</span>
+<span class="close" onclick="closeModal('loginModal')">✕</span>
 
-<h2>
-👤 Login / Create Account
-</h2>
+<h2>👤 Login / Create Account</h2>
 
-<label>
-Username
-</label>
+<label>Username</label>
 
 <input
-id="usernameInput"
+id="username"
 class="input"
-placeholder="Choose a username"
+placeholder="Your username"
 maxlength="20"
 >
 
-<label>
-Password
-</label>
+<label>Password</label>
 
 <input
-id="passwordInput"
+id="password"
 class="input"
 type="password"
-placeholder="Choose a password"
+placeholder="Your password"
 >
 
 <button
 class="btn primary"
-style="width:100%"
+style="width:100%;margin-top:12px"
 onclick="login()">
 Login
 </button>
 
 <button
 class="btn secondary"
-style="width:100%"
+style="width:100%;margin-top:10px"
 onclick="createAccount()">
 Create Account
 </button>
@@ -670,82 +462,86 @@ Create Account
 </div>
 
 
-<!-- CREATE POST -->
+<!-- CREATE GAMEPLAY -->
 
-<div
-id="postModal"
-class="modal-bg">
+<div id="postModal" class="modal-bg">
 
 <div class="modal">
 
-<span
-class="close"
-onclick="closeModal('postModal')">
-✕
-</span>
+<span class="close" onclick="closeModal('postModal')">✕</span>
 
-<h2>
-🎮 Create Gameplay
-</h2>
+<h2>🎥 Upload Gameplay</h2>
 
-<label>
-Gameplay Title
-</label>
+<label>Title</label>
 
 <input
-id="postTitle"
+id="title"
 class="input"
-placeholder="Example: My first Fortnite win"
+placeholder="My awesome gameplay"
 maxlength="80"
 >
 
-<label>
-Game
-</label>
+<label>Game</label>
 
 <input
-id="postGame"
+id="game"
 class="input"
 placeholder="Write the game name"
 maxlength="40"
 >
 
-<label>
-Category
-</label>
+<label>Category</label>
 
 <input
-id="postCategory"
+id="category"
 class="input"
-placeholder="Example: Battle Royale"
+placeholder="Battle Royale, Racing, Survival..."
 maxlength="40"
 >
 
-<label>
-Description
-</label>
+<label>Description</label>
 
 <textarea
-id="postDescription"
+id="description"
 class="input"
 placeholder="Tell people about your gameplay..."
 maxlength="300"
 ></textarea>
 
-<label>
-Thumbnail Emoji
-</label>
+<label>🎥 Video</label>
 
 <input
-id="postEmoji"
-class="input"
-placeholder="🎮"
-maxlength="3"
+id="video"
+class="file-input"
+type="file"
+accept="video/*"
+onchange="previewVideo()"
+>
+
+<video
+id="videoPreview"
+class="preview"
+controls>
+</video>
+
+<label>🖼️ Thumbnail</label>
+
+<input
+id="thumbnail"
+class="file-input"
+type="file"
+accept="image/*"
+onchange="previewThumbnail()"
+>
+
+<img
+id="thumbnailPreview"
+class="preview"
 >
 
 <button
 class="btn primary"
-style="width:100%"
+style="width:100%;margin-top:18px"
 onclick="createGameplay()">
 🚀 POST GAMEPLAY
 </button>
@@ -755,819 +551,653 @@ onclick="createGameplay()">
 </div>
 
 
-<!-- TOAST -->
-
-<div
-id="toast"
-class="toast">
-</div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
-/* =========================
-   DATA
-========================= */
-
 let currentUser =
-    localStorage.getItem("kidgamingUser");
+localStorage.getItem("kidgamingUser");
 
 let posts =
-    JSON.parse(
-        localStorage.getItem("kidgamingPosts") || "[]"
-    );
+JSON.parse(
+localStorage.getItem("kidgamingPosts") || "[]"
+);
 
 
-/* =========================
-   START
-========================= */
+/* USER */
 
-updateUserUI();
+function updateUser(){
 
+const btn =
+document.getElementById("loginBtn");
+
+if(currentUser){
+
+btn.innerText="👤 "+currentUser;
+
+btn.onclick=()=>{
+
+myChannel();
+
+};
+
+document.getElementById("channelName")
+.innerText=currentUser+"'s Channel";
+
+document.getElementById("channelDescription")
+.innerText=
+"Gaming channel by "+currentUser;
+
+}else{
+
+btn.innerText="Login";
+btn.onclick=openLogin;
+
+}
+
+}
+
+updateUser();
 renderPosts();
 
 
-/* =========================
-   USER INTERFACE
-========================= */
-
-function updateUserUI(){
-
-    const button =
-        document.getElementById("loginButton");
-
-    if(currentUser){
-
-        button.innerText =
-            "👤 " + currentUser;
-
-        button.onclick =
-            toggleProfileMenu;
-
-        document.getElementById("channelName")
-            .innerText =
-            currentUser + "'s Channel";
-
-        document.getElementById("channelDescription")
-            .innerText =
-            "Welcome to " +
-            currentUser +
-            "'s gaming channel!";
-
-    }else{
-
-        button.innerText="Login";
-
-        button.onclick=openLogin;
-
-        document.getElementById("channelName")
-            .innerText="Guest Channel";
-
-        document.getElementById("channelDescription")
-            .innerText=
-            "Login to create your own gaming channel.";
-
-    }
-
-}
-
-
-/* =========================
-   LOGIN
-========================= */
+/* LOGIN */
 
 function openLogin(){
 
-    document
-        .getElementById("loginModal")
-        .style.display="flex";
+document.getElementById("loginModal")
+.style.display="flex";
 
 }
 
-
 function login(){
 
-    const username =
-        document.getElementById("usernameInput")
-        .value
-        .trim();
+let username=
+document.getElementById("username").value.trim();
 
-    const password =
-        document.getElementById("passwordInput")
-        .value;
+let password=
+document.getElementById("password").value;
 
-    if(!username || !password){
+if(!username||!password){
 
-        toast("Enter username and password!");
+toast("Enter username and password!");
 
-        return;
-    }
+return;
 
-    const saved =
-        JSON.parse(
-            localStorage.getItem(
-                "account_"+username
-            )
-        );
+}
 
-    if(!saved){
+let account=
+localStorage.getItem("account_"+username);
 
-        toast("Account doesn't exist. Create one!");
+if(!account){
 
-        return;
-    }
+toast("Account not found!");
 
-    if(saved.password !== password){
+return;
 
-        toast("Wrong password!");
+}
 
-        return;
-    }
+account=JSON.parse(account);
 
-    currentUser=username;
+if(account.password!==password){
 
-    localStorage.setItem(
-        "kidgamingUser",
-        currentUser
-    );
+toast("Wrong password!");
 
-    closeModal("loginModal");
+return;
 
-    updateUserUI();
+}
 
-    toast(
-        "Welcome back, " +
-        currentUser +
-        "! 🎮"
-    );
+currentUser=username;
+
+localStorage.setItem(
+"kidgamingUser",
+username
+);
+
+closeModal("loginModal");
+
+updateUser();
+
+toast("Welcome "+username+"! 🎮");
 
 }
 
 
 function createAccount(){
 
-    const username =
-        document.getElementById("usernameInput")
-        .value
-        .trim();
+let username=
+document.getElementById("username").value.trim();
 
-    const password =
-        document.getElementById("passwordInput")
-        .value;
+let password=
+document.getElementById("password").value;
 
-    if(!username || !password){
+if(username.length<3||!password){
 
-        toast("Fill in username and password!");
+toast("Choose a username and password!");
 
-        return;
-    }
+return;
 
-    if(username.length < 3){
+}
 
-        toast("Username must be at least 3 characters.");
+if(localStorage.getItem("account_"+username)){
 
-        return;
-    }
+toast("Username already exists!");
 
-    const key =
-        "account_"+username;
+return;
 
-    if(localStorage.getItem(key)){
+}
 
-        toast("That username already exists!");
+localStorage.setItem(
+"account_"+username,
+JSON.stringify({
+username:username,
+password:password
+})
+);
 
-        return;
-    }
+currentUser=username;
 
-    localStorage.setItem(
-        key,
-        JSON.stringify({
-            username:username,
-            password:password
-        })
-    );
+localStorage.setItem(
+"kidgamingUser",
+username
+);
 
-    currentUser=username;
+closeModal("loginModal");
 
-    localStorage.setItem(
-        "kidgamingUser",
-        username
-    );
+updateUser();
 
-    closeModal("loginModal");
-
-    updateUserUI();
-
-    toast(
-        "Account created! 🎉"
-    );
+toast("Account created! 🎉");
 
 }
 
 
-function logout(){
+/* UPLOAD */
 
-    currentUser=null;
+function openPost(){
 
-    localStorage.removeItem(
-        "kidgamingUser"
-    );
+if(!currentUser){
 
-    document
-        .getElementById("profileMenu")
-        .style.display="none";
+toast("Login first!");
 
-    updateUserUI();
+openLogin();
 
-    toast("Logged out!");
+return;
+
+}
+
+document.getElementById("postModal")
+.style.display="flex";
 
 }
 
 
-/* =========================
-   PROFILE MENU
-========================= */
+/* VIDEO PREVIEW */
 
-function toggleProfileMenu(){
+function previewVideo(){
 
-    const menu =
-        document.getElementById("profileMenu");
+const file=
+document.getElementById("video").files[0];
 
-    menu.style.display =
-        menu.style.display==="block"
-        ? "none"
-        : "block";
+if(!file)return;
+
+const preview=
+document.getElementById("videoPreview");
+
+preview.src=
+URL.createObjectURL(file);
+
+preview.style.display="block";
+
+}
+
+
+/* THUMBNAIL PREVIEW */
+
+function previewThumbnail(){
+
+const file=
+document.getElementById("thumbnail").files[0];
+
+if(!file)return;
+
+const preview=
+document.getElementById("thumbnailPreview");
+
+preview.src=
+URL.createObjectURL(file);
+
+preview.style.display="block";
 
 }
 
 
-/* =========================
-   CREATE GAMEPLAY
-========================= */
-
-function openPostModal(){
-
-    if(!currentUser){
-
-        toast("Login first to create gameplay!");
-
-        openLogin();
-
-        return;
-    }
-
-    document
-        .getElementById("postModal")
-        .style.display="flex";
-
-}
-
+/* CREATE POST */
 
 function createGameplay(){
 
-    if(!currentUser){
+const title=
+document.getElementById("title").value.trim();
 
-        toast("Login first!");
+const game=
+document.getElementById("game").value.trim();
 
-        return;
-    }
+const category=
+document.getElementById("category").value.trim();
 
-    const title =
-        document.getElementById("postTitle")
-        .value
-        .trim();
+const description=
+document.getElementById("description").value.trim();
 
-    const game =
-        document.getElementById("postGame")
-        .value
-        .trim();
+const videoFile=
+document.getElementById("video").files[0];
 
-    const category =
-        document.getElementById("postCategory")
-        .value
-        .trim();
-
-    const description =
-        document.getElementById("postDescription")
-        .value
-        .trim();
-
-    const emoji =
-        document.getElementById("postEmoji")
-        .value
-        .trim() || "🎮";
+const thumbnailFile=
+document.getElementById("thumbnail").files[0];
 
 
-    if(!title ||
-       !game ||
-       !category ||
-       !description){
+if(!title||!game||!category||!description){
 
-        toast("Fill in all fields!");
+toast("Fill in all fields!");
 
-        return;
-    }
+return;
 
+}
 
-    const newPost={
+if(!videoFile){
 
-        id:Date.now(),
+toast("Choose a video!");
 
-        author:currentUser,
-
-        title:title,
-
-        game:game,
-
-        category:category,
-
-        description:description,
-
-        emoji:emoji,
-
-        likes:0,
-
-        liked:false,
-
-        date:new Date().toLocaleDateString()
-
-    };
-
-
-    posts.unshift(newPost);
-
-    savePosts();
-
-    renderPosts();
-
-    renderChannel();
-
-    closeModal("postModal");
-
-    clearPostForm();
-
-    toast(
-        "Gameplay posted! 🚀"
-    );
+return;
 
 }
 
 
-function clearPostForm(){
+/*
+IMPORTANT:
+The video is stored as a temporary browser URL.
+*/
 
-    document.getElementById("postTitle").value="";
-    document.getElementById("postGame").value="";
-    document.getElementById("postCategory").value="";
-    document.getElementById("postDescription").value="";
-    document.getElementById("postEmoji").value="";
+const videoURL=
+URL.createObjectURL(videoFile);
+
+let thumbnailURL="";
+
+if(thumbnailFile){
+
+thumbnailURL=
+URL.createObjectURL(thumbnailFile);
+
+}
+
+
+const post={
+
+id:Date.now(),
+
+author:currentUser,
+
+title:title,
+
+game:game,
+
+category:category,
+
+description:description,
+
+video:videoURL,
+
+thumbnail:thumbnailURL,
+
+likes:0,
+
+date:new Date().toLocaleDateString()
+
+};
+
+
+posts.unshift(post);
+
+try{
+
+localStorage.setItem(
+"kidgamingPosts",
+JSON.stringify(posts)
+);
+
+}catch(e){
+
+toast("Video is too large for browser storage!");
+
+return;
+
+}
+
+renderPosts();
+
+renderChannel();
+
+closeModal("postModal");
+
+clearForm();
+
+toast("Gameplay posted! 🎥🔥");
 
 }
 
 
-/* =========================
-   POSTS
-========================= */
-
-function savePosts(){
-
-    localStorage.setItem(
-        "kidgamingPosts",
-        JSON.stringify(posts)
-    );
-
-}
-
+/* POSTS */
 
 function renderPosts(){
 
-    const container =
-        document.getElementById("posts");
+const container=
+document.getElementById("posts");
 
-    if(posts.length===0){
+if(posts.length===0){
 
-        container.innerHTML=`
+container.innerHTML=`
 
-        <div class="empty">
+<div class="empty">
 
-            <h2>No gameplay yet 🎮</h2>
+<h2>No gameplay yet 🎮</h2>
 
-            <p style="margin-top:10px">
-            Be the first person to post gameplay!
-            </p>
+<p style="margin-top:10px">
+Be the first to upload a gameplay!
+</p>
 
-            <button
-            class="btn primary"
-            style="margin-top:20px"
-            onclick="openPostModal()">
+</div>
 
-            Create Gameplay
+`;
 
-            </button>
+return;
 
-        </div>
+}
 
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        posts.map(post => postHTML(post))
-        .join("");
+container.innerHTML=
+posts.map(postHTML).join("");
 
 }
 
 
 function postHTML(post){
 
-    return `
+return `
 
-    <div class="post-card">
+<div class="post-card">
 
-        <div class="thumbnail">
-            ${escapeHTML(post.emoji)}
-        </div>
+${
+post.thumbnail
+?
+`<video
+class="post-video"
+controls
+poster="${post.thumbnail}"
+src="${post.video}">
+</video>`
+:
+`<video
+class="post-video"
+controls
+src="${post.video}">
+</video>`
+}
 
-        <div class="post-content">
+<div class="post-content">
 
-            <h3>
-                ${escapeHTML(post.title)}
-            </h3>
+<h3>
+${escapeHTML(post.title)}
+</h3>
 
-            <div class="meta">
+<div class="meta">
 
-                🎮 ${escapeHTML(post.game)}
-                <br>
+🎮 ${escapeHTML(post.game)}
+<br>
 
-                🏷️ ${escapeHTML(post.category)}
+🏷️ ${escapeHTML(post.category)}
+<br>
 
-                <br>
+👤 ${escapeHTML(post.author)}
+<br>
 
-                👤
-                <span
-                class="channel-link"
-                onclick="openUserChannel('${escapeHTML(post.author)}')">
+📅 ${escapeHTML(post.date)}
 
-                ${escapeHTML(post.author)}
+</div>
 
-                </span>
+<p class="description">
+${escapeHTML(post.description)}
+</p>
 
-                • ${escapeHTML(post.date)}
+<div class="post-actions">
 
-            </div>
+<button
+class="like-btn"
+onclick="likePost(${post.id})">
+❤️ ${post.likes}
+</button>
 
-            <p class="description">
-                ${escapeHTML(post.description)}
-            </p>
+<span style="color:#858eaf">
+Gameplay
+</span>
 
-            <div class="post-actions">
+</div>
 
-                <button
-                class="like-btn"
-                onclick="likePost(${post.id})">
+</div>
 
-                ❤️ ${post.likes}
+</div>
 
-                </button>
-
-                <span
-                style="color:#858eaf">
-
-                Gameplay
-
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    `;
+`;
 
 }
 
-
-/* =========================
-   LIKE
-========================= */
 
 function likePost(id){
 
-    const post =
-        posts.find(p=>p.id===id);
+let post=
+posts.find(p=>p.id===id);
 
-    if(!post) return;
+if(!post)return;
 
-    post.likes++;
+post.likes++;
 
-    savePosts();
+savePosts();
 
-    renderPosts();
+renderPosts();
 
-    renderChannel();
-
-    toast("Liked! ❤️");
+renderChannel();
 
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 function searchPosts(){
 
-    const query =
-        document
-        .getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+let q=
+document.getElementById("search")
+.value
+.toLowerCase();
 
+let filtered=
+posts.filter(post=>
 
-    const filtered =
-        posts.filter(post =>
+post.title.toLowerCase().includes(q)||
+post.game.toLowerCase().includes(q)||
+post.category.toLowerCase().includes(q)||
+post.author.toLowerCase().includes(q)
 
-            post.title.toLowerCase().includes(query) ||
+);
 
-            post.game.toLowerCase().includes(query) ||
-
-            post.category.toLowerCase().includes(query) ||
-
-            post.author.toLowerCase().includes(query)
-
-        );
-
-
-    const container =
-        document.getElementById("posts");
-
-
-    if(filtered.length===0){
-
-        container.innerHTML=`
-
-        <div class="empty">
-
-            <h2>No results 🔎</h2>
-
-            <p style="margin-top:10px">
-            Try another game, category or username.
-            </p>
-
-        </div>
-
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        filtered
-        .map(post=>postHTML(post))
-        .join("");
+document.getElementById("posts")
+.innerHTML=
+filtered.length
+?
+filtered.map(postHTML).join("")
+:
+`<div class="empty">
+<h2>No results 🔎</h2>
+</div>`;
 
 }
 
 
-/* =========================
-   CHANNEL
-========================= */
+/* CHANNEL */
 
-function showChannel(){
+function myChannel(){
 
-    document
-        .getElementById("channel")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+document.getElementById("channel")
+.scrollIntoView({
+behavior:"smooth"
+});
 
-    renderChannel();
+renderChannel();
 
 }
 
 
 function renderChannel(){
 
-    const container =
-        document.getElementById("channelPosts");
+const container=
+document.getElementById("channelPosts");
 
+if(!currentUser){
 
-    if(!currentUser){
+container.innerHTML=`
 
-        container.innerHTML=`
+<div class="empty">
 
-        <div class="empty">
+<h2>Login to see your channel 👤</h2>
 
-            <h2>You're not logged in 👤</h2>
+</div>
 
-            <p style="margin-top:10px">
-            Login to see your channel.
-            </p>
+`;
 
-        </div>
+return;
 
-        `;
+}
 
-        return;
-    }
+let mine=
+posts.filter(
+p=>p.author===currentUser
+);
 
+if(mine.length===0){
 
-    const myPosts =
-        posts.filter(
-            post =>
-            post.author === currentUser
-        );
+container.innerHTML=`
 
+<div class="empty">
 
-    if(myPosts.length===0){
+<h2>Your channel is empty 🎮</h2>
 
-        container.innerHTML=`
+<p style="margin-top:10px">
+Upload your first gameplay!
+</p>
 
-        <div class="empty">
+</div>
 
-            <h2>Your channel is empty 🎮</h2>
+`;
 
-            <p style="margin-top:10px">
-            Create your first gameplay!
-            </p>
+return;
 
-            <button
-            class="btn primary"
-            style="margin-top:20px"
-            onclick="openPostModal()">
+}
 
-            + Create Gameplay
-
-            </button>
-
-        </div>
-
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        myPosts
-        .map(post=>postHTML(post))
-        .join("");
+container.innerHTML=
+mine.map(postHTML).join("");
 
 }
 
 
-/* =========================
-   OTHER CHANNEL
-========================= */
+/* NAVIGATION */
 
-function openUserChannel(username){
+function home(){
 
-    document
-        .getElementById("channel")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+document.getElementById("home")
+.scrollIntoView({
+behavior:"smooth"
+});
 
+}
 
-    const channelPosts =
-        posts.filter(
-            post =>
-            post.author === username
-        );
+function latest(){
 
-
-    document.getElementById("channelName")
-        .innerText =
-        username + "'s Channel";
-
-
-    document.getElementById("channelDescription")
-        .innerText =
-        "Gaming channel by " +
-        username;
-
-
-    const container =
-        document.getElementById("channelPosts");
-
-
-    if(channelPosts.length===0){
-
-        container.innerHTML=`
-
-        <div class="empty">
-        This channel has no gameplay yet.
-        </div>
-
-        `;
-
-        return;
-    }
-
-
-    container.innerHTML =
-        channelPosts
-        .map(post=>postHTML(post))
-        .join("");
+document.getElementById("latest")
+.scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* SAVE */
 
-function goHome(){
+function savePosts(){
 
-    document
-        .getElementById("home")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+try{
 
-}
+localStorage.setItem(
+"kidgamingPosts",
+JSON.stringify(posts)
+);
 
-
-function showLatest(){
-
-    document
-        .getElementById("latest")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+}catch(e){}
 
 }
 
 
-/* =========================
-   MODALS
-========================= */
+/* CLEAR */
+
+function clearForm(){
+
+document.getElementById("title").value="";
+document.getElementById("game").value="";
+document.getElementById("category").value="";
+document.getElementById("description").value="";
+document.getElementById("video").value="";
+document.getElementById("thumbnail").value="";
+
+document.getElementById("videoPreview").style.display="none";
+document.getElementById("thumbnailPreview").style.display="none";
+
+}
+
+
+/* MODAL */
 
 function closeModal(id){
 
-    document
-        .getElementById(id)
-        .style.display="none";
+document.getElementById(id)
+.style.display="none";
 
 }
 
 
-window.onclick=function(event){
+/* TOAST */
 
-    document
-    .querySelectorAll(".modal-bg")
-    .forEach(modal=>{
+function toast(text){
 
-        if(event.target===modal){
+const t=
+document.getElementById("toast");
 
-            modal.style.display="none";
+t.innerText=text;
+t.style.display="block";
 
-        }
+setTimeout(()=>{
 
-    });
+t.style.display="none";
 
-};
-
-
-/* =========================
-   TOAST
-========================= */
-
-function toast(message){
-
-    const box =
-        document.getElementById("toast");
-
-    box.innerText=message;
-
-    box.style.display="block";
-
-
-    setTimeout(()=>{
-
-        box.style.display="none";
-
-    },2500);
+},2500);
 
 }
 
 
-/* =========================
-   SECURITY
-========================= */
+/* ESCAPE HTML */
 
 function escapeHTML(text){
 
-    const div =
-        document.createElement("div");
+const div=
+document.createElement("div");
 
-    div.textContent=text;
+div.textContent=text;
 
-    return div.innerHTML;
+return div.innerHTML;
 
 }
 
