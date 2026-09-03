@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KidGaming</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
 body{background:#0f0f0f;color:#fff}
@@ -31,10 +33,12 @@ height:40px;width:min(480px,42vw);margin:auto;
 display:flex;background:#121212;border:1px solid #3d3d3d;
 border-radius:22px;overflow:hidden
 }
+
 .searchBox input{
 flex:1;background:transparent;border:0;outline:0;color:#fff;
 padding:0 18px
 }
+
 .searchBox button{
 width:55px;background:#272727;border:0;color:#fff
 }
@@ -63,7 +67,10 @@ width:100%;background:transparent;border:0;color:#ddd;
 text-align:left;padding:13px 15px;border-radius:10px;
 margin-bottom:4px
 }
-.sideBtn:hover,.sideBtn.active{background:#272727;color:#fff}
+
+.sideBtn:hover,.sideBtn.active{
+background:#272727;color:#fff
+}
 
 .content{
 margin-left:220px;width:calc(100% - 220px);
@@ -79,29 +86,42 @@ display:flex;align-items:center;
 background:linear-gradient(120deg,#21134f,#5b166f,#ed1760);
 margin-bottom:35px
 }
+
 .hero h1{font-size:46px;margin-bottom:12px}
-.hero p{max-width:650px;color:#ddd;line-height:1.6;font-size:17px}
-.heroBtns{display:flex;gap:10px;margin-top:23px}
+
+.hero p{
+max-width:650px;color:#ddd;
+line-height:1.6;font-size:17px
+}
+
+.heroBtns{
+display:flex;gap:10px;margin-top:23px
+}
 
 .redBtn{
 background:#ff245f;color:#fff;border:0;
 padding:12px 20px;border-radius:9px;font-weight:bold
 }
+
 .whiteBtn{
 background:#fff;color:#111;border:0;
 padding:12px 20px;border-radius:9px;font-weight:bold
 }
+
 .grayBtn{
 background:#272727;color:#fff;border:0;
 padding:11px 17px;border-radius:9px
 }
+
 .grayBtn:hover{background:#3b3b3b}
 
 .section{margin-top:32px}
+
 .sectionHead{
-display:flex;justify-content:space-between;align-items:center;
-margin-bottom:18px
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:18px
 }
+
 .sectionHead h2{font-size:24px}
 
 .videoGrid{
@@ -114,51 +134,73 @@ gap:28px 18px
 
 .thumbnail{
 width:100%;aspect-ratio:16/9;
-background:#222;border-radius:11px;overflow:hidden;
-position:relative;cursor:pointer
+background:#222;border-radius:11px;
+overflow:hidden;position:relative;cursor:pointer
 }
 
 .thumbnail img{
-width:100%;height:100%;object-fit:cover;
-display:block;transition:.2s
+width:100%;height:100%;
+object-fit:cover;display:block;
+transition:.2s
 }
-.thumbnail:hover img{transform:scale(1.035)}
+
+.thumbnail:hover img{
+transform:scale(1.035)
+}
 
 .play{
 position:absolute;inset:0;display:flex;
 align-items:center;justify-content:center;
-opacity:0;background:rgba(0,0,0,.35);transition:.2s
+opacity:0;background:rgba(0,0,0,.35);
+transition:.2s
 }
+
 .thumbnail:hover .play{opacity:1}
 
 .playCircle{
 width:60px;height:60px;border-radius:50%;
-background:#fff;color:#111;display:flex;
-align-items:center;justify-content:center;
+background:#fff;color:#111;
+display:flex;align-items:center;
+justify-content:center;
 font-size:23px;padding-left:4px
 }
 
 .placeholder{
 width:100%;height:100%;
-display:flex;align-items:center;justify-content:center;
-font-size:55px
+display:flex;align-items:center;
+justify-content:center;font-size:55px
 }
 
-.cardInfo{display:flex;gap:12px;padding-top:11px}
+.cardInfo{
+display:flex;gap:12px;padding-top:11px
+}
+
 .cardAvatar{
 width:38px;height:38px;border-radius:50%;
 overflow:hidden;background:#ff245f;
-display:flex;align-items:center;justify-content:center;
-flex:none
+display:flex;align-items:center;
+justify-content:center;flex:none
 }
-.cardAvatar img{width:100%;height:100%;object-fit:cover}
+
+.cardAvatar img{
+width:100%;height:100%;object-fit:cover
+}
+
 .cardText{min-width:0}
+
 .title{
 font-weight:bold;line-height:1.35;
-display:-webkit-box;-webkit-line-clamp:2;
--webkit-box-orient:vertical;overflow:hidden
+display:-webkit-box;
+-webkit-line-clamp:2;
+-webkit-box-orient:vertical;
+overflow:hidden
 }
-.meta{font-size:13px;color:#aaa;line-height:1.6;margin-top:5px}
+
+.meta{
+font-size:13px;color:#aaa;
+line-height:1.6;margin-top:5px
+}
+
 .author{cursor:pointer}
 .author:hover{color:#fff}
 
@@ -174,34 +216,58 @@ border-radius:15px;grid-column:1/-1
 background:#181818;border-radius:16px;
 overflow:hidden;margin-bottom:25px
 }
+
 .channelBanner{
 height:250px;background-size:cover;
 background-position:center
 }
+
 .channelInfo{
-display:flex;align-items:center;gap:18px;padding:18px 25px
+display:flex;align-items:center;
+gap:18px;padding:18px 25px
 }
+
 .channelAvatar{
-width:105px;height:105px;border-radius:50%;
-border:5px solid #181818;margin-top:-65px;
-background:#ff245f;overflow:hidden;flex:none;
-display:flex;align-items:center;justify-content:center;
-font-size:40px
+width:105px;height:105px;
+border-radius:50%;
+border:5px solid #181818;
+margin-top:-65px;background:#ff245f;
+overflow:hidden;flex:none;
+display:flex;align-items:center;
+justify-content:center;font-size:40px
 }
-.channelAvatar img{width:100%;height:100%;object-fit:cover}
-.channelName{font-size:28px;font-weight:bold}
-.handle{color:#aaa;margin-top:4px}
-.bio{color:#ccc;margin-top:8px}
-.channelAction{margin-left:auto}
+
+.channelAvatar img{
+width:100%;height:100%;object-fit:cover
+}
+
+.channelName{
+font-size:28px;font-weight:bold
+}
+
+.handle{
+color:#aaa;margin-top:4px
+}
+
+.bio{
+color:#ccc;margin-top:8px
+}
+
+.channelAction{
+margin-left:auto
+}
 
 .tabs{
 display:flex;border-top:1px solid #303030;
 padding:0 20px;overflow:auto
 }
+
 .tabs button{
-background:transparent;border:0;color:#aaa;
-padding:16px 20px;white-space:nowrap
+background:transparent;border:0;
+color:#aaa;padding:16px 20px;
+white-space:nowrap
 }
+
 .tabs button.active{
 color:#fff;border-bottom:3px solid #fff
 }
@@ -209,101 +275,159 @@ color:#fff;border-bottom:3px solid #fff
 /* STUDIO */
 
 .studio{
-display:grid;grid-template-columns:210px 1fr;gap:20px
+display:grid;
+grid-template-columns:210px 1fr;
+gap:20px
 }
+
 .studioSide{
-background:#181818;border:1px solid #303030;
-border-radius:14px;padding:10px;height:max-content
+background:#181818;
+border:1px solid #303030;
+border-radius:14px;padding:10px;
+height:max-content
 }
+
 .studioSide button{
-width:100%;background:transparent;border:0;color:#bbb;
-text-align:left;padding:13px;border-radius:8px
+width:100%;background:transparent;
+border:0;color:#bbb;text-align:left;
+padding:13px;border-radius:8px
 }
-.studioSide button:hover,.studioSide button.active{
+
+.studioSide button:hover,
+.studioSide button.active{
 background:#292929;color:#fff
 }
 
 .panel{
-background:#181818;border:1px solid #303030;
+background:#181818;
+border:1px solid #303030;
 border-radius:15px;padding:24px
 }
 
 .stats{
-display:grid;grid-template-columns:repeat(4,1fr);
+display:grid;
+grid-template-columns:repeat(4,1fr);
 gap:15px;margin-bottom:20px
 }
+
 .stat{
-background:#181818;border:1px solid #303030;
+background:#181818;
+border:1px solid #303030;
 border-radius:14px;padding:22px
 }
-.statNumber{font-size:30px;font-weight:bold}
-.statLabel{color:#999;margin-top:5px}
+
+.statNumber{
+font-size:30px;font-weight:bold
+}
+
+.statLabel{
+color:#999;margin-top:5px
+}
 
 /* MODALS */
 
 .modal{
 display:none;position:fixed;inset:0;
 background:rgba(0,0,0,.82);
-z-index:5000;align-items:center;justify-content:center;
-padding:20px
+z-index:5000;align-items:center;
+justify-content:center;padding:20px
 }
+
 .modal.active{display:flex}
+
 .modalBox{
 background:#181818;border:1px solid #333;
 border-radius:16px;width:min(650px,100%);
 max-height:92vh;overflow:auto;padding:25px
 }
+
 .modalBox h2{margin-bottom:20px}
+
 .close{
 float:right;background:#292929;color:#fff;
-border:0;border-radius:50%;width:34px;height:34px
+border:0;border-radius:50%;
+width:34px;height:34px
 }
 
 .formGroup{margin-bottom:16px}
-.formGroup label{
-display:block;color:#ddd;font-size:14px;margin-bottom:7px
-}
-.formGroup input,.formGroup textarea,.formGroup select{
-width:100%;background:#0f0f0f;color:#fff;
-border:1px solid #3b3b3b;border-radius:9px;
-padding:12px;outline:0
-}
-.formGroup textarea{min-height:110px;resize:vertical}
 
-.typeSelector{display:flex;gap:10px}
-.type{
-flex:1;text-align:center;background:#252525;
-border:1px solid #444;border-radius:9px;padding:13px
+.formGroup label{
+display:block;color:#ddd;
+font-size:14px;margin-bottom:7px
 }
-.type.active{background:#421529;border-color:#ff245f}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select{
+width:100%;background:#0f0f0f;
+color:#fff;border:1px solid #3b3b3b;
+border-radius:9px;padding:12px;outline:0
+}
+
+.formGroup textarea{
+min-height:110px;resize:vertical
+}
+
+.typeSelector{
+display:flex;gap:10px
+}
+
+.type{
+flex:1;text-align:center;
+background:#252525;border:1px solid #444;
+border-radius:9px;padding:13px
+}
+
+.type.active{
+background:#421529;
+border-color:#ff245f
+}
 
 .gallery{
-display:grid;grid-template-columns:repeat(4,1fr);gap:12px
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px
 }
+
 .galleryItem{
-aspect-ratio:1;background:#222;border:2px solid transparent;
-border-radius:12px;overflow:hidden;cursor:pointer;
-display:flex;align-items:center;justify-content:center
+aspect-ratio:1;background:#222;
+border:2px solid transparent;
+border-radius:12px;overflow:hidden;
+cursor:pointer;display:flex;
+align-items:center;justify-content:center
 }
-.galleryItem.selected{border-color:#ff245f}
-.galleryItem img{width:100%;height:100%;object-fit:cover}
-.galleryEmoji{font-size:42px}
+
+.galleryItem.selected{
+border-color:#ff245f
+}
+
+.galleryItem img{
+width:100%;height:100%;object-fit:cover
+}
 
 .preview{
-border-radius:12px;overflow:hidden;background:#222;
-margin:15px 0
+border-radius:12px;overflow:hidden;
+background:#222;margin:15px 0
 }
+
 .previewBanner{height:100px}
+
 .previewBottom{
-display:flex;align-items:center;gap:10px;padding:10px
+display:flex;align-items:center;
+gap:10px;padding:10px
 }
+
 .previewAvatar{
-width:55px;height:55px;border-radius:50%;
-border:3px solid #222;background:#ff245f;
-overflow:hidden;display:flex;align-items:center;
+width:55px;height:55px;
+border-radius:50%;border:3px solid #222;
+background:#ff245f;overflow:hidden;
+display:flex;align-items:center;
 justify-content:center;font-size:25px
 }
-.previewAvatar img{width:100%;height:100%;object-fit:cover}
+
+.previewAvatar img{
+width:100%;height:100%;object-fit:cover
+}
 
 /* PLAYER */
 
@@ -311,23 +435,75 @@ justify-content:center;font-size:25px
 width:min(1050px,100%);
 background:#080808
 }
+
 .player{
-width:100%;max-height:70vh;
+width:100%;max-height:65vh;
 background:#000;border-radius:8px
 }
-.playerTitle{font-size:22px;font-weight:bold;margin-top:15px}
-.playerMeta{color:#aaa;margin-top:7px}
-.playerDescription{color:#ccc;white-space:pre-wrap;line-height:1.6;margin-top:14px}
 
-.deleteBtn{
-background:#3a1515;color:#ff7777;border:1px solid #6b2525;
-padding:8px 12px;border-radius:8px;margin-top:10px
+.playerTitle{
+font-size:22px;font-weight:bold;
+margin-top:15px
+}
+
+.playerMeta{
+color:#aaa;margin-top:7px
+}
+
+.playerDescription{
+color:#ccc;white-space:pre-wrap;
+line-height:1.6;margin-top:14px
+}
+
+.playerActions{
+display:flex;gap:10px;
+margin-top:15px;flex-wrap:wrap
+}
+
+.actionBtn{
+background:#272727;color:#fff;
+border:0;padding:10px 15px;
+border-radius:9px
+}
+
+.actionBtn:hover{
+background:#3b3b3b
+}
+
+.comments{
+margin-top:25px;
+border-top:1px solid #333;
+padding-top:20px
+}
+
+.comment{
+background:#202020;
+padding:12px;border-radius:9px;
+margin-top:10px
+}
+
+.commentName{
+font-weight:bold
+}
+
+.commentText{
+color:#ddd;margin-top:5px;
+white-space:pre-wrap
 }
 
 .notice{
-background:#211b31;border:1px solid #49376b;
-padding:14px;border-radius:10px;color:#ddd;
-line-height:1.5;margin-bottom:18px
+background:#211b31;
+border:1px solid #49376b;
+padding:14px;border-radius:10px;
+color:#ddd;line-height:1.5;
+margin-bottom:18px
+}
+
+.error{
+background:#351818;
+border:1px solid #6b2525;
+padding:12px;border-radius:9px;
+color:#ff9999;margin-bottom:15px
 }
 
 .hidden{display:none!important}
@@ -335,7 +511,10 @@ line-height:1.5;margin-bottom:18px
 @media(max-width:900px){
 .sidebar{width:70px}
 .sidebar .sideText{display:none}
-.content{margin-left:70px;width:calc(100% - 70px)}
+.content{
+margin-left:70px;
+width:calc(100% - 70px)
+}
 .searchBox{width:40vw}
 .stats{grid-template-columns:repeat(2,1fr)}
 .studio{grid-template-columns:1fr}
@@ -367,11 +546,13 @@ Kid<span>Gaming</span>
 </div>
 
 <div class="searchBox">
-<input id="search" placeholder="Search">
+<input id="search" placeholder="Search"
+onkeydown="if(event.key==='Enter')searchVideos()">
 <button onclick="searchVideos()">🔍</button>
 </div>
 
-<select id="language" class="lang" onchange="changeLanguage()">
+<select id="language" class="lang"
+onchange="changeLanguage()">
 <option value="en">EN</option>
 <option value="ro">RO</option>
 <option value="de">DE</option>
@@ -380,40 +561,41 @@ Kid<span>Gaming</span>
 <option value="it">IT</option>
 </select>
 
-<button id="loginButton" class="loginBtn" onclick="openLogin()">
+<button id="loginButton"
+class="loginBtn"
+onclick="openLogin()">
 Login
 </button>
 
 </header>
 
-
 <div class="layout">
 
 <aside class="sidebar">
 
-<button class="sideBtn active" onclick="showPage('home')">
-🏠 <span class="sideText" data-i18n="home">Home</span>
+<button class="sideBtn active"
+onclick="showPage('home')">
+🏠 <span class="sideText">Home</span>
 </button>
 
-<button class="sideBtn" onclick="showPage('trailers')">
-🎬 <span class="sideText" data-i18n="trailers">Trailers</span>
+<button class="sideBtn"
+onclick="showPage('trailers')">
+🎬 <span class="sideText">Trailers</span>
 </button>
 
-<button class="sideBtn" onclick="showPage('gameplay')">
-🎮 <span class="sideText" data-i18n="gameplay">Gameplay</span>
+<button class="sideBtn"
+onclick="showPage('gameplay')">
+🎮 <span class="sideText">Gameplay</span>
 </button>
 
-<button class="sideBtn" onclick="showMyChannel()">
-📺 <span class="sideText" data-i18n="myChannel">My Channel</span>
+<button class="sideBtn"
+onclick="showMyChannel()">
+📺 <span class="sideText">My Channel</span>
 </button>
 
 </aside>
 
-
 <main class="content">
-
-
-<!-- HOME -->
 
 <section id="home" class="page active">
 
@@ -423,18 +605,21 @@ Login
 
 <h1>🎮 KidGaming</h1>
 
-<p data-i18n="hero">
-Watch gaming videos, discover trailers and create your own gaming channel.
+<p>
+Watch gaming videos, discover trailers
+and create your own gaming channel.
 </p>
 
 <div class="heroBtns">
 
-<button class="whiteBtn" onclick="showPage('trailers')">
-▶ <span data-i18n="watchTrailers">Watch Trailers</span>
+<button class="whiteBtn"
+onclick="showPage('trailers')">
+▶ Watch Trailers
 </button>
 
-<button class="grayBtn" onclick="showMyChannel()">
-📺 <span data-i18n="myChannel">My Channel</span>
+<button class="grayBtn"
+onclick="showMyChannel()">
+📺 My Channel
 </button>
 
 </div>
@@ -442,41 +627,40 @@ Watch gaming videos, discover trailers and create your own gaming channel.
 </div>
 
 </div>
-
 
 <div class="section">
 
 <div class="sectionHead">
-<h2>🎬 <span data-i18n="featuredTrailers">Featured Trailers</span></h2>
+<h2>🎬 Featured Trailers</h2>
 
-<button class="grayBtn" onclick="showPage('trailers')">
+<button class="grayBtn"
+onclick="showPage('trailers')">
 See all
 </button>
 </div>
 
-<div id="homeTrailers" class="videoGrid"></div>
+<div id="homeTrailers"
+class="videoGrid"></div>
 
 </div>
-
 
 <div class="section">
 
 <div class="sectionHead">
-<h2>🎮 <span data-i18n="latestGameplay">Latest Gameplay</span></h2>
+<h2>🎮 Latest Gameplay</h2>
 
-<button class="grayBtn" onclick="showPage('gameplay')">
+<button class="grayBtn"
+onclick="showPage('gameplay')">
 See all
 </button>
 </div>
 
-<div id="homeGameplay" class="videoGrid"></div>
+<div id="homeGameplay"
+class="videoGrid"></div>
 
 </div>
 
 </section>
-
-
-<!-- TRAILERS -->
 
 <section id="trailers" class="page">
 
@@ -484,18 +668,17 @@ See all
 
 <h1>🎬 Trailers</h1>
 
-<button class="redBtn" onclick="openUpload('trailer')">
+<button class="redBtn"
+onclick="openUpload('trailer')">
 + Upload Trailer
 </button>
 
 </div>
 
-<div id="trailersGrid" class="videoGrid"></div>
+<div id="trailersGrid"
+class="videoGrid"></div>
 
 </section>
-
-
-<!-- GAMEPLAY -->
 
 <section id="gameplay" class="page">
 
@@ -503,63 +686,74 @@ See all
 
 <h1>🎮 Gameplay</h1>
 
-<button class="redBtn" onclick="openUpload('video')">
+<button class="redBtn"
+onclick="openUpload('video')">
 + Upload Gameplay
 </button>
 
 </div>
 
-<div id="gameplayGrid" class="videoGrid"></div>
+<div id="gameplayGrid"
+class="videoGrid"></div>
 
 </section>
 
-
-<!-- CHANNEL -->
-
 <section id="channel" class="page">
 
-<button class="grayBtn" onclick="showPage('home')" style="margin-bottom:18px">
+<button class="grayBtn"
+onclick="showPage('home')"
+style="margin-bottom:18px">
 ← Back
 </button>
 
 <div class="channel">
 
-<div id="channelBanner" class="channelBanner"></div>
+<div id="channelBanner"
+class="channelBanner"></div>
 
 <div class="channelInfo">
 
-<div id="channelAvatar" class="channelAvatar"></div>
+<div id="channelAvatar"
+class="channelAvatar"></div>
 
 <div>
 
-<div id="channelName" class="channelName"></div>
+<div id="channelName"
+class="channelName"></div>
 
-<div id="channelHandle" class="handle"></div>
+<div id="channelHandle"
+class="handle"></div>
 
-<div id="channelBio" class="bio"></div>
+<div id="channelBio"
+class="bio"></div>
 
 </div>
 
-<div id="channelAction" class="channelAction"></div>
+<div id="channelAction"
+class="channelAction"></div>
 
 </div>
-
 
 <div class="tabs">
 
-<button id="tabHome" class="active" onclick="channelTab('home')">
+<button id="tabHome"
+class="active"
+onclick="channelTab('home')">
 Home
 </button>
 
-<button id="tabVideos" onclick="channelTab('videos')">
+<button id="tabVideos"
+onclick="channelTab('videos')">
 Videos
 </button>
 
-<button id="tabTrailers" onclick="channelTab('trailers')">
+<button id="tabTrailers"
+onclick="channelTab('trailers')">
 Trailers
 </button>
 
-<button id="tabAbout" onclick="channelTab('about')">
+<button id="tabAbout"
+onclick="channelTab('about')">
 About
 </button>
 
@@ -571,12 +765,11 @@ About
 
 </section>
 
-
-<!-- STUDIO -->
-
 <section id="studio" class="page">
 
-<button class="grayBtn" onclick="openChannel(currentUser)" style="margin-bottom:18px">
+<button class="grayBtn"
+onclick="openChannel(currentUser)"
+style="margin-bottom:18px">
 ← Back to Channel
 </button>
 
@@ -588,7 +781,8 @@ About
 
 <aside class="studioSide">
 
-<button class="active" onclick="studioTab('dashboard',this)">
+<button class="active"
+onclick="studioTab('dashboard',this)">
 📊 Dashboard
 </button>
 
@@ -621,48 +815,80 @@ About
 </div>
 
 
-<!-- LOGIN MODAL -->
+<!-- LOGIN -->
 
 <div id="loginModal" class="modal">
 
 <div class="modalBox">
 
-<button class="close" onclick="closeModal('loginModal')">✕</button>
+<button class="close"
+onclick="closeModal('loginModal')">
+✕
+</button>
 
 <h2>👤 Login / Create Account</h2>
 
+<div id="authError"></div>
+
 <div class="notice">
-Demo account for this version. Your login is stored in this browser.
+Create a KidGaming account or log into your existing account.
 </div>
 
 <div class="formGroup">
 <label>Username</label>
-<input id="username" placeholder="Gaming username">
+<input id="username"
+placeholder="Gaming username">
+</div>
+
+<div class="formGroup">
+<label>Email</label>
+<input id="email"
+type="email"
+placeholder="Email">
 </div>
 
 <div class="formGroup">
 <label>Password</label>
-<input id="password" type="password" placeholder="Password">
+<input id="password"
+type="password"
+placeholder="Password">
 </div>
 
-<button class="redBtn" style="width:100%" onclick="login()">
-Continue
+<div style="display:flex;gap:10px">
+
+<button class="redBtn"
+style="flex:1"
+onclick="createAccount()">
+Create account
+</button>
+
+<button class="grayBtn"
+style="flex:1"
+onclick="login()">
+Login
 </button>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- UPLOAD MODAL -->
+
+<!-- UPLOAD -->
 
 <div id="uploadModal" class="modal">
 
 <div class="modalBox">
 
-<button class="close" onclick="closeModal('uploadModal')">✕</button>
+<button class="close"
+onclick="closeModal('uploadModal')">
+✕
+</button>
 
 <h2>⬆️ Upload</h2>
+
+<div id="uploadError"></div>
 
 <div class="formGroup">
 
@@ -670,11 +896,15 @@ Continue
 
 <div class="typeSelector">
 
-<div id="gameType" class="type active" onclick="setUploadType('video')">
+<div id="gameType"
+class="type active"
+onclick="setUploadType('video')">
 🎮 Gameplay
 </div>
 
-<div id="trailerType" class="type" onclick="setUploadType('trailer')">
+<div id="trailerType"
+class="type"
+onclick="setUploadType('trailer')">
 🎬 Trailer
 </div>
 
@@ -682,59 +912,64 @@ Continue
 
 </div>
 
-
 <div class="formGroup">
 
 <label>Title</label>
 
-<input id="uploadTitle" placeholder="Title">
+<input id="uploadTitle"
+placeholder="Title">
 
 </div>
-
 
 <div id="gameFields">
 
 <div class="formGroup">
 <label>Game</label>
-<input id="uploadGame" placeholder="Game name">
+<input id="uploadGame"
+placeholder="Game name">
 </div>
 
 <div class="formGroup">
 <label>Category</label>
-<input id="uploadCategory" placeholder="Category">
+<input id="uploadCategory"
+placeholder="Category">
 </div>
 
 </div>
-
 
 <div class="formGroup">
 
 <label>Description</label>
 
-<textarea id="uploadDescription" placeholder="Description"></textarea>
+<textarea id="uploadDescription"
+placeholder="Description"></textarea>
 
 </div>
-
 
 <div class="formGroup">
 
 <label>Video</label>
 
-<input id="uploadVideo" type="file" accept="video/*">
+<input id="uploadVideo"
+type="file"
+accept="video/*">
 
 </div>
-
 
 <div class="formGroup">
 
 <label>Thumbnail</label>
 
-<input id="uploadThumbnail" type="file" accept="image/*">
+<input id="uploadThumbnail"
+type="file"
+accept="image/*">
 
 </div>
 
-
-<button class="redBtn" style="width:100%" onclick="publish()">
+<button id="publishButton"
+class="redBtn"
+style="width:100%"
+onclick="publish()">
 🚀 Publish
 </button>
 
@@ -749,15 +984,68 @@ Continue
 
 <div class="modalBox playerBox">
 
-<button class="close" onclick="closePlayer()">✕</button>
+<button class="close"
+onclick="closePlayer()">
+✕
+</button>
 
-<video id="player" class="player" controls playsinline></video>
+<video id="player"
+class="player"
+controls
+playsinline></video>
 
-<div id="playerTitle" class="playerTitle"></div>
+<div id="playerTitle"
+class="playerTitle"></div>
 
-<div id="playerMeta" class="playerMeta"></div>
+<div id="playerMeta"
+class="playerMeta"></div>
 
-<div id="playerDescription" class="playerDescription"></div>
+<div class="playerActions">
+
+<button id="likeButton"
+class="actionBtn"
+onclick="likeCurrentVideo()">
+👍 Like
+</button>
+
+<button id="subscribeButton"
+class="actionBtn"
+onclick="subscribeCurrentChannel()">
+🔔 Subscribe
+</button>
+
+</div>
+
+<div id="playerDescription"
+class="playerDescription"></div>
+
+<div class="comments">
+
+<h3>💬 Comments</h3>
+
+<div style="display:flex;gap:10px;margin-top:15px">
+
+<input id="commentInput"
+placeholder="Write a comment..."
+style="
+flex:1;
+background:#0f0f0f;
+border:1px solid #444;
+color:#fff;
+border-radius:9px;
+padding:12px;
+">
+
+<button class="redBtn"
+onclick="addComment()">
+Send
+</button>
+
+</div>
+
+<div id="commentsList"></div>
+
+</div>
 
 </div>
 
@@ -770,19 +1058,21 @@ Continue
 
 <div class="modalBox">
 
-<button class="close" onclick="closeModal('customizeModal')">✕</button>
+<button class="close"
+onclick="closeModal('customizeModal')">
+✕
+</button>
 
 <h2>🎨 Customize Channel</h2>
-
 
 <div class="formGroup">
 
 <label>Channel name</label>
 
-<input id="editName" oninput="updatePreview()">
+<input id="editName"
+oninput="updatePreview()">
 
 </div>
-
 
 <div class="formGroup">
 
@@ -792,24 +1082,23 @@ Continue
 
 </div>
 
-
 <div class="formGroup">
 
 <label>Choose your avatar</label>
 
-<div id="avatarGallery" class="gallery"></div>
+<div id="avatarGallery"
+class="gallery"></div>
 
 </div>
-
 
 <div class="formGroup">
 
 <label>Choose your banner</label>
 
-<div id="bannerGallery" class="gallery"></div>
+<div id="bannerGallery"
+class="gallery"></div>
 
 </div>
-
 
 <div class="formGroup">
 
@@ -817,13 +1106,17 @@ Continue
 
 <div class="preview">
 
-<div id="previewBanner" class="previewBanner"></div>
+<div id="previewBanner"
+class="previewBanner"></div>
 
 <div class="previewBottom">
 
-<div id="previewAvatar" class="previewAvatar"></div>
+<div id="previewAvatar"
+class="previewAvatar"></div>
 
-<b id="previewName">Channel</b>
+<b id="previewName">
+Channel
+</b>
 
 </div>
 
@@ -831,8 +1124,9 @@ Continue
 
 </div>
 
-
-<button class="redBtn" style="width:100%" onclick="saveChannel()">
+<button class="redBtn"
+style="width:100%"
+onclick="saveChannel()">
 💾 Save
 </button>
 
@@ -843,256 +1137,202 @@ Continue
 
 <script>
 
-/* =========================
-   DATABASE
-========================= */
+/* =====================================================
+   SUPABASE CONNECTION
+===================================================== */
 
-const DB_NAME="KidGamingDB";
-const DB_VERSION=1;
+const SUPABASE_URL =
+"https://xefmcxseqdbqcaqpnzgk.supabase.co";
 
-let db=null;
+/*
+  IMPORTANT:
+  Replace only the text below with your
+  Supabase PUBLISHABLE KEY.
+*/
 
-let currentUser=
-localStorage.getItem("kg_user")||null;
+const SUPABASE_PUBLISHABLE_KEY =
+"PUNE_KEY_AICI";
 
-let accounts=
-JSON.parse(localStorage.getItem("kg_accounts")||"{}");
+const supabaseClient =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
+);
 
-let channels=
-JSON.parse(localStorage.getItem("kg_channels")||"{}");
+
+/* =====================================================
+   APP STATE
+===================================================== */
+
+let currentUser=null;
+let currentProfile=null;
 
 let posts=[];
 
 let selectedChannel=null;
 let selectedTab="home";
+
 let uploadType="video";
+
 let selectedAvatar="avatar1";
 let selectedBanner="banner1";
 
+let currentVideo=null;
 
-/* =========================
-   BUILT-IN KIDGAMING GALLERY
-========================= */
+
+/* =====================================================
+   GALLERY
+===================================================== */
 
 const avatarGallery=[
+
 {
 id:"avatar1",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#ff245f"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-<rect width="200" height="200" rx="100" fill="url(#g)"/>
-<text x="100" y="120" text-anchor="middle" font-size="90">🎮</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#ff245f"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">🎮</text>
 </svg>`)
 },
+
 {
 id:"avatar2",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#2563eb"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">😎</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#2563eb"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">😎</text>
 </svg>`)
 },
+
 {
 id:"avatar3",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#059669"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">👾</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#059669"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">👾</text>
 </svg>`)
 },
+
 {
 id:"avatar4",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#ea580c"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">🔥</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#ea580c"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">🔥</text>
 </svg>`)
 },
+
 {
 id:"avatar5",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#0891b2"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">⚡</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#0891b2"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">⚡</text>
 </svg>`)
 },
+
 {
 id:"avatar6",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#7c3aed"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">🚀</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#7c3aed"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">🚀</text>
 </svg>`)
 },
+
 {
 id:"avatar7",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#db2777"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">🐱</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#db2777"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">🐱</text>
 </svg>`)
 },
+
 {
 id:"avatar8",
 src:"data:image/svg+xml;charset=UTF-8,"+
 encodeURIComponent(`
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-<rect width="200" height="200" rx="100" fill="#4f46e5"/>
-<text x="100" y="125" text-anchor="middle" font-size="95">🦊</text>
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 200 200">
+<rect width="200" height="200"
+rx="100" fill="#4f46e5"/>
+<text x="100" y="125"
+text-anchor="middle"
+font-size="90">🦊</text>
 </svg>`)
 }
+
 ];
 
 
 const bannerGallery=[
-{id:"banner1",css:"linear-gradient(120deg,#2563eb,#7c3aed,#ec4899)"},
-{id:"banner2",css:"linear-gradient(120deg,#059669,#0891b2,#4f46e5)"},
-{id:"banner3",css:"linear-gradient(120deg,#dc2626,#7c3aed,#ec4899)"},
-{id:"banner4",css:"linear-gradient(120deg,#ea580c,#db2777,#7c3aed)"},
-{id:"banner5",css:"linear-gradient(120deg,#111827,#374151,#7c3aed)"},
-{id:"banner6",css:"linear-gradient(120deg,#06b6d4,#2563eb,#9333ea)"},
-{id:"banner7",css:"linear-gradient(120deg,#16a34a,#0ea5e9,#6366f1)"},
-{id:"banner8",css:"linear-gradient(120deg,#f97316,#ef4444,#ec4899)"}
+
+{id:"banner1",
+css:"linear-gradient(120deg,#2563eb,#7c3aed,#ec4899)"},
+
+{id:"banner2",
+css:"linear-gradient(120deg,#059669,#0891b2,#4f46e5)"},
+
+{id:"banner3",
+css:"linear-gradient(120deg,#dc2626,#7c3aed,#ec4899)"},
+
+{id:"banner4",
+css:"linear-gradient(120deg,#ea580c,#db2777,#7c3aed)"},
+
+{id:"banner5",
+css:"linear-gradient(120deg,#111827,#374151,#7c3aed)"},
+
+{id:"banner6",
+css:"linear-gradient(120deg,#06b6d4,#2563eb,#9333ea)"},
+
+{id:"banner7",
+css:"linear-gradient(120deg,#16a34a,#0ea5e9,#6366f1)"},
+
+{id:"banner8",
+css:"linear-gradient(120deg,#f97316,#ef4444,#ec4899)"}
+
 ];
 
 
-/* =========================
-   INDEXED DB
-========================= */
-
-function openDB(){
-
-return new Promise((resolve,reject)=>{
-
-let request=
-indexedDB.open(DB_NAME,DB_VERSION);
-
-request.onupgradeneeded=e=>{
-
-let database=e.target.result;
-
-if(!database.objectStoreNames.contains("posts")){
-database.createObjectStore("posts",{keyPath:"id"});
-}
-
-};
-
-request.onsuccess=e=>{
-db=e.target.result;
-resolve(db);
-};
-
-request.onerror=()=>{
-reject(request.error);
-};
-
-});
-
-}
-
-
-function dbGetAll(){
-
-return new Promise((resolve,reject)=>{
-
-let tx=db.transaction("posts","readonly");
-
-let store=tx.objectStore("posts");
-
-let req=store.getAll();
-
-req.onsuccess=()=>{
-resolve(req.result||[]);
-};
-
-req.onerror=()=>{
-reject(req.error);
-};
-
-});
-
-}
-
-
-function dbAdd(post){
-
-return new Promise((resolve,reject)=>{
-
-let tx=db.transaction("posts","readwrite");
-
-tx.objectStore("posts").put(post);
-
-tx.oncomplete=resolve;
-tx.onerror=()=>reject(tx.error);
-
-});
-
-}
-
-
-function dbDelete(id){
-
-return new Promise((resolve,reject)=>{
-
-let tx=db.transaction("posts","readwrite");
-
-tx.objectStore("posts").delete(id);
-
-tx.oncomplete=resolve;
-tx.onerror=()=>reject(tx.error);
-
-});
-
-}
-
-
-/* =========================
-   MEDIA URL
-========================= */
-
-function mediaURL(blob){
-
-if(!blob)return"";
-
-return URL.createObjectURL(blob);
-
-}
-
-
-/* =========================
-   SAVE NORMAL DATA
-========================= */
-
-function saveNormal(){
-
-localStorage.setItem(
-"kg_user",
-currentUser||""
-);
-
-localStorage.setItem(
-"kg_accounts",
-JSON.stringify(accounts)
-);
-
-localStorage.setItem(
-"kg_channels",
-JSON.stringify(channels)
-);
-
-}
-
-
-/* =========================
-   SAFE TEXT
-========================= */
+/* =====================================================
+   HELPERS
+===================================================== */
 
 function esc(value){
 
@@ -1106,91 +1346,59 @@ return String(value||"")
 }
 
 
-/* =========================
-   CHANNEL DATA
-========================= */
-
-function getChannel(username){
-
-let key=username.toLowerCase();
-
-if(!channels[key]){
-
-channels[key]={
-username:username,
-name:username,
-bio:"🎮 Gaming creator",
-avatar:"avatar1",
-banner:"banner1"
-};
-
-saveNormal();
-
-}
-
-return channels[key];
-
-}
-
-
 function avatarSrc(id){
 
-let a=
-avatarGallery.find(x=>x.id===id);
+let a=avatarGallery.find(x=>x.id===id);
 
-return a?a.src:avatarGallery[0].src;
+return a
+?a.src
+:avatarGallery[0].src;
 
 }
 
 
 function bannerCSS(id){
 
-let b=
-bannerGallery.find(x=>x.id===id);
+let b=bannerGallery.find(x=>x.id===id);
 
-return b?b.css:bannerGallery[0].css;
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function showPage(id){
-
-document
-.querySelectorAll(".page")
-.forEach(x=>x.classList.remove("active"));
-
-document
-.getElementById(id)
-.classList.add("active");
-
-if(id==="home")renderHome();
-if(id==="trailers")renderTrailers();
-if(id==="gameplay")renderGameplay();
+return b
+?b.css
+:bannerGallery[0].css;
 
 }
 
 
-function showMyChannel(){
+function showError(id,text){
 
-if(!currentUser){
-openLogin();
+let box=document.getElementById(id);
+
+if(!text){
+box.innerHTML="";
 return;
 }
 
-openChannel(currentUser);
+box.innerHTML=
+`<div class="error">${esc(text)}</div>`;
 
 }
 
 
-/* =========================
-   LOGIN
-========================= */
+function closeModal(id){
+
+document
+.getElementById(id)
+.classList.remove("active");
+
+}
+
+
+/* =====================================================
+   AUTH
+===================================================== */
 
 function openLogin(){
+
+showError("authError","");
 
 document
 .getElementById("loginModal")
@@ -1199,83 +1407,408 @@ document
 }
 
 
-function login(){
+async function createAccount(){
+
+showError("authError","");
 
 let username=
-document.getElementById("username").value.trim();
+document.getElementById("username")
+.value.trim();
+
+let email=
+document.getElementById("email")
+.value.trim();
 
 let password=
-document.getElementById("password").value;
+document.getElementById("password")
+.value;
 
-if(!username||!password){
-alert("Completează username și parola.");
+if(!username||!email||!password){
+
+showError(
+"authError",
+"Completează username, email și parola."
+);
+
 return;
 }
 
-let key=username.toLowerCase();
+if(username.length<3){
 
-if(!accounts[key]){
+showError(
+"authError",
+"Username-ul trebuie să aibă cel puțin 3 caractere."
+);
 
-accounts[key]={
-username:username,
-password:password
-};
+return;
+}
 
-channels[key]={
-username:username,
-name:username,
-bio:"🎮 Gaming creator",
-avatar:"avatar1",
-banner:"banner1"
-};
+if(password.length<6){
 
-}else{
+showError(
+"authError",
+"Parola trebuie să aibă cel puțin 6 caractere."
+);
 
-if(accounts[key].password!==password){
+return;
+}
 
-alert("Parola este greșită.");
+
+let {data,error}=
+await supabaseClient.auth.signUp({
+
+email:email,
+
+password:password,
+
+options:{
+data:{
+username:username
+}
+}
+
+});
+
+
+if(error){
+
+showError("authError",error.message);
 return;
 
 }
 
-}
 
-currentUser=accounts[key].username;
+if(data.session){
 
-saveNormal();
+await loadCurrentUser();
 
 closeModal("loginModal");
 
+alert("🎉 Cont creat!");
+
+}else{
+
+showError(
+"authError",
+"Cont creat! Verifică emailul pentru confirmare, apoi intră în cont."
+);
+
+}
+
+}
+
+
+async function login(){
+
+showError("authError","");
+
+let email=
+document.getElementById("email")
+.value.trim();
+
+let password=
+document.getElementById("password")
+.value;
+
+if(!email||!password){
+
+showError(
+"authError",
+"Completează emailul și parola."
+);
+
+return;
+}
+
+
+let {data,error}=
+await supabaseClient.auth.signInWithPassword({
+
+email:email,
+
+password:password
+
+});
+
+
+if(error){
+
+showError("authError",error.message);
+return;
+
+}
+
+
+await loadCurrentUser();
+
+closeModal("loginModal");
+
+}
+
+
+async function logout(){
+
+await supabaseClient.auth.signOut();
+
+currentUser=null;
+currentProfile=null;
+
 updateLoginButton();
 
-openChannel(currentUser);
+showPage("home");
+
+renderHome();
+
+}
+
+
+async function loadCurrentUser(){
+
+let {data,error}=
+await supabaseClient.auth.getUser();
+
+if(error||!data.user){
+
+currentUser=null;
+currentProfile=null;
+
+updateLoginButton();
+
+return;
+
+}
+
+
+currentUser=data.user.id;
+
+
+let result=
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("auth_id",currentUser)
+.single();
+
+
+if(result.error){
+
+console.error(result.error);
+
+alert(
+"Contul există, dar profilul nu a putut fi încărcat."
+);
+
+return;
+
+}
+
+
+currentProfile=result.data;
+
+updateLoginButton();
+
+await loadPosts();
+
+renderHome();
 
 }
 
 
 function updateLoginButton(){
 
-document.getElementById("loginButton")
-.textContent=
-currentUser
-?"👤 "+currentUser
-:"Login";
+let button=
+document.getElementById("loginButton");
+
+if(currentProfile){
+
+button.textContent=
+"👤 "+currentProfile.username;
+
+button.onclick=()=>{
+openChannel(currentProfile.username);
+};
+
+}else{
+
+button.textContent="Login";
+
+button.onclick=openLogin;
+
+}
 
 }
 
 
-/* =========================
+/* =====================================================
+   PROFILES
+===================================================== */
+
+async function getProfileByUsername(username){
+
+let {data,error}=
+await supabaseClient
+.from("profiles")
+.select("*")
+.ilike("username",username)
+.single();
+
+if(error){
+
+console.error(error);
+return null;
+
+}
+
+return data;
+
+}
+
+
+async function getProfileById(id){
+
+let {data,error}=
+await supabaseClient
+.from("profiles")
+.select("*")
+.eq("id",id)
+.single();
+
+if(error)return null;
+
+return data;
+
+}
+
+
+/* =====================================================
+   LOAD VIDEOS
+===================================================== */
+
+async function loadPosts(){
+
+let {data,error}=
+await supabaseClient
+.from("videos")
+.select("*")
+.order("created_at",{ascending:false});
+
+if(error){
+
+console.error(error);
+
+alert(
+"Nu am putut încărca videoclipurile."
+);
+
+return;
+
+}
+
+posts=data||[];
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(id){
+
+document
+.querySelectorAll(".page")
+.forEach(x=>
+x.classList.remove("active")
+);
+
+let page=document.getElementById(id);
+
+if(page)page.classList.add("active");
+
+document
+.querySelectorAll(".sideBtn")
+.forEach(x=>
+x.classList.remove("active")
+);
+
+if(id==="home"){
+renderHome();
+}
+
+if(id==="trailers"){
+renderTrailers();
+}
+
+if(id==="gameplay"){
+renderGameplay();
+}
+
+if(id==="studio"){
+studioTab("dashboard");
+}
+
+}
+
+
+function showMyChannel(){
+
+if(!currentProfile){
+
+openLogin();
+return;
+
+}
+
+openChannel(currentProfile.username);
+
+}
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+async function uploadFile(bucket,file,path){
+
+let {error}=
+await supabaseClient
+.storage
+.from(bucket)
+.upload(path,file,{
+cacheControl:"3600",
+upsert:false
+});
+
+if(error)throw error;
+
+
+let {data}=
+supabaseClient
+.storage
+.from(bucket)
+.getPublicUrl(path);
+
+return data.publicUrl;
+
+}
+
+
+/* =====================================================
    UPLOAD
-========================= */
+===================================================== */
 
 function openUpload(type){
 
-if(!currentUser){
+if(!currentProfile){
+
 openLogin();
 return;
+
 }
 
 setUploadType(type);
+
+showError("uploadError","");
 
 document
 .getElementById("uploadModal")
@@ -1290,24 +1823,34 @@ uploadType=type;
 
 document
 .getElementById("gameType")
-.classList.toggle("active",type==="video");
+.classList
+.toggle("active",type==="video");
 
 document
 .getElementById("trailerType")
-.classList.toggle("active",type==="trailer");
+.classList
+.toggle("active",type==="trailer");
 
 document
 .getElementById("gameFields")
-.classList.toggle("hidden",type==="trailer");
+.classList
+.toggle("hidden",type==="trailer");
 
 }
 
 
-/* =========================
-   PUBLISH
-========================= */
-
 async function publish(){
+
+if(!currentProfile){
+
+alert("Trebuie să fii logat.");
+
+return;
+
+}
+
+showError("uploadError","");
+
 
 let title=
 document.getElementById("uploadTitle")
@@ -1328,7 +1871,11 @@ document.getElementById("uploadThumbnail")
 
 if(!title||!video){
 
-alert("Ai nevoie de titlu și video.");
+showError(
+"uploadError",
+"Ai nevoie de titlu și video."
+);
+
 return;
 
 }
@@ -1350,7 +1897,11 @@ document.getElementById("uploadCategory")
 
 if(!game||!category){
 
-alert("Completează Game și Category.");
+showError(
+"uploadError",
+"Completează Game și Category."
+);
+
 return;
 
 }
@@ -1358,40 +1909,90 @@ return;
 }
 
 
-let post={
+let button=
+document.getElementById("publishButton");
 
-id:Date.now(),
+button.disabled=true;
+button.textContent="⏳ Uploading...";
 
-author:currentUser,
 
-type:uploadType,
+try{
+
+let safeName=
+video.name
+.replace(/[^a-zA-Z0-9._-]/g,"_");
+
+let videoPath=
+currentUser+
+"/"+
+Date.now()+
+"-"+
+safeName;
+
+
+let videoUrl=
+await uploadFile(
+"Videos",
+video,
+videoPath
+);
+
+
+let thumbnailUrl=null;
+
+
+if(thumbnail){
+
+let thumbName=
+thumbnail.name
+.replace(/[^a-zA-Z0-9._-]/g,"_");
+
+let thumbPath=
+currentUser+
+"/"+
+Date.now()+
+"-"+
+thumbName;
+
+
+thumbnailUrl=
+await uploadFile(
+"thumbnails",
+thumbnail,
+thumbPath
+);
+
+}
+
+
+let {error}=
+await supabaseClient
+.from("videos")
+.insert({
+
+user_id:currentProfile.id,
 
 title:title,
 
 description:description,
 
+video_url:videoUrl,
+
+thumbnail_url:thumbnailUrl,
+
+type:uploadType,
+
 game:game,
 
-category:category,
+views:0
 
-videoBlob:video,
-
-thumbnailBlob:thumbnail||null,
-
-likes:0,
-
-views:0,
-
-date:new Date().toISOString()
-
-};
+});
 
 
-try{
+if(error)throw error;
 
-await dbAdd(post);
 
-posts.push(post);
+await loadPosts();
 
 closeModal("uploadModal");
 
@@ -1402,34 +2003,43 @@ document.getElementById("uploadCategory").value="";
 document.getElementById("uploadVideo").value="";
 document.getElementById("uploadThumbnail").value="";
 
-alert("🚀 Video publicat!");
+alert("🚀 Video publicat online!");
 
-openChannel(currentUser);
+openChannel(currentProfile.username);
 
 }catch(error){
 
 console.error(error);
 
-alert("Nu am putut salva videoclipul.");
+showError(
+"uploadError",
+"Upload failed: "+error.message
+);
+
+}finally{
+
+button.disabled=false;
+button.textContent="🚀 Publish";
 
 }
 
 }
 
 
-/* =========================
+/* =====================================================
    VIDEO CARD
-========================= */
+===================================================== */
 
 function card(post){
 
-let channel=
-getChannel(post.author);
+let channel=post.profile||
+null;
 
-let thumb=
-post.thumbnailBlob
+
+let thumbnail=
+post.thumbnail_url
 ?
-`<img src="${mediaURL(post.thumbnailBlob)}">`
+`<img src="${esc(post.thumbnail_url)}">`
 :
 `
 <div class="placeholder">
@@ -1437,19 +2047,23 @@ ${post.type==="trailer"?"🎬":"🎮"}
 </div>
 `;
 
+
 return`
 
 <article class="card">
 
 <div
 class="thumbnail"
-onclick="playVideo(${post.id})"
->
+onclick="playVideo('${post.id}')">
 
-${thumb}
+${thumbnail}
 
 <div class="play">
-<div class="playCircle">▶</div>
+
+<div class="playCircle">
+▶
+</div>
+
 </div>
 
 </div>
@@ -1458,7 +2072,11 @@ ${thumb}
 
 <div class="cardAvatar">
 
-<img src="${avatarSrc(channel.avatar)}">
+<img src="${
+channel
+?avatarSrc(channel.avatar)
+:avatarSrc("avatar1")
+}">
 
 </div>
 
@@ -1472,23 +2090,23 @@ ${esc(post.title)}
 
 <span
 class="author"
-onclick="
-event.stopPropagation();
-openChannel('${encodeURIComponent(post.author)}')
-"
->
-${esc(channel.name)}
+onclick="event.stopPropagation();openChannel('${encodeURIComponent(
+channel?channel.username:"Player"
+)}')">
+
+${esc(channel?channel.name:"Player")}
+
 </span>
 
 <br>
 
-${post.views} views • ${post.likes} likes
+${post.views||0} views
 
 ${
 post.type==="trailer"
 ?" • 🎬 Trailer"
 :
-" • 🎮 "+esc(post.game)
+" • 🎮 "+esc(post.game||"Gaming")
 }
 
 </div>
@@ -1504,23 +2122,50 @@ post.type==="trailer"
 }
 
 
-/* =========================
-   HOME
-========================= */
+/* =====================================================
+   LOAD PROFILES FOR POSTS
+===================================================== */
 
-function renderHome(){
+async function postsWithProfiles(){
+
+let result=[];
+
+for(let post of posts){
+
+let profile=
+await getProfileById(post.user_id);
+
+result.push({
+...post,
+profile:profile
+});
+
+}
+
+return result;
+
+}
+
+
+/* =====================================================
+   HOME
+===================================================== */
+
+async function renderHome(){
+
+let list=
+await postsWithProfiles();
 
 let trailers=
-posts
+list
 .filter(x=>x.type==="trailer")
-.sort((a,b)=>b.date.localeCompare(a.date))
 .slice(0,4);
 
 let gameplay=
-posts
+list
 .filter(x=>x.type==="video")
-.sort((a,b)=>b.date.localeCompare(a.date))
 .slice(0,8);
+
 
 document.getElementById("homeTrailers")
 .innerHTML=
@@ -1529,6 +2174,7 @@ trailers.length
 trailers.map(card).join("")
 :
 empty("No trailers yet 🎬");
+
 
 document.getElementById("homeGameplay")
 .innerHTML=
@@ -1541,10 +2187,14 @@ empty("No gameplay yet 🎮");
 }
 
 
-function renderTrailers(){
+async function renderTrailers(){
 
 let list=
-posts.filter(x=>x.type==="trailer");
+await postsWithProfiles();
+
+list=
+list.filter(x=>x.type==="trailer");
+
 
 document.getElementById("trailersGrid")
 .innerHTML=
@@ -1557,10 +2207,14 @@ empty("No trailers yet 🎬");
 }
 
 
-function renderGameplay(){
+async function renderGameplay(){
 
 let list=
-posts.filter(x=>x.type==="video");
+await postsWithProfiles();
+
+list=
+list.filter(x=>x.type==="video");
+
 
 document.getElementById("gameplayGrid")
 .innerHTML=
@@ -1584,59 +2238,72 @@ ${text}
 }
 
 
-/* =========================
-   PLAYER
-========================= */
+/* =====================================================
+   VIDEO PLAYER
+===================================================== */
 
-function playVideo(id){
+async function playVideo(id){
 
 let post=
 posts.find(x=>x.id===id);
 
 if(!post)return;
 
-post.views++;
+currentVideo=post;
 
-dbAdd(post);
 
 let player=
 document.getElementById("player");
 
-player.src=
-mediaURL(post.videoBlob);
+player.src=post.video_url;
 
 player.poster=
-post.thumbnailBlob
-?
-mediaURL(post.thumbnailBlob)
-:
-"";
+post.thumbnail_url||"";
+
 
 document.getElementById("playerTitle")
 .textContent=post.title;
 
+
+let channel=
+await getProfileById(post.user_id);
+
+
 document.getElementById("playerMeta")
 .textContent=
-getChannel(post.author).name+
+(channel?channel.name:"Player")+
 " • "+
-post.views+
+((post.views||0)+1)+
 " views";
+
 
 document.getElementById("playerDescription")
 .textContent=
 post.description||"";
 
-document.getElementById("playerModal")
+
+post.views=(post.views||0)+1;
+
+
+await supabaseClient
+.from("videos")
+.update({views:post.views})
+.eq("id",post.id);
+
+
+document
+.getElementById("playerModal")
 .classList.add("active");
+
+
+loadPlayerButtons();
+
+loadComments();
+
 
 player.currentTime=0;
 
-let promise=player.play();
-
-if(promise){
-promise.catch(()=>{
-});
-}
+player.play().catch(()=>{});
 
 }
 
@@ -1650,93 +2317,530 @@ player.pause();
 
 player.removeAttribute("src");
 
-player.removeAttribute("poster");
-
 player.load();
 
 closeModal("playerModal");
 
-renderHome();
+currentVideo=null;
 
 }
 
 
-/* =========================
+/* =====================================================
+   LIKE
+===================================================== */
+
+async function likeCurrentVideo(){
+
+if(!currentProfile){
+
+openLogin();
+return;
+
+}
+
+if(!currentVideo)return;
+
+
+let {data,error}=
+await supabaseClient
+.from("likes")
+.select("id")
+.eq("user_id",currentProfile.id)
+.eq("video_id",currentVideo.id)
+.maybeSingle();
+
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+
+if(data){
+
+await supabaseClient
+.from("likes")
+.delete()
+.eq("id",data.id);
+
+}else{
+
+await supabaseClient
+.from("likes")
+.insert({
+
+user_id:currentProfile.id,
+video_id:currentVideo.id
+
+});
+
+}
+
+
+loadPlayerButtons();
+
+}
+
+
+async function getLikeCount(videoId){
+
+let {count}=await supabaseClient
+.from("likes")
+.select("*",{count:"exact",head:true})
+.eq("video_id",videoId);
+
+return count||0;
+
+}
+
+
+async function loadPlayerButtons(){
+
+if(!currentVideo)return;
+
+
+let count=
+await getLikeCount(currentVideo.id);
+
+
+let liked=false;
+
+
+if(currentProfile){
+
+let {data}=
+await supabaseClient
+.from("likes")
+.select("id")
+.eq("user_id",currentProfile.id)
+.eq("video_id",currentVideo.id)
+.maybeSingle();
+
+liked=!!data;
+
+}
+
+
+document.getElementById("likeButton")
+.textContent=
+liked
+?"👍 Liked "+count
+:"👍 Like "+count;
+
+
+let channel=
+await getProfileById(currentVideo.user_id);
+
+
+if(currentProfile&&channel){
+
+let {data}=
+await supabaseClient
+.from("subscriptions")
+.select("id")
+.eq("subscriber_id",currentProfile.id)
+.eq("channel_id",channel.id)
+.maybeSingle();
+
+
+document.getElementById("subscribeButton")
+.textContent=
+data
+?"🔔 Subscribed"
+:"🔔 Subscribe";
+
+}else{
+
+document.getElementById("subscribeButton")
+.textContent="🔔 Subscribe";
+
+}
+
+}
+
+
+/* =====================================================
+   SUBSCRIBE
+===================================================== */
+
+async function subscribeCurrentChannel(){
+
+if(!currentProfile){
+
+openLogin();
+return;
+
+}
+
+if(!currentVideo)return;
+
+
+let channel=
+await getProfileById(currentVideo.user_id);
+
+
+if(!channel)return;
+
+
+if(channel.id===currentProfile.id){
+
+alert("Nu te poți abona la propriul canal.");
+return;
+
+}
+
+
+let {data}=
+await supabaseClient
+.from("subscriptions")
+.select("id")
+.eq("subscriber_id",currentProfile.id)
+.eq("channel_id",channel.id)
+.maybeSingle();
+
+
+if(data){
+
+await supabaseClient
+.from("subscriptions")
+.delete()
+.eq("id",data.id);
+
+}else{
+
+await supabaseClient
+.from("subscriptions")
+.insert({
+
+subscriber_id:currentProfile.id,
+channel_id:channel.id
+
+});
+
+}
+
+
+loadPlayerButtons();
+
+}
+
+
+/* =====================================================
+   COMMENTS
+===================================================== */
+
+async function loadComments(){
+
+if(!currentVideo)return;
+
+
+let {data,error}=
+await supabaseClient
+.from("comments")
+.select("*")
+.eq("video_id",currentVideo.id)
+.order("created_at",{ascending:true});
+
+
+if(error){
+
+console.error(error);
+return;
+
+}
+
+
+let html="";
+
+
+for(let comment of data||[]){
+
+let profile=
+await getProfileById(comment.user_id);
+
+
+html+=`
+
+<div class="comment">
+
+<div class="commentName">
+${esc(profile?profile.name:"Player")}
+</div>
+
+<div class="commentText">
+${esc(comment.text)}
+</div>
+
+</div>
+
+`;
+
+}
+
+
+document.getElementById("commentsList")
+.innerHTML=
+html||
+`<p style="color:#777;margin-top:15px">
+No comments yet.
+</p>`;
+
+}
+
+
+async function addComment(){
+
+if(!currentProfile){
+
+openLogin();
+return;
+
+}
+
+if(!currentVideo)return;
+
+
+let input=
+document.getElementById("commentInput");
+
+let text=input.value.trim();
+
+
+if(!text)return;
+
+
+let {error}=
+await supabaseClient
+.from("comments")
+.insert({
+
+user_id:currentProfile.id,
+
+video_id:currentVideo.id,
+
+text:text
+
+});
+
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+
+input.value="";
+
+loadComments();
+
+}
+
+
+/* =====================================================
    CHANNEL
-========================= */
+===================================================== */
 
-function openChannel(username){
+async function openChannel(username){
 
-selectedChannel=
+let decoded=
 decodeURIComponent(username);
+
+
+let profile=
+await getProfileByUsername(decoded);
+
+
+if(!profile)return;
+
+
+selectedChannel=profile;
 
 selectedTab="home";
 
+
 showPage("channel");
 
-renderChannel();
+await renderChannel();
 
 }
 
 
-function renderChannel(){
+async function renderChannel(){
 
-let channel=
-getChannel(selectedChannel);
+if(!selectedChannel)return;
+
+
+let channel=selectedChannel;
+
 
 document.getElementById("channelName")
 .textContent=channel.name;
 
+
 document.getElementById("channelHandle")
 .textContent="@"+channel.username;
 
+
 document.getElementById("channelBio")
-.textContent=channel.bio;
+.textContent=channel.bio||"";
+
 
 document.getElementById("channelAvatar")
 .innerHTML=
 `<img src="${avatarSrc(channel.avatar)}">`;
+
 
 document.getElementById("channelBanner")
 .style.background=
 bannerCSS(channel.banner);
 
 
+let action=
+document.getElementById("channelAction");
+
+
 if(
-currentUser&&
-currentUser.toLowerCase()===
-selectedChannel.toLowerCase()
+currentProfile&&
+currentProfile.id===channel.id
 ){
 
-document.getElementById("channelAction")
-.innerHTML=`
+action.innerHTML=`
+
 <button
 class="redBtn"
-onclick="openStudio()"
->
+onclick="openStudio()">
+
 🛠️ Creator Studio
+
 </button>
+
+<button
+class="grayBtn"
+onclick="logout()"
+style="margin-left:8px">
+
+Logout
+
+</button>
+
 `;
 
 }else{
 
-document.getElementById("channelAction")
-.innerHTML="";
+let subscribed=false;
+
+
+if(currentProfile){
+
+let {data}=
+await supabaseClient
+.from("subscriptions")
+.select("id")
+.eq("subscriber_id",currentProfile.id)
+.eq("channel_id",channel.id)
+.maybeSingle();
+
+subscribed=!!data;
 
 }
 
-channelTab(selectedTab);
+
+action.innerHTML=`
+
+<button
+class="${
+subscribed
+?"grayBtn"
+:"redBtn"
+}"
+onclick="toggleChannelSubscribe('${channel.id}')">
+
+${
+subscribed
+?"🔔 Subscribed"
+:"🔔 Subscribe"
+}
+
+</button>
+
+`;
 
 }
 
 
-function channelTab(tab){
+await channelTab(selectedTab);
+
+}
+
+
+async function toggleChannelSubscribe(channelId){
+
+if(!currentProfile){
+
+openLogin();
+return;
+
+}
+
+
+if(currentProfile.id===channelId){
+
+return;
+
+}
+
+
+let {data}=
+await supabaseClient
+.from("subscriptions")
+.select("id")
+.eq("subscriber_id",currentProfile.id)
+.eq("channel_id",channelId)
+.maybeSingle();
+
+
+if(data){
+
+await supabaseClient
+.from("subscriptions")
+.delete()
+.eq("id",data.id);
+
+}else{
+
+await supabaseClient
+.from("subscriptions")
+.insert({
+
+subscriber_id:currentProfile.id,
+channel_id:channelId
+
+});
+
+}
+
+
+renderChannel();
+
+}
+
+
+async function channelTab(tab){
 
 selectedTab=tab;
 
+
 document
 .querySelectorAll(".tabs button")
-.forEach(x=>x.classList.remove("active"));
+.forEach(x=>
+x.classList.remove("active")
+);
+
 
 let button=
 document.getElementById(
@@ -1745,14 +2849,23 @@ tab.charAt(0).toUpperCase()+
 tab.slice(1)
 );
 
+
 if(button)button.classList.add("active");
 
+
 let list=
-posts.filter(
-x=>
-x.author.toLowerCase()===
-selectedChannel.toLowerCase()
+posts
+.filter(x=>
+x.user_id===selectedChannel.id
 );
+
+
+let withProfiles=
+list.map(x=>({
+...x,
+profile:selectedChannel
+}));
+
 
 let content=
 document.getElementById("channelContent");
@@ -1761,19 +2874,23 @@ document.getElementById("channelContent");
 if(tab==="home"){
 
 content.innerHTML=`
+
 <div class="sectionHead">
 <h2>Latest uploads</h2>
 </div>
 
 <div class="videoGrid">
+
 ${
-list.length
+withProfiles.length
 ?
-list.slice(0,8).map(card).join("")
+withProfiles.slice(0,8).map(card).join("")
 :
 empty("Nothing here yet.")
 }
+
 </div>
+
 `;
 
 }
@@ -1782,14 +2899,17 @@ empty("Nothing here yet.")
 if(tab==="videos"){
 
 let videos=
-list.filter(x=>x.type==="video");
+withProfiles.filter(x=>x.type==="video");
+
 
 content.innerHTML=`
+
 <div class="sectionHead">
 <h2>🎮 Videos</h2>
 </div>
 
 <div class="videoGrid">
+
 ${
 videos.length
 ?
@@ -1797,7 +2917,9 @@ videos.map(card).join("")
 :
 empty("No gameplay videos.")
 }
+
 </div>
+
 `;
 
 }
@@ -1806,14 +2928,17 @@ empty("No gameplay videos.")
 if(tab==="trailers"){
 
 let trailers=
-list.filter(x=>x.type==="trailer");
+withProfiles.filter(x=>x.type==="trailer");
+
 
 content.innerHTML=`
+
 <div class="sectionHead">
 <h2>🎬 Trailers</h2>
 </div>
 
 <div class="videoGrid">
+
 ${
 trailers.length
 ?
@@ -1821,7 +2946,9 @@ trailers.map(card).join("")
 :
 empty("No trailers.")
 }
+
 </div>
+
 `;
 
 }
@@ -1830,10 +2957,18 @@ empty("No trailers.")
 if(tab==="about"){
 
 let views=
-list.reduce(
-(a,b)=>a+b.views,
+withProfiles.reduce(
+(a,b)=>a+(b.views||0),
 0
 );
+
+
+let subscribers=
+await supabaseClient
+.from("subscriptions")
+.select("*",{count:"exact",head:true})
+.eq("channel_id",selectedChannel.id);
+
 
 content.innerHTML=`
 
@@ -1841,24 +2976,29 @@ content.innerHTML=`
 
 <h2>About</h2>
 
-<p style="color:#ccc;line-height:1.7;margin-top:12px">
-${esc(getChannel(selectedChannel).bio)}
+<p style="color:#ccc;
+line-height:1.7;margin-top:12px">
+
+${esc(selectedChannel.bio||"Gaming creator")}
+
 </p>
 
 <p style="margin-top:20px">
-🎮 Videos: ${
-list.filter(x=>x.type==="video").length
-}
+🎮 Videos:
+${withProfiles.filter(x=>x.type==="video").length}
 </p>
 
 <p style="margin-top:8px">
-🎬 Trailers: ${
-list.filter(x=>x.type==="trailer").length
-}
+🎬 Trailers:
+${withProfiles.filter(x=>x.type==="trailer").length}
 </p>
 
 <p style="margin-top:8px">
 👁️ Views: ${views}
+</p>
+
+<p style="margin-top:8px">
+🔔 Subscribers: ${subscribers.count||0}
 </p>
 
 </div>
@@ -1870,15 +3010,17 @@ list.filter(x=>x.type==="trailer").length
 }
 
 
-/* =========================
+/* =====================================================
    STUDIO
-========================= */
+===================================================== */
 
 function openStudio(){
 
-if(!currentUser){
+if(!currentProfile){
+
 openLogin();
 return;
+
 }
 
 showPage("studio");
@@ -1888,24 +3030,26 @@ studioTab("dashboard");
 }
 
 
-function studioTab(tab,button){
+async function studioTab(tab,button){
 
 if(button){
 
 document
 .querySelectorAll(".studioSide button")
-.forEach(x=>x.classList.remove("active"));
+.forEach(x=>
+x.classList.remove("active")
+);
 
 button.classList.add("active");
 
 }
 
+
 let mine=
-posts.filter(
-x=>
-x.author.toLowerCase()===
-currentUser.toLowerCase()
+posts.filter(x=>
+x.user_id===currentProfile.id
 );
+
 
 let main=
 document.getElementById("studioMain");
@@ -1914,16 +3058,28 @@ document.getElementById("studioMain");
 if(tab==="dashboard"){
 
 let views=
-mine.reduce((a,b)=>a+b.views,0);
+mine.reduce(
+(a,b)=>a+(b.views||0),0
+);
 
-let likes=
-mine.reduce((a,b)=>a+b.likes,0);
 
 let videos=
 mine.filter(x=>x.type==="video").length;
 
+
 let trailers=
 mine.filter(x=>x.type==="trailer").length;
+
+
+let likes=0;
+
+for(let post of mine){
+
+likes+=
+await getLikeCount(post.id);
+
+}
+
 
 main.innerHTML=`
 
@@ -1953,14 +3109,24 @@ main.innerHTML=`
 
 <div class="panel">
 
-<h2>Welcome to Creator Studio 👋</h2>
+<h2>
+Welcome to Creator Studio 👋
+</h2>
 
-<p style="color:#aaa;line-height:1.6;margin:12px 0 20px">
-Manage your KidGaming channel and your uploads.
+<p style="color:#aaa;
+line-height:1.6;margin:12px 0 20px">
+
+Manage your KidGaming channel
+and your uploads.
+
 </p>
 
-<button class="redBtn" onclick="openUpload('video')">
+<button
+class="redBtn"
+onclick="openUpload('video')">
+
 ⬆️ Upload
+
 </button>
 
 </div>
@@ -1974,6 +3140,7 @@ if(tab==="videos"){
 
 let videos=
 mine.filter(x=>x.type==="video");
+
 
 main.innerHTML=`
 
@@ -2006,6 +3173,7 @@ if(tab==="trailers"){
 
 let trailers=
 mine.filter(x=>x.type==="trailer");
+
 
 main.innerHTML=`
 
@@ -2042,23 +3210,28 @@ main.innerHTML=`
 
 <h2>⬆️ Upload</h2>
 
-<p style="color:#aaa;margin:12px 0 20px">
+<p style="color:#aaa;
+margin:12px 0 20px">
+
 Choose what you want to publish.
+
 </p>
 
 <button
 class="redBtn"
-onclick="openUpload('video')"
->
+onclick="openUpload('video')">
+
 🎮 Gameplay
+
 </button>
 
 <button
 class="grayBtn"
 onclick="openUpload('trailer')"
-style="margin-left:8px"
->
+style="margin-left:8px">
+
 🎬 Trailer
+
 </button>
 
 </div>
@@ -2076,15 +3249,20 @@ main.innerHTML=`
 
 <h2>🎨 Customize Channel</h2>
 
-<p style="color:#aaa;margin:12px 0 20px">
-Choose your avatar and banner from the KidGaming gallery.
+<p style="color:#aaa;
+margin:12px 0 20px">
+
+Choose your avatar and banner
+from the KidGaming gallery.
+
 </p>
 
 <button
 class="redBtn"
-onclick="openCustomize()"
->
+onclick="openCustomize()">
+
 ✏️ Customize Channel
+
 </button>
 
 </div>
@@ -2096,9 +3274,9 @@ onclick="openCustomize()"
 }
 
 
-/* =========================
-   STUDIO CARD + DELETE
-========================= */
+/* =====================================================
+   STUDIO CARD
+===================================================== */
 
 function studioCard(post){
 
@@ -2108,13 +3286,12 @@ return`
 
 <div
 class="thumbnail"
-onclick="playVideo(${post.id})"
->
+onclick="playVideo('${post.id}')">
 
 ${
-post.thumbnailBlob
+post.thumbnail_url
 ?
-`<img src="${mediaURL(post.thumbnailBlob)}">`
+`<img src="${esc(post.thumbnail_url)}">`
 :
 `<div class="placeholder">
 ${post.type==="trailer"?"🎬":"🎮"}
@@ -2122,7 +3299,11 @@ ${post.type==="trailer"?"🎬":"🎮"}
 }
 
 <div class="play">
-<div class="playCircle">▶</div>
+
+<div class="playCircle">
+▶
+</div>
+
 </div>
 
 </div>
@@ -2136,14 +3317,15 @@ ${esc(post.title)}
 </div>
 
 <div class="meta">
-${post.views} views • ${post.likes} likes
+${post.views||0} views
 </div>
 
 <button
 class="deleteBtn"
-onclick="deleteVideo(${post.id})"
->
+onclick="deleteVideo('${post.id}')">
+
 🗑️ Delete
+
 </button>
 
 </div>
@@ -2159,45 +3341,69 @@ onclick="deleteVideo(${post.id})"
 
 async function deleteVideo(id){
 
-if(!confirm("Delete this video permanently?")){
+if(!currentProfile)return;
+
+
+if(!confirm(
+"Delete this video permanently?"
+))return;
+
+
+let {error}=
+await supabaseClient
+.from("videos")
+.delete()
+.eq("id",id)
+.eq("user_id",currentProfile.id);
+
+
+if(error){
+
+alert(error.message);
 return;
+
 }
 
-await dbDelete(id);
 
 posts=
 posts.filter(x=>x.id!==id);
 
-alert("🗑️ Video deleted.");
 
-openStudio();
+alert("🗑️ Video deleted.");
 
 studioTab("videos");
 
 }
 
 
-/* =========================
+/* =====================================================
    CUSTOMIZE
-========================= */
+===================================================== */
 
 function openCustomize(){
 
-let channel=
-getChannel(currentUser);
+if(!currentProfile)return;
+
 
 document.getElementById("editName")
-.value=channel.name;
+.value=currentProfile.name||"";
+
 
 document.getElementById("editBio")
-.value=channel.bio;
+.value=currentProfile.bio||"";
 
-selectedAvatar=channel.avatar;
-selectedBanner=channel.banner;
+
+selectedAvatar=
+currentProfile.avatar||"avatar1";
+
+selectedBanner=
+currentProfile.banner||"banner1";
+
 
 renderGalleries();
 
 updatePreview();
+
 
 document
 .getElementById("customizeModal")
@@ -2213,10 +3419,12 @@ document.getElementById("avatarGallery")
 avatarGallery.map(a=>`
 
 <div
-class="galleryItem ${a.id===selectedAvatar?"selected":""}"
-onclick="chooseAvatar('${a.id}')"
->
+class="galleryItem
+${a.id===selectedAvatar?"selected":""}"
+onclick="chooseAvatar('${a.id}')">
+
 <img src="${a.src}">
+
 </div>
 
 `).join("");
@@ -2227,14 +3435,16 @@ document.getElementById("bannerGallery")
 bannerGallery.map(b=>`
 
 <div
-class="galleryItem ${b.id===selectedBanner?"selected":""}"
-onclick="chooseBanner('${b.id}')"
->
+class="galleryItem
+${b.id===selectedBanner?"selected":""}"
+onclick="chooseBanner('${b.id}')">
+
 <div style="
 width:100%;
 height:100%;
-background:${b.css}
-"></div>
+background:${b.css}">
+</div>
+
 </div>
 
 `).join("");
@@ -2270,12 +3480,15 @@ let name=
 document.getElementById("editName")
 .value.trim()||"Channel";
 
+
 document.getElementById("previewName")
 .textContent=name;
+
 
 document.getElementById("previewBanner")
 .style.background=
 bannerCSS(selectedBanner);
+
 
 document.getElementById("previewAvatar")
 .innerHTML=
@@ -2284,85 +3497,145 @@ document.getElementById("previewAvatar")
 }
 
 
-function saveChannel(){
+async function saveChannel(){
 
-let key=
-currentUser.toLowerCase();
+if(!currentProfile)return;
 
-channels[key]={
 
-username:currentUser,
-
-name:
+let name=
 document.getElementById("editName")
-.value.trim()||currentUser,
+.value.trim()||currentProfile.username;
 
-bio:
+
+let bio=
 document.getElementById("editBio")
 .value.trim()||
-"🎮 Gaming creator",
+"🎮 Gaming creator";
 
+
+let {data,error}=
+await supabaseClient
+.from("profiles")
+.update({
+
+name:name,
+bio:bio,
 avatar:selectedAvatar,
-
 banner:selectedBanner
 
-};
+})
+.eq("id",currentProfile.id)
+.select()
+.single();
 
-saveNormal();
+
+if(error){
+
+alert(error.message);
+return;
+
+}
+
+
+currentProfile=data;
 
 closeModal("customizeModal");
 
-renderChannel();
+await renderChannel();
 
 alert("🎨 Channel updated!");
 
 }
 
 
-/* =========================
+/* =====================================================
    SEARCH
-========================= */
+===================================================== */
 
-function searchVideos(){
+async function searchVideos(){
 
 let q=
 document.getElementById("search")
 .value.toLowerCase()
 .trim();
 
+
 if(!q){
+
 showPage("home");
 return;
+
 }
 
-let results=
-posts.filter(post=>{
 
-let c=getChannel(post.author);
+let list=
+await postsWithProfiles();
+
+
+let results=
+list.filter(post=>{
+
+let channel=post.profile;
 
 return(
-post.title.toLowerCase().includes(q)||
-post.description.toLowerCase().includes(q)||
-post.game.toLowerCase().includes(q)||
-post.category.toLowerCase().includes(q)||
-post.author.toLowerCase().includes(q)||
-c.name.toLowerCase().includes(q)
+
+post.title
+.toLowerCase()
+.includes(q)
+
+||
+
+(post.description||"")
+.toLowerCase()
+.includes(q)
+
+||
+
+(post.game||"")
+.toLowerCase()
+.includes(q)
+
+||
+
+(post.type||"")
+.toLowerCase()
+.includes(q)
+
+||
+
+(channel?.username||"")
+.toLowerCase()
+.includes(q)
+
+||
+
+(channel?.name||"")
+.toLowerCase()
+.includes(q)
+
 );
 
 });
 
+
 showPage("home");
 
+
 document.getElementById("homeTrailers")
-innerHTML="";
+.innerHTML="";
+
 
 document.getElementById("homeGameplay")
-innerHTML=`
+.innerHTML=`
 
 <div style="grid-column:1/-1">
 
 <div class="sectionHead">
-<h2>🔎 Search results</h2>
+
+<h2>
+🔎 Search results
+</h2>
+
 </div>
 
 <div class="videoGrid">
@@ -2384,9 +3657,9 @@ empty("Nothing found 😢")
 }
 
 
-/* =========================
+/* =====================================================
    LANGUAGE
-========================= */
+===================================================== */
 
 const translations={
 
@@ -2394,66 +3667,43 @@ en:{
 home:"Home",
 trailers:"Trailers",
 gameplay:"Gameplay",
-myChannel:"My Channel",
-hero:"Watch gaming videos, discover trailers and create your own gaming channel.",
-watchTrailers:"Watch Trailers",
-featuredTrailers:"Featured Trailers",
-latestGameplay:"Latest Gameplay"
+myChannel:"My Channel"
 },
 
 ro:{
 home:"Acasă",
 trailers:"Trailere",
 gameplay:"Gameplay",
-myChannel:"Canalul meu",
-hero:"Urmărește videoclipuri gaming, descoperă trailere și creează-ți propriul canal.",
-watchTrailers:"Vezi trailere",
-featuredTrailers:"Trailere recomandate",
-latestGameplay:"Ultimele gameplay-uri"
+myChannel:"Canalul meu"
 },
 
 de:{
 home:"Startseite",
 trailers:"Trailer",
 gameplay:"Gameplay",
-myChannel:"Mein Kanal",
-hero:"Sieh Gaming-Videos, entdecke Trailer und erstelle deinen eigenen Gaming-Kanal.",
-watchTrailers:"Trailer ansehen",
-featuredTrailers:"Empfohlene Trailer",
-latestGameplay:"Neuestes Gameplay"
+myChannel:"Mein Kanal"
 },
 
 fr:{
 home:"Accueil",
 trailers:"Bandes-annonces",
 gameplay:"Gameplay",
-myChannel:"Ma chaîne",
-hero:"Regarde des vidéos gaming, découvre des bandes-annonces et crée ta propre chaîne.",
-watchTrailers:"Voir les trailers",
-featuredTrailers:"Trailers recommandés",
-latestGameplay:"Derniers gameplays"
+myChannel:"Ma chaîne"
 },
 
 es:{
 home:"Inicio",
 trailers:"Tráilers",
 gameplay:"Gameplay",
-myChannel:"Mi canal",
-hero:"Mira vídeos gaming, descubre tráilers y crea tu propio canal.",
-watchTrailers:"Ver tráilers",
-featuredTrailers:"Tráilers destacados",
-latestGameplay:"Último gameplay"
+myChannel:"Mi canal"
 },
 
 it:{
 home:"Home",
 trailers:"Trailer",
 gameplay:"Gameplay",
-myChannel:"Il mio canale",
-hero:"Guarda video gaming, scopri trailer e crea il tuo canale gaming.",
-watchTrailers:"Guarda trailer",
-featuredTrailers:"Trailer in evidenza",
-latestGameplay:"Ultimi gameplay"
+myChannel:"Il mio canale"
+
 }
 
 };
@@ -2465,21 +3715,32 @@ let lang=
 document.getElementById("language")
 .value;
 
+
 localStorage.setItem(
 "kg_language",
 lang
 );
 
+
+let t=translations[lang];
+
+
 document
-.querySelectorAll("[data-i18n]")
-.forEach(el=>{
+.querySelectorAll(".sideBtn")
+.forEach((button,index)=>{
 
-let key=el.dataset.i18n;
+let span=button.querySelector(".sideText");
 
-if(translations[lang][key]){
-el.textContent=
-translations[lang][key];
-}
+if(!span)return;
+
+let keys=[
+"home",
+"trailers",
+"gameplay",
+"myChannel"
+];
+
+span.textContent=t[keys[index]];
 
 });
 
@@ -2491,6 +3752,7 @@ function loadLanguage(){
 let lang=
 localStorage.getItem("kg_language")||"en";
 
+
 document.getElementById("language")
 .value=lang;
 
@@ -2499,48 +3761,50 @@ changeLanguage();
 }
 
 
-/* =========================
-   MODALS
-========================= */
+/* =====================================================
+   START APP
+===================================================== */
 
-function closeModal(id){
-
-document
-.getElementById(id)
-.classList.remove("active");
-
-}
-
-
-/* =========================
-   START
-========================= */
-
-(async function(){
-
-try{
-
-await openDB();
-
-posts=await dbGetAll();
-
-}catch(error){
-
-console.error(error);
-
-alert(
-"Browserul nu permite IndexedDB. Încearcă Chrome/Edge."
-);
-
-}
-
-updateLoginButton();
+async function startApp(){
 
 loadLanguage();
 
-renderHome();
+await loadCurrentUser();
 
-})();
+await loadPosts();
+
+updateLoginButton();
+
+await renderHome();
+
+}
+
+
+startApp();
+
+
+/* =====================================================
+   AUTH STATE LISTENER
+===================================================== */
+
+supabaseClient.auth.onAuthStateChange(
+async(event,session)=>{
+
+if(session){
+
+await loadCurrentUser();
+
+}else{
+
+currentUser=null;
+currentProfile=null;
+
+updateLoginButton();
+
+}
+
+});
+
 
 </script>
 
